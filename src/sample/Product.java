@@ -11,6 +11,7 @@ package sample; /**
 
 import java.util.Date;
 import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
 
 public abstract class Product implements Item, Comparable {
 
@@ -24,6 +25,33 @@ public abstract class Product implements Item, Comparable {
   Date manufacturedOn; //manufacturedOn is a object of Date
   String name;//Name of the Product, to be initialized in constructor
   final String MANUFACTURER = Item.MANUFACTURER; //name of manufacturer
+
+  SimpleStringProperty nameSSP= new SimpleStringProperty();
+  SimpleStringProperty typeSSP= new SimpleStringProperty("AP");
+//
+//  public String getNameSSP() {
+//    return nameSSP.get();
+//  }
+
+  public SimpleStringProperty getNameSSPProperty() {
+    return nameSSP;
+  }
+
+  public void setNameSSP(String nameSSP) {
+    this.nameSSP.set(nameSSP);
+  }
+
+//  public String getTypeSSP() {
+//    return typeSSP.get();
+//  }
+
+  public SimpleStringProperty getTypeSPProperty() {
+    return typeSSP;
+  }
+
+  public void setTypeSSP(String typeSSP) {
+    this.typeSSP.set(typeSSP);
+  }
 
 @Override
   public int compareTo(Object o) {
@@ -85,7 +113,8 @@ public abstract class Product implements Item, Comparable {
     serialNumber = currentProductionNumber++;//SeriesNumber received productionNumber
     // and productNumber will increment by one
     manufacturedOn = new Date(); //manafacturedOn will receive new Date, set to current time the program runs
-
+    setNameSSP(name);
+    setTypeSSP(this.getClass().getSimpleName());
 
 
   }

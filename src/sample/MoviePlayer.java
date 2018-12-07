@@ -1,5 +1,7 @@
 package sample;
 
+
+
 public class MoviePlayer extends  Product implements  MultimediaControl {
 Screen screen;
 MonitorType monitorType;

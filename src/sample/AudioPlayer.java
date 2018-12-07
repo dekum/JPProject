@@ -1,17 +1,22 @@
 package sample;
 
+import javafx.beans.property.SimpleStringProperty;
+
 public class AudioPlayer extends  Product implements MultimediaControl {
   private String audioSpecification;
   private ItemType mediaType;
+
 
   public AudioPlayer() {
     super("The Zune");
     audioSpecification = "MP3-A";
     mediaType = ItemType.AUDIO;
+
   }
 
   AudioPlayer(String name, String audioSpecification){
     super(name);
+
 
     this.audioSpecification= audioSpecification;
     this.mediaType= ItemType.AUDIO ;
