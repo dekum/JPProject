@@ -1,5 +1,13 @@
 package sample;
 
+/**
+ * AudioPlayer.java
+ * A class extending from Product and implements the MultimediaControl interface.
+ * @Philemon Petit-Frere
+ * 10/10/18
+ *
+ */
+
 import java.util.Objects;
 import javafx.beans.property.SimpleStringProperty;
 
@@ -10,6 +18,9 @@ public class AudioPlayer extends  Product implements MultimediaControl {
 
 
   public AudioPlayer() {
+    /**
+     * A default constructor is test AudioPlayerclass
+     */
     super("The Zune");
     audioSpecification = "MP3-A";
     mediaType = ItemType.AUDIO;
@@ -17,6 +28,10 @@ public class AudioPlayer extends  Product implements MultimediaControl {
   }
 
   AudioPlayer(String name, String audioSpecification){
+    /**
+     * Normal constructor used.
+     * @param name , set the object's name
+     */
     super(name);
 
 

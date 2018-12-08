@@ -143,7 +143,7 @@ public class EmployeeInfo {
     in = new Scanner(System.in);
 
     setName();
-    checkName(name);
+    checkName(name);//Return value of checkName(StringBuilder) ignored, but method has no side effect
     createEmployeeCode(name);
     String patternString = "([A-Z])[a-z][a-z][a-z]\\d\\d";
     p = Pattern.compile(patternString);

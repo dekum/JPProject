@@ -10,8 +10,8 @@
    <children>
       <TableView fx:id="tableViewStats" layoutY="32.0" prefHeight="295.0" prefWidth="260.0">
         <columns>
-          <TableColumn fx:id="colStatName" prefWidth="156.0" text="C1" />
-          <TableColumn fx:id="colStatNumber" minWidth="0.0" prefWidth="101.0" text="C2" />
+          <TableColumn fx:id="colStatName" prefWidth="156.0" text="Stat Name" />
+          <TableColumn fx:id="colStatNumber" minWidth="0.0" prefWidth="101.0" text="Number" />
         </columns>
       </TableView>
       <Label layoutX="14.0" layoutY="14.0" text="Statistics" />

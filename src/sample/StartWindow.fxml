@@ -11,8 +11,8 @@
       <Label layoutX="50.0" layoutY="27.0" text="Welcome!" />
       <TableView fx:id="tableViewProducts" layoutX="14.0" layoutY="89.0" prefHeight="200.0" prefWidth="200.0">
         <columns>
-          <TableColumn fx:id="colName" prefWidth="100.00000762939453" text="C1" />
-          <TableColumn fx:id="colType" prefWidth="99.0" text="C2" />
+          <TableColumn fx:id="colName" prefWidth="100.00000762939453" text="Name" />
+          <TableColumn fx:id="colType" prefWidth="99.0" text="Type" />
         </columns>
       </TableView>
       <Label layoutX="248.0" layoutY="44.0" text="Pick an Option:" />
