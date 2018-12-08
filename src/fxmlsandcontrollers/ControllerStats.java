@@ -1,10 +1,13 @@
 package fxmlsandcontrollers;
 
 /**
- * ControllerAddAudioPlayer.java
+ * ControllerStats.java
  * 11/30/2018
  * @author Philemon Petit-Frere
- *
+ * This controller is tied tot he StatsWindow.fxml
+ * This class will display the statitics of the program in a Table
+ * This class uses the Global.productList that is shared by all controllers
+ * so the information is always up to date.
  */
 
 import java.io.IOException;
@@ -40,82 +43,88 @@ public class ControllerStats implements Initializable {
   @FXML private TableColumn<StatsReport,String> colStatName;
   @FXML private TableView<StatsReport> tableViewStats;
 
-
-
-  @FXML
-  private void handleExit(ActionEvent event) {
-    Stage stage = (Stage) tableViewStats.getScene().getWindow(); //Ask currentScene what window it is.
+  /**
+   * This method will open the StartWidow.fxml window, also also closes current window.
+   * @param event is a mouseClick event.
+   *
+   */
+  @FXML void handleExit(ActionEvent event) {
+    Stage stage = (Stage) tableViewStats.getScene().getWindow();
     stage.close(); //Close current Window
 
     //Loads FXML Loader
-    FXMLLoader Loader = new FXMLLoader();
+    FXMLLoader loader = new FXMLLoader();
 
     //Load a Url to the HomePage Fxml
-    Loader.setLocation(getClass().getResource("StartWindow.fxml"));
+    loader.setLocation(getClass().getResource("StartWindow.fxml"));
     try {
-      // Loader.setController(guestController); GuestMenuHome already has a controller so no need to set a new one.
-      Loader.load(); //Loads
+
+      loader.load(); //Loads
     } catch (IOException ex) {
       Logger.getLogger(ControllerStartWindow.class.getName()).log(Level.SEVERE, null, ex);
 
     }
 
-    Parent p = Loader.getRoot();
+    Parent p = loader.getRoot();
     stage = new Stage();
 
     stage.setTitle("Home Screen");
     stage.setScene(new Scene(p));
     stage.show(); //Opens new Window
+
   }
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    /*
+    This method runs first
+    It gets the the data from Global.productList which stores all the products
+    Then counts AudioPlayers, Movie Players,LCDs,LED, copies and unique products
+    Lastly it gives the data to the Stats tableview
+     */
     ArrayList<Product> productList = Global.productList;
-    ArrayList<StatsReport> statsList= new ArrayList<>();
 
+    int apCounter = 0;//Counts AudioPlayers
+    int mpCount = 0;//Counts MoviePlayers
+    int lcdCounter = 0;//Counts MoviePlayer objects with MoniterType LCD
+    int ledCounter = 0;//Counts MoviePlayer objects with MoniterType LCD
+    int numOfCopies = 0;//Counts number of products with the same Name
+    int nubOfOriginal = 0;//Counts number of unique products.
 
-    statsList.add( new StatsReport("Total Products",productList.size()));
-    int apCounter=0;
-    int mpCount=0;
-    int lcdCounter=0;
-    int ledCounter=0;
-    int numOfCopies=0;
-    int numOfOrginal=0;
-
-    //ArrayList<Product> inputList = Arrays.asList(productList);
+    /*This checks how many are original or copies by creating a Set of the productList
+    Since Set lists cannot contain duplicates, it will count how many are unique
+    */
     Set inputSet = new HashSet(productList);
-    numOfOrginal = inputSet.size();
-    if(inputSet.size()< productList.size()){
-      numOfCopies = productList.size() - inputSet.size();
-      numOfOrginal = inputSet.size();
-    }else if(inputSet.size()== productList.size()){
-
-
+    nubOfOriginal = inputSet.size();
+    if (inputSet.size() < productList.size()) {
+      numOfCopies = productList.size() - inputSet.size(); //All - unique
+      nubOfOriginal = inputSet.size(); //numOfOrigoma;
     }
-    //System.out.println(productList.size() +"  "+ inputSet.size());
-
-
-
 
     for (Object o: productList
     ) {
-      if (AudioPlayer.class.isInstance(o)){
+      if (AudioPlayer.class.isInstance(o)) {
+        //If current object pointed to is a AudioPlayer add to Count
         apCounter++;
       }
-      if (MoviePlayer.class.isInstance(o)){
-
-        MoviePlayer oMoviePlayer = (MoviePlayer)o;
+      if (MoviePlayer.class.isInstance(o)) {
+        //If current object pointed to is a MoviePlayer add to Count
+        MoviePlayer objectMoviePlayer = (MoviePlayer)o;
         mpCount++;
-        if (oMoviePlayer.getMonitorType() == MonitorType.LCD){
+        if (objectMoviePlayer.getMonitorType() == MonitorType.LCD) {
+          //if current MoviePlayer object is LCD add to count
           lcdCounter++;
-        }else {
+        } else {
           ledCounter++;
         }
       }
 
     }
-    statsList.add( new StatsReport("Total Unique",numOfOrginal));
-    statsList.add( new StatsReport("Total Duplicates",numOfCopies));
+    //Create Stats objects with Name and number
+    ArrayList<StatsReport> statsList = new ArrayList<>();
+    statsList.add(new StatsReport("Total Products",productList.size()));
+    statsList.add(new StatsReport("Total Unique",nubOfOriginal));
+    statsList.add(new StatsReport("Total Duplicates",numOfCopies));
     statsList.add(new StatsReport("Total Audio Players",apCounter));
     statsList.add(new StatsReport("Total Movie Players",mpCount));
     statsList.add(new StatsReport("Total LCDs",lcdCounter));

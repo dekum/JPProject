@@ -118,7 +118,7 @@ public class ControllerStartWindow implements  Initializable {
     try {
       loader.load(); //Loads
     } catch (IOException ex) {
-      Logger.getLogger(ControllerAddMP.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(ControllerAddMoviePlayer.class.getName()).log(Level.SEVERE, null, ex);
 
     }
 
