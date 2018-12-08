@@ -1,10 +1,17 @@
 package sample;
 
 
+import java.util.Objects;
 
 public class MoviePlayer extends  Product implements  MultimediaControl {
 Screen screen;
 MonitorType monitorType;
+
+
+
+  public MonitorType getMonitorType() {
+    return monitorType;
+  }
 
   public MoviePlayer(String name, Screen screen, MonitorType monitorType) {
     super(name);

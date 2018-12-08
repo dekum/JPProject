@@ -11,9 +11,11 @@ package sample; /**
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javafx.beans.property.SimpleStringProperty;
 
 public abstract class Product implements Item, Comparable {
+
 
   /**
    * Abstract classes cannot be implemented, but are useful for classes that have similar methods to extend from.
@@ -32,6 +34,23 @@ public abstract class Product implements Item, Comparable {
 //  public String getNameSSP() {
 //    return nameSSP.get();
 //  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Product)) {
+      return false;
+    }
+    Product product = (Product) o;
+    return Objects.equals(getName(), product.getName());
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getName());
+  }
 
   public SimpleStringProperty getNameSSPProperty() {
     return nameSSP;
@@ -53,7 +72,7 @@ public abstract class Product implements Item, Comparable {
     this.typeSSP.set(typeSSP);
   }
 
-@Override
+  @Override
   public int compareTo(Object o) {
   /**
    * This will sort objects of projects by their field "name"

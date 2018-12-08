@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 
 public class ControllerAddAP implements Initializable {
  @FXML
- TextField txtFieldName,txtFieldCopy,txtFieldAudioSpec;
+ private TextField txtFieldName,txtFieldCopy,txtFieldAudioSpec;
   @FXML ChoiceBox<String> choiceBoxMediaType;
 
   void showAlert(String message){
@@ -65,7 +65,6 @@ public class ControllerAddAP implements Initializable {
   }
   @FXML
   void handleAdd (ActionEvent event){
-    System.out.println("Happens");
     String name = txtFieldName.getText();
     String audioSpec = txtFieldAudioSpec.getText();
     Boolean sucess1= true;
@@ -76,7 +75,11 @@ public class ControllerAddAP implements Initializable {
     catch (NumberFormatException exception){
     showAlert("Copies input is invalid");//Opens alert box
       sucess1= false;
+    }if (txtFieldName.getText().equals("")|txtFieldAudioSpec.getText().equals("")){
+      showAlert("Invalid input for Name or Audio Specification");
+      sucess1=false;
     }
+
     Alert alert = new Alert(AlertType.INFORMATION);
     if (sucess1){
       if (copies >1){
@@ -84,7 +87,7 @@ public class ControllerAddAP implements Initializable {
 
           AudioPlayer ap1 = new AudioPlayer(name,audioSpec);
           Global.productList.add(ap1);
-          System.out.println("Worked");
+
 
         }
 
@@ -107,24 +110,8 @@ public class ControllerAddAP implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    //This method runs first before window is opened
-
-//    List<String> itenTypeNames = new ArrayList<>();
-//    itenTypeNames.add("AUDIO");
-//    itenTypeNames.add("VISUAL");
-//    itenTypeNames.add("AUDIOMOBILE");
-//    itenTypeNames.add("VISUALMOBILE");
-//    List<String> itemTypeList = FXCollections.observableArrayList(itenTypeNames);
-//    choiceBoxMediaType.setValue(1);
-//    choiceBoxMediaType.setItems(itemTypeList);
-
-    AudioPlayer ap = new AudioPlayer("ipod Mini", "MP3");
-    Global.productList.add(ap);
-    AudioPlayer ap2 = new AudioPlayer("Walkman", "WAV");
-    Global.productList.add(ap2);
 
   }
 
-  public void handleEscape(ActionEvent event) {
-  }
+
 }
