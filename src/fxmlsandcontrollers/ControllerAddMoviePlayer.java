@@ -27,7 +27,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.Global;
@@ -37,16 +36,35 @@ import sample.Screen;
 
 public class ControllerAddMoviePlayer implements Initializable {
 
+  /**
+   * TextField to set the Screen Resolution.
+   */
   @FXML private TextField textFieldRes;
+  /**
+   * TextField to set the refresh rate.
+   */
   @FXML private TextField textFieldRefresh;
+  /**
+   * TextField to set the response time.
+   */
   @FXML private TextField textFieldResponse;
-  @FXML TextField txtFieldName;
-  @FXML TextField txtFieldCopy;
-  @FXML ChoiceBox<String> choiceBoxMediaType;
+  /**
+   * TextField to set the movie player name.
+   */
+  @FXML private TextField txtFieldName;
+  /**
+   * TextField to set number of copies to create.
+   */
+  @FXML private TextField txtFieldCopy;
+  /**
+   * ChoiceBox to set the monitor type enum.
+   */
+  @FXML private ChoiceBox<String> choiceBoxMonitorType;
 
   /**
    * This method displays a popup with the Message passed in the parameter.
-   * @param message is a String passed by other method to be displayed to the user
+   * 
+   * @param  message is a String passed by other method to be displayed to the user
    */
   void showAlert(String message) {
     Alert alert = new Alert(AlertType.INFORMATION);
@@ -60,14 +78,18 @@ public class ControllerAddMoviePlayer implements Initializable {
   /**
    * This method will check the textFields for right inputs then will create a moviePlayer.
    * name and screemRes textfields must not be empty to be valid.
-   * copies,refreshRate textfield inputs ust be a non-negative int,
+   * copies,refreshRate textfield textFields must be a non-negative int,
    * or the program will display an error.
-   * @param event is an MouseClick event
+   * If an invalid input is made, then it will be added to an alert message.
+   * The alert message is a combination of errors message and will be displays as a popup.
+   * 
+   * @param  event is an MouseClick event
    */
   @FXML
   void handleAdd(ActionEvent event) {
     String name = txtFieldName.getText();
-    String monitorTypeString = choiceBoxMediaType.getValue(); //to be converted to MoniterType enum
+    //monitorTypeString to be converted to MonitorType enum
+    String monitorTypeString = choiceBoxMonitorType.getValue();
     MonitorType monitorType;
     String screenRes = "";
     int refreshRate = -1;
@@ -118,22 +140,23 @@ public class ControllerAddMoviePlayer implements Initializable {
     if (alertMessage.equals("")) {
       if (copies > 1) {
         for (int i = 0; i < copies; i++) {
-
+          //Loop to create copies
           MoviePlayer mp =
               new MoviePlayer(name,new Screen(screenRes,refreshRate,responseTime),monitorType);
           Global.productList.add(mp);
-
-
         }
-
       } else if (copies == 1) {
         MoviePlayer mp =
             new MoviePlayer(name,new Screen(screenRes,refreshRate,responseTime),monitorType);
         Global.productList.add(mp);
-        //alert = new Alert(AlertType.INFORMATION);
+        showAlert(name + " was successfully created.");//Opens alert box
 
       }
-      showAlert("Movie Player successfully created");//Opens alert box
+      if (copies <= 0) {
+        showAlert("No Movie Player was created, please enter number of copies.");//Opens alert box
+      } else if (copies > 1) {
+        showAlert(copies + " copies of " + name + " were created.");//Opens alert box
+      }
 
     } else {
       showAlert(alertMessage);
@@ -143,7 +166,8 @@ public class ControllerAddMoviePlayer implements Initializable {
 
   /**
    * This method will open the StartWidow.fxml window, also also closes current window.
-   * @param event is a mouseClick event.
+   * 
+   * @param  event is a mouseClick event.
    *
    */
   @FXML void handleExit(ActionEvent event) {
@@ -178,11 +202,11 @@ public class ControllerAddMoviePlayer implements Initializable {
     //this method is called first before window loads
 
     //create fields for ChoiceBox
-    List<String> moniterTypeNames = new ArrayList<>();
-    moniterTypeNames.add("LCD");
-    moniterTypeNames.add("LED");
-    ObservableList<String> moniterTypeList = FXCollections.observableArrayList(moniterTypeNames);
-    choiceBoxMediaType.setValue("LCD");
-    choiceBoxMediaType.setItems(moniterTypeList);
+    List<String> monitorTypeNames = new ArrayList<>();
+    monitorTypeNames.add("LCD");
+    monitorTypeNames.add("LED");
+    ObservableList<String> moniterTypeList = FXCollections.observableArrayList(monitorTypeNames);
+    choiceBoxMonitorType.setValue("LCD");
+    choiceBoxMonitorType.setItems(moniterTypeList);
   }
 }

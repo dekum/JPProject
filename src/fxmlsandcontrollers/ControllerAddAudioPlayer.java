@@ -30,12 +30,18 @@ import sample.Global;
 
 public class ControllerAddAudioPlayer implements Initializable {
   /**
-   * This controller sets functionality to validate user inputs and create AudioPlayer object.
+   * Txtfield to set the AudioPlayer Name.
    */
   @FXML
   private TextField txtFieldName;
+  /**
+   * Txtfield to set the number of Audio Player objects to create.
+   */
   @FXML
   private TextField txtFieldCopy;
+  /**
+   * Txtfield to set the AudioPlayer's Audio Specification .
+   */
   @FXML
   private TextField txtFieldAudioSpec;
 
@@ -44,7 +50,6 @@ public class ControllerAddAudioPlayer implements Initializable {
    * @param message is a String passed by other method to be displayed to the user
    */
   void showAlert(String message) {
-
     Alert alert = new Alert(AlertType.INFORMATION);
     alert.setTitle("Information Dialog.");
     alert.setHeaderText(null);
@@ -120,7 +125,7 @@ public class ControllerAddAudioPlayer implements Initializable {
         AudioPlayer ap1 = new AudioPlayer(name,audioSpec);
         Global.productList.add(ap1);
         //alert = new Alert(AlertType.INFORMATION);
-        showAlert(name + " was sucessfully created.");//Opens alert box
+        showAlert(name + " was successfully created.");//Opens alert box
 
       }
       if (copies == 0 || copies < 0) {

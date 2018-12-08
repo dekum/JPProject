@@ -2,8 +2,8 @@ package sample;
 
 public class Screen implements ScreenSpec {
   String resolution;
-  int refreshrate;
-  int responsetime;
+  int refreshRate;
+  int responseTime;
 
   @Override
   public String getResolution() {
@@ -23,16 +23,16 @@ public class Screen implements ScreenSpec {
   @Override
   public String toString() {
     String line = "Resolution : " + resolution + "\n" +
-        "Refresh Rate : " + refreshrate + "\n" +
-        "Response Time : " + responsetime;
+        "Refresh Rate : " + refreshRate + "\n" +
+        "Response Time : " + responseTime;
 
     //I use line because I felt it was easier to code with
     return line;
 
   }
-  public Screen(String resolution, int refreshrate, int responsetime) {
+  public Screen(String resolution, int refreshRate, int responseTime) {
     this.resolution = resolution;
-    this.refreshrate = refreshrate;
-    this.responsetime = responsetime;
+    this.refreshRate = refreshRate;
+    this.responseTime = responseTime;
   }
 }

@@ -1,111 +1,173 @@
 package sample;
 
+/**
+ * EmployeeInfo.java
+ * 10/26/2018
+ * @author Philemon Petit-Frere
+ * The department code is made up of four letters and two numbers.
+ * The format of the department code is the first letter must be in uppercase with the following
+ * three all being lowercase and no spaces.
+ * The Employee code is the first letter of Employee firstname plus last name.
+ * sources: https://regexr.com/ (For making java patterns)
+ */
+
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * EmployeeInfo.javan
- * 10/26/2018
- * Philemon Petit-Frere
- * Done with step 20
- * The department code is made up of four letters and two numbers.
- * The format of the department code is the first letter must be in uppercase with the following three all
- * being lowercase and no spaces.
- *
- *
- * sources: https://regexr.com/ (For making java patterns)
- */
-
 public class EmployeeInfo {
 
-  StringBuilder name = new StringBuilder(); //Need to Initalize a stringbuilder because you can append it.
+  /**
+   * First and Last name of the Employee, which user inputs.
+   */
+  StringBuilder name = new StringBuilder();
+  /**
+   * The employee code, which is the first latter of First name
+   * combined with last name.
+   */
   String code;
+  /**
+   * deptID is 6 characters.
+   * First Leter is capital followed by 4 lower case letters and then followed by 2 numbers.
+   * Is it stored in reverse for security.
+   */
   String deptId;
-  Pattern p;
+  /**
+   * Pattern used to check is user inputted a valid ID.
+   * The pattern is Capital letter, 3 lower case, 2 numbers.
+   */
+  Pattern pattern;
+  /**
+   * Scanner to read input used multiple times in this class.
+   */
   Scanner in;
 
-  public String reverseString(String id){
-    char letter = id.charAt(id.length()-1);
+  /**
+   * This method is a recursive method that reverse the employeeId.
+   *
+   * @param  id the employee code, to be reversed.
+   * @return  the employee code reversed.
+   */
+  public String reverseString(String id) {
+    char letter = id.charAt(id.length() - 1);
 
-    if ( id.length() == 1){
+    if (id.length() == 1) {
       return Character.toString(letter);
 
-    }else{
-      // System.out.println(letter);
-      return letter+reverseString(id.substring(0,id.length()-1));
+    } else {
+      return letter + reverseString(id.substring(0,id.length() - 1));
     }
-
   }
 
-  public String getDeptId(){
+  /**
+   * This method is used to prompt the user to enter an input for the deptID.
+   */
+  public String getDeptId() {
     System.out.println("Please enter the department ID:");
-    String input2 = in.nextLine();
-    //   String input2 = "Jake22";;
+    String input2 = in.nextLine(); //get scanner input
     return input2;
 
   }
-  private void setDeptId(){
-    String inputId = getDeptId();
-    //Boolean isValid = validId(deptId);
-    if (validId(inputId)){
-      //if the ID is valid, then match then reverse the String
-      deptId=reverseString(inputId);
-     // deptId=inputId;
 
-    }else{
+  /**
+   * This method is used to set the DeptId by calling getDeptId() .
+   * And  then checking if it's valid with validID.
+   * If it's a valid Input then the deptID is set to the reverse of the input.
+   * Otherwise, deptID is set to "None01".
+   */
+  private void setDeptId() {
+    String inputId = getDeptId();
+    //Boolean isValid  =  validId(deptId);
+    if (validId(inputId)) {
+      //if the ID is valid, then match then reverse the String
+      deptId = reverseString(inputId);
+
+    } else {
       deptId = "None01";
     }
-    // System.out.println(deptId);
 
   }
-  private String getId(){
+
+  /**
+   * This method is used to return string deptID.
+   * @return the deptId
+   */
+  private String getId() {
     return deptId;
   }
-  private boolean validId(String id){
-    Boolean matches =false;
 
-    Matcher matcher = p.matcher(id);
-    matches = matcher.matches();
-    // if (matches){
-    //   System.out.println("MATCGHES!!!");
-    // }
+  /**
+   * This method checks if the user inputted id is a valid deptID code.
+   * A valid deptID is 6 characters, first Uppercase. 3 lower case, 2 numbers.
+   *
+   * @param  id the deptID, the user input that will be checked
+   * @return  the boolean result of matching the id with the regex pattern.
+   */
+  private boolean validId(String id) {
+    Boolean matches = false; //initialize the boolean
+
+    //pattern complied in constructor
+    Matcher matcher = pattern.matcher(id); //Check id matches pattern
+    matches = matcher.matches(); //true or false
 
     return matches;
-    // return deptId.equals(id);
 
   }
 
-  public StringBuilder getName(){
+  /**
+   * Returns the name of Employee.
+   *
+   * @return the name of Employee
+   */
+  public StringBuilder getName() {
     return name;
   }
-  public String getCode(){
+
+  /**
+   * Returns the employee Code.
+   *
+   * @return the employee code
+   */
+  public String getCode() {
     return code;
   }
-  private void setName()
-  {
+
+  /**
+   * Changes the name of the employee by using the inputName method.
+   */
+  private void setName() {
     name.append(inputName());
   }
-  private void createEmployeeCode(StringBuilder name)
-  {
-    Boolean containsSpace = name.toString().contains(" ");
-    if (containsSpace){
+
+  /**
+   * Create an employee code, using the name sent in the parameter.
+   * This method checks if the name contains a space, then will split the string at the space
+   * and will set the employee code to first Letter of nam combined with last name
+   * If there is no space detected, the code will be "Guest
+   *
+   * @param name the name of the Employee inputted by the user
+   */
+  private void createEmployeeCode(StringBuilder name) {
+
+    if (checkName(name)) {
       code = name.toString().substring(0,1);
       int spot = name.toString().indexOf(" ");
       int spot1 = spot;
       code += name.toString().substring(++spot,name.length());
-
-    } else
-    {
+    } else {
       //No space default guest
       code = "Guest";
     }
-    //System.out.println(code);
-
-
 
   }
-  private String inputName(){
+
+  /**
+   * Prompts user to input first name and last name.
+   * A scanner is used to read input
+   *
+   * @return input1 The name the user inputted.
+   */
+  private String inputName() {
     //Scanner scanner = new Scanner(System.in);
 
     System.out.print("Please enter your first and last name: ");
@@ -116,20 +178,25 @@ public class EmployeeInfo {
     return input1;
 
   }
-  private boolean checkName(StringBuilder name)
-  {
+
+  /**
+   * Checks the employee Name for a space and returns a boolean result of that check.
+   *
+   * @param  name the user inputted name.
+   * @return validInput a boolean that is true if parameter name has s space.
+   */
+  private boolean checkName(StringBuilder name) {
     Boolean validInput = false;
-    // if (name.length()==0){
+    // if (name.length() == 0) {
     //   System.out.println("Sorry you didn't enter anything try again");
     //   inputName();
     // } else{
 
     // }
     Boolean containsSpace = name.toString().contains(" ");
-    if (containsSpace)
-    {
+    if (containsSpace) {
       //String isn't empty and has a space  so it must be valid
-      validInput= true;
+      validInput = true;
     }
     // else
     // {
@@ -139,23 +206,35 @@ public class EmployeeInfo {
     return validInput;
   }
 
+  /**
+   * Constructor to create a EmployeeInfo object.
+   * Asks user to input a name, checks the name for a space then calls createEmployeeCode
+   * Then it sets a pattern for the deptID which the user inputs a deptID.
+   * The deptId is then validated and the EmployeeInfo object is created.
+   */
   public EmployeeInfo() {
     in = new Scanner(System.in);
 
     setName();
-    checkName(name);//Return value of checkName(StringBuilder) ignored, but method has no side effect
     createEmployeeCode(name);
     String patternString = "([A-Z])[a-z][a-z][a-z]\\d\\d";
-    p = Pattern.compile(patternString);
+    pattern = Pattern.compile(patternString);
     setDeptId();
     in.close();
 
 
   }
 
+  /**
+   * Modifies class's toString.
+   * Contents of each field are placed into the result with one per line.
+   *
+   * @return code and deptID
+   */
   @Override
   public String toString() {
-    return "Employee Code : " + code +
-        "\nDepartment Number : " + deptId ;
+    return "Employee Code : "
+        + code
+        + "\nDepartment Number : " + deptId;
   }
 }

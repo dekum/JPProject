@@ -39,13 +39,26 @@ import sample.StatsReport;
 
 public class ControllerStats implements Initializable {
 
-  @FXML private TableColumn<StatsReport,Integer> colStatNumber;
-  @FXML private TableColumn<StatsReport,String> colStatName;
+  /**
+   * A tableView that is populated by StatusReport list.
+   * This displays the Name of the Stat and the number of it.
+   */
   @FXML private TableView<StatsReport> tableViewStats;
+  /**
+   * A tableColumn for TableViewStats.
+   * This displays the stat number in its cells.
+   */
+  @FXML private TableColumn<StatsReport,Integer> colStatNumber;
+  /**
+   * A tableColumn for TableViewStats.
+   * This displays the Stat name.
+   */
+  @FXML private TableColumn<StatsReport,String> colStatName;
 
   /**
    * This method will open the StartWidow.fxml window, also also closes current window.
-   * @param event is a mouseClick event.
+   * 
+   * @param  event is a mouseClick event.
    *
    */
   @FXML void handleExit(ActionEvent event) {

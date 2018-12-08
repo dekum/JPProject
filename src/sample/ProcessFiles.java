@@ -46,7 +46,7 @@ public class ProcessFiles {
 
 
   }
-public void WriteFile(EmployeeInfo emp) throws IOException {
+public void writeFile(EmployeeInfo emp) throws IOException {
   FileWriter writer      = new FileWriter(String.valueOf(p3), true);
   PrintWriter printWriter = new PrintWriter(writer);
 
@@ -62,7 +62,7 @@ public void WriteFile(EmployeeInfo emp) throws IOException {
   printWriter.close();
 
 }
-public void WriteFile(ArrayList<Product> products) throws IOException {
+public void writeFile(ArrayList<Product> products) throws IOException {
   FileWriter writer      = new FileWriter(String.valueOf(p3), true);
   PrintWriter printWriter = new PrintWriter(writer);
 
@@ -74,7 +74,7 @@ public void WriteFile(ArrayList<Product> products) throws IOException {
 //  printWriter.print("Op");
   for (Product p: products
   ) {
-   // p.toString();
+   // pattern.toString();
     printWriter.println(p.toString());
 
   }

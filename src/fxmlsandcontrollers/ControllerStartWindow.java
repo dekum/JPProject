@@ -4,6 +4,7 @@ package fxmlsandcontrollers;
  * 11/30/2018
  * @author Philemon Petit-Frere
  * This controller is connected to the Start Window.fxml
+ * The first window the user sees.
  * The main function of this controller is to set the tableView and the buttons to add products
  * The tableViewProducts displays the name and type of products created in this program
  *
@@ -35,23 +36,32 @@ import sample.Product;
 
 public class ControllerStartWindow implements  Initializable {
   /**
-   * This class adds functionality to the StartWindow.fxml
+   * A Product object stores the reference to the product was clicked in the TableView of Products.
    */
   Product productClickedOn; //Clicked product in the tableView
+  /**
+   * A tableView populated from the products of the productList.
+   * This tableView displays the product Name and type in it's columns.
+   */
   @FXML
   TableView<Product> tableViewProducts; //table for Products
+  /**
+   * A tableView column that displays the name of products in each cell.
+   */
   @FXML
   TableColumn<Product,String> colName; //Displays name of Product
+  /**
+   * A tableView column that displays the class type of product in each cell.
+   */
   @FXML
   TableColumn<Product,String> colType; //Displays either AudioPlyaer or MoviePlayer
 
   /**
-   * This method displays a popup with window with the toString on the product user clicks.
-   * @param event is a mouseClick event
+   * This method displays a popup with window with the toString of the product user clicks.
+   *
+   * @param  event is a mouseClick event
    */
   public void handleMoreInfo(ActionEvent event) {
-
-
     //Check if a product was clicked on
     if (productClickedOn != null) {
       Alert alert = new Alert(AlertType.INFORMATION);
@@ -72,10 +82,10 @@ public class ControllerStartWindow implements  Initializable {
 
   /**
    * This method will open the AddAudioPlayer.fxml window, also also closes current window.
-   * @param event is a mouseClick event.
+   *
+   * @param  event is a mouseClick event.
    */
   public void handleAudio(ActionEvent event) {
-
     Stage stage = (Stage) tableViewProducts.getScene().getWindow(); //get the current window
     stage.close(); //Close current Window
 
@@ -102,7 +112,8 @@ public class ControllerStartWindow implements  Initializable {
   /**
    * This method handleMovie will open the AddMoviePlayer.fxml window.
    * Also also closes current window.
-   * @param event is a mouseClick event.
+   *
+   * @param  event is a mouseClick event.
    *
    */
   public void handleMovie(ActionEvent event) {
@@ -134,7 +145,8 @@ public class ControllerStartWindow implements  Initializable {
   @FXML void handleStats(ActionEvent event) {
     /**
      * This method will open the StatsWindow.fxml window, also also closes current window.
-     * @param event is a mouseClick event.
+     *
+     * @param  event is a mouseClick event.
      */
     //Find currentScene of what window it is.
     Stage stage = (Stage) tableViewProducts.getScene().getWindow();
@@ -186,15 +198,14 @@ public class ControllerStartWindow implements  Initializable {
 
   }
 
+  /**
+   * Quits the program by closing the program.
+   *
+   * @param  event is a mouseClick event.
+   */
   @FXML void handleQuit(ActionEvent event) {
-    /**
-     * @param event is a mouseClick event.
-     * Exit Program, closes window
-     */
     System.out.println("Goodbye");
     Stage stageExit = (Stage) tableViewProducts.getScene().getWindow();
     stageExit.close();
-
   }
-
 }

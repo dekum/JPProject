@@ -21,8 +21,6 @@ import javafx.beans.property.SimpleStringProperty;
 public class StatsReport {
   SimpleStringProperty statName= new SimpleStringProperty();
   SimpleIntegerProperty statNumber= new SimpleIntegerProperty();
-  String nameOfStat;
-  int numberOfStat;
 
   public SimpleStringProperty getStatNameProperty() {
     return statName;
@@ -46,8 +44,7 @@ public class StatsReport {
 
   public StatsReport(String statName,
       Integer statNumber) {
-    nameOfStat= statName;
-    numberOfStat = statNumber;
+
     setStatName(statName);
     setStatNumber(statNumber);
   }
