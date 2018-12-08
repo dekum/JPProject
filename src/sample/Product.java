@@ -162,7 +162,8 @@ public abstract class Product implements Item, Comparable {
 
          */
 
-    String line = "Manufacturer  : " + MANUFACTURER + "\n" +
+    String line =
+        "Manufacturer  : " + MANUFACTURER + "\n" +
         "Serial Number : " + serialNumber + "\n" +
         "Date          : " + getManufactureDate() + "\n" +
         "Name          : " + name;

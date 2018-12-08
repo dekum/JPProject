@@ -1,11 +1,16 @@
-package sample;
+package fxmlsandcontrollers;
+
+/**
+ * ControllerAddAudioPlayer.java
+ * 11/30/2018
+ * @author Philemon Petit-Frere
+ *
+ */
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.logging.Level;
@@ -22,6 +27,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import sample.AudioPlayer;
+import sample.Global;
+import sample.MonitorType;
+import sample.MoviePlayer;
+import sample.Product;
+import sample.StatsReport;
 
 public class ControllerStats implements Initializable {
 
@@ -45,7 +56,7 @@ public class ControllerStats implements Initializable {
       // Loader.setController(guestController); GuestMenuHome already has a controller so no need to set a new one.
       Loader.load(); //Loads
     } catch (IOException ex) {
-      Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(ControllerStartWindow.class.getName()).log(Level.SEVERE, null, ex);
 
     }
 

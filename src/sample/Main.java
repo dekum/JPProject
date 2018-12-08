@@ -20,7 +20,8 @@ public class Main extends Application {
         Global.productList.add(ap2);
         Global.productList.add(new MoviePlayer("DBPOWER MK101",new Screen("720x480",40,22),MonitorType.LCD));
 
-        Parent root = FXMLLoader.load(getClass().getResource("StartWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(
+            "../fxmlsandcontrollers/StartWindow.fxml"));
         primaryStage.setTitle("Home Window");
         primaryStage.setScene(new Scene(root, 478, 341));
         primaryStage.show();

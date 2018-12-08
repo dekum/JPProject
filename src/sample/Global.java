@@ -4,6 +4,6 @@ import java.util.ArrayList;
 
 public class Global {
 
-  public static ArrayList<Product> productList = new ArrayList<>();
-
+  public final static ArrayList<Product> productList = new ArrayList<>();
+  //FindBugs suggested to make productList a final,
 }

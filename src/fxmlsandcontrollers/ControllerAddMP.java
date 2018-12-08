@@ -1,4 +1,11 @@
-package sample;
+package fxmlsandcontrollers;
+
+/**
+ * ControllerAddAudioPlayer.java
+ * 11/30/2018
+ * @author Philemon Petit-Frere
+ *
+ */
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,6 +28,10 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import sample.Global;
+import sample.MonitorType;
+import sample.MoviePlayer;
+import sample.Screen;
 
 public class ControllerAddMP implements Initializable {
   Alert alert = new Alert(AlertType.INFORMATION);
@@ -141,7 +152,7 @@ public class ControllerAddMP implements Initializable {
 
       Loader.load(); //Loads
     } catch (IOException ex) {
-      Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(ControllerStartWindow.class.getName()).log(Level.SEVERE, null, ex);
 
     }
 

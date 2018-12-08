@@ -61,7 +61,7 @@ public class OldMain {
     // write one line of code to sort arraylist
     Collections.sort(productList);
     //Call print method on the array list
-    // print(productList);
+     print(productList);
     EmployeeInfo empInfo = new EmployeeInfo();
     System.out.println(empInfo.toString());
     ProcessFiles pf = new ProcessFiles();

@@ -3,7 +3,7 @@ package sample;
 /**
  * AudioPlayer.java
  * A class extending from Product and implements the MultimediaControl interface.
- * @Philemon Petit-Frere
+ * @author Philemon Petit-Frere
  * 10/10/18
  *
  */
@@ -19,6 +19,7 @@ public class AudioPlayer extends  Product implements MultimediaControl {
 
   public AudioPlayer() {
     /**
+     *
      * A default constructor is test AudioPlayerclass
      */
     super("The Zune");
@@ -27,22 +28,17 @@ public class AudioPlayer extends  Product implements MultimediaControl {
 
   }
 
-  AudioPlayer(String name, String audioSpecification){
+  public AudioPlayer(String name, String audioSpecification) {
     /**
      * Normal constructor used.
      * @param name , set the object's name
      */
     super(name);
 
-
-    this.audioSpecification= audioSpecification;
-    this.mediaType= ItemType.AUDIO ;
-
+    this.audioSpecification = audioSpecification;
+    this.mediaType = ItemType.AUDIO;
   }
 
-  public String getAudioSpecification() {
-    return audioSpecification;
-  }
 
   @Override
   public void play() {
@@ -71,25 +67,32 @@ public class AudioPlayer extends  Product implements MultimediaControl {
   @Override
   public String toString() {
     return
-        super.toString()+
-            "\nAudio Spec : " + audioSpecification +
-            "\nType : " + mediaType
+        super.toString()
+            + "\nAudio Spec : "
+            + audioSpecification
+            + "\nType : "
+            + mediaType
         ;
   }
 
-  public static void main(String[] args){
+  public static void main(String[] args) {
+    /**
+     * A driver method to test the AudioPlayer Class.
+     *
+     */
     AudioPlayer ap = new AudioPlayer("J","Lw");
     System.out.println(ap.toString());
 
   }
 
 
-@Override
+  @Override
   public int compareTo(Object o) {
-  /**
-   * This method will call Product's compareTo, where it will sort by name
-   */
-  return super.compareTo(o); //Product's compareTo result be will be the same as this
+    /**
+     * @param o is a object that will be accepted by this method
+     * This method will call Product's compareTo, where it will sort by name
+     */
+    return super.compareTo(o); //Product's compareTo result be will be the same as this
 
   }
 }

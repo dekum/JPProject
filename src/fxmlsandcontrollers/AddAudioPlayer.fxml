@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="328.0" prefWidth="418.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerAddAP">
+<AnchorPane prefHeight="328.0" prefWidth="418.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxmlsandcontrollers.ControllerAddAudioPlayer">
    <children>
       <Label fx:id="typeLabel" layoutX="13.0" layoutY="29.0" text="Add AudioPlayer" />
       <Label layoutX="13.0" layoutY="59.0" text="# of Copies:" />
