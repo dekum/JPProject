@@ -2,6 +2,9 @@
  * ItemType.java
  * 9/27/2018
  * COP 3003 - OOP
+ * @author Philemn Peti-Frere
+ * Good Source:
+ * https://stackoverflow.com/questions/6549821/how-to-javadoc-a-classs-individual-enums
  * Create an enum called ItemType that stores:
  * Type Code
  * AUDIO AU
