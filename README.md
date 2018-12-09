@@ -1,7 +1,7 @@
 # JP Project
 
  * Philemon Petit-Frere
- * 10/29/2018
+ * 12/5/2018
  * COP 3003 - OOP
  * Project: JPProject
  * Purpose of Project: design a template in Java for creating and recording all future
@@ -28,7 +28,7 @@ For this particular production facility you will only implement a concrete class
 <h3>OverView</h3>
 This is a Java GUI project, that is designed to allow the user to create Audio Players and Movie Player products of thier choice. They will be able to input their specificaitions of the products, and the products will be displayed on the Home Window in a table View. The user can also see the statitics of the movie Player, such as total number of products, how many are movie players and how many are unique.
 
-<h3>Techniques
+<h3>Techniques</h3>
  <p>Program demostrates <hr> 
  **Polymorphism**: is the ability of an object to take on many forms. The most common use of polymorphism in OOP occurs when a parent class reference is used to refer to a child class object.
 
