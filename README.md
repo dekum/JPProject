@@ -1,4 +1,4 @@
-# ProjectAlpha
+# JP PR
 
  * Philemon Petit-Frere
  * 10/29/2018
@@ -13,57 +13,6 @@
 create a production line for multimedia devices which include music and movie players.
 Design a template in Java for creating and recording all future production line items.  
 For this particular production facility you will only implement a concrete class for music and movie players.</p>
-<h4>Step 1</h4>
-<p>Create a Item inteface with the following methods
-
-  void setProductionNumber(int parameter);
-
-  void setName(String name);
-
-  String getName();
-
-  Date getManufactureDate();
-
-  int getSerialNumber();</p></p>
-  <h4>Step 2</h4>
-Create ItemType Enum with a type: (type,code)
-
-  Type | Code
------------- | -------------
-Audio | AU
-Visual | VI
-  AUDIOMOBILE| AM
-  VISUALMOBILE|VM
-  
-  <h4>Step 3</h4>
-  <p>Create a abstract class called Product which will implement the methods created earlier. It will add {} and code to the methods defined in Item interface. These fields are also created
-  <br>
-  Date manufacturedOn;<br> 
-  String name;<br>
-  final String MANAFACTURER = "OracleProduction";<br>
-
-  static int currentProductionNumber = 0;
-
-<h3> Summary </h3>
-
-* There exists a Main class, a Widget class, Product class, and Item interface.
-* Main Class is the driver class, which also contains widget
-* Widget class, extends Product and will intialize it when in Main method
-* Product class is an abstract class that implements Item's methods, and provides methods for Widget
-* Item interface creates classes for Product to implement. Also contain ItemType Enum with fields.
-
-When user runs Main(), it will display:
-
-* Manufacturer
-* Serial Number
-* Date created
-* Name of product
-
-Next then it will display ItemType's fields.
-
-Tested on Windows 10, IntelJ IDEA 32-bit on 10/28/18.
-
-</p>
 
 <h3>Techniques
  <p>Program demostrates <hr> 
@@ -71,8 +20,9 @@ Tested on Windows 10, IntelJ IDEA 32-bit on 10/28/18.
 
 Any Java object that can pass more than one IS-A test is considered to be polymorphic. In Java, all Java objects are polymorphic since any object will pass the IS-A test for their own type and for the class Object.
 
-In this project, Chasis is a child class of __
 
+<h3> Bug / Feature Request
+<p>If you find a bug, please report it by opening an issue [I'm an inline-style link](https://www.google.com)
 
-
+If you'd like to request a new function, feel free to do so by opening an issue here. Please include sample queries and their corresponding results.</p>
 
