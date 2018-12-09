@@ -25,7 +25,7 @@
 <h3>Goal</h4>
  <hr>
 <p>Create a production plant for any type of product ranging from a simple packaging system to a variety of electronic devices.
-create a production line for multimedia devices which include music and movie players.
+Create a production line for multimedia devices which include music and movie players.
 <br>Design a template in Java for creating and recording all future production line items.  
 
 <h3>OverView</h3>
@@ -151,18 +151,22 @@ This gif shows an example of how the GUI works. On the home screen, the user can
 
 <h3>Bug/Feature Request</h3>
 <hr>
-<p>If you find a bug, please report it by opening an issue [here](https://github.com/dekum/JPProject/issues).
+<p>If you find a bug, please report it by opening an issue.
 
 If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/dekum/JPProject/issues).</p>
 
 <h4>How To Install</h4>
 <hr>
 <p>
-Needed: Windows Vista or higher. Java 1.8 or higher.
+* Needed: Windows Vista or higher. Java 1.8 or higher.
+* A java IDE is needed if you going to import from github.
+ <br>
+* For those without IDE, a jar file is provided, and works withoout the use of one.
+ * The Jar file is located in deliverables>artifacts>JPProject.jar
 </p>
 <br> 
 
-<h4>Credits</h4>
+<h3>Credits</h4>
 <hr>
  JP Project is a scenario created by Oracle Academy for the purpose of teaching Java.
  
@@ -173,6 +177,6 @@ This project is supported by:
     <img src="https://github.com/Hexworks/zircon/blob/master/images/idea_logo.png" width="40" height="40" />
 </a>
 
-<h4>License</h4>
+<h3>License</h4>
 <hr>
 <p>JP Project is released under the  <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU GPLv3</a> license.</p>
