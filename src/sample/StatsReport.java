@@ -31,6 +31,24 @@ public class StatsReport {
   SimpleIntegerProperty statNumber = new SimpleIntegerProperty();
 
   /**
+   * Gets statNumber field.
+   *
+   * @return  current statNumber
+   */
+  public int getStatNumber() {
+    return statNumber.get();
+  }
+
+  /**
+   * Get this StatReport's statNumber.
+   *
+   * @return  statNumber
+   */
+  public SimpleIntegerProperty statNumberProperty() {
+    return statNumber;
+  }
+
+  /**
    * Get name of statistic.
    *
    * @return  the name of stat
@@ -46,15 +64,6 @@ public class StatsReport {
    */
   public void setStatName(String statName) {
     this.statName.set(statName);
-  }
-
-  /**
-   * Gets statNumber field.
-   *
-   * @return current statNumber
-   */
-  public SimpleIntegerProperty getStatNumberProperty() {
-    return statNumber;
   }
 
   /**
