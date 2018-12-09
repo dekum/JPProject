@@ -61,6 +61,8 @@ public class EmployeeInfo {
 
   /**
    * This method is used to prompt the user to enter an input for the deptID.
+   *
+   * @return  input2 the input of the user.
    */
   public String getDeptId() {
     System.out.println("Please enter the department ID:");

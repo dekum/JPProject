@@ -89,11 +89,11 @@ public class ControllerStats implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    /*
-    This method runs first
-    It gets the the data from Global.productList which stores all the products
-    Then counts AudioPlayers, Movie Players,LCDs,LED, copies and unique products
-    Lastly it gives the data to the Stats tableview
+    /**
+     * This method runs first
+     * It gets the the data from Global.productList which stores all the products
+     * Then counts AudioPlayers, Movie Players,LCDs,LED, copies and unique products
+     * Lastly it gives the data to the Stats tableview
      */
     ArrayList<Product> productList = Global.productList;
 
