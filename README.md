@@ -151,14 +151,18 @@ This gif shows an example of how the GUI works. On the home screen, the user can
 
 <h3>Bug/Feature Request</h3>
 <hr>
-<p>If you find a bug, please report it by opening an issue [here](https://github.com/dekum/JPProject/issues).
+<p>If you find a bug, please report it by opening an issue.
 
 If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/dekum/JPProject/issues).</p>
 
 <h4>How To Install</h4>
 <hr>
 <p>
-Needed: Windows Vista or higher. Java 1.8 or higher.
+* Needed: Windows Vista or higher. Java 1.8 or higher.
+* A java IDE is needed if you going to import from github.
+ <br>
+* For those without IDE, a jar file is provided, and works withoout the use of one.
+ * The Jar file is located in deliverables>artifacts>JPProject.jar
 </p>
 <br> 
 
