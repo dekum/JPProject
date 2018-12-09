@@ -17,6 +17,7 @@
 - [UMl-Diagrams)(#uml-diagrams)
 - [Demo](#Demo)
 - [Bug/Feature Request](#bugfeature-request)
+- [How-To-Install)(#How-To-Install)
 - [Credits](#Credits)
 - [License](#License)
 
@@ -33,10 +34,9 @@ This is a Java GUI project, that is designed to allow the user to create Audio P
 
 
 <h3>Images</h3>
-<hr>
-
 <h4>Home Window </h4>
  <hr>
+ 
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/HomeScreen.png)<br>
 <p>The HomeScreen is the screen the user sees when they open the GUI. <br>On the left is a Table with the list of products. The program starts with its own default example list. <br>The table displays the name of the product and whether it is a Movie player or Audio Player. <br>The table updates as the user adds more products. <br> On the right the user can click 3 buttons to open the other 3 windows listed
 <br>If the User wished to know more information about a certain product they can click the product and press the "More Info" button.</p><br>
@@ -142,6 +142,13 @@ This gif shows an example of how the GUI works. On the home screen, the user can
 <p>If you find a bug, please report it by opening an issue.
 
 If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/dekum/JPProject/issues).</p>
+
+<h4>How To Install</h4>
+<hr>
+<p>
+Needed: Windows Vista or higher. Java 1.8 or higher.
+</p>
+<br> 
 
 <h4>Credits</h4>
 <hr>
