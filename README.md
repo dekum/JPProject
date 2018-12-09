@@ -14,7 +14,7 @@
 - [Goal](#Goal)
 - [Overview](#OverView)
 - [Images](#Images)
-- [UMl Diagrams)(#uml-diagrams)
+- [UMl-Diagrams)(#uml-diagrams)
 - [Demo](#Demo)
 - [Bug/Feature Request](#bugfeature-request)
 - [Credits](#Credits)
