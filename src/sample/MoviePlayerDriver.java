@@ -1,12 +1,13 @@
+/**
+ * MoviePlayerDriver.java
+ * @author Philemon Petit-Frere
+ * 11/10/2018
+ * This class is used to test objects of MoviePlayer class.
+ */
+
 package sample;
 
 public class MoviePlayerDriver {
-  /**
-   * MoviePlayerDriver.java
-   * @author Philemon Petit-Frere
-   * 11/10/2018
-   * This class is used to test objects of MoviePlayer class.
-   */
 
   /**
    * Create objects of MoviePlayer, and display it's toStrings.

@@ -1,5 +1,3 @@
-package sample;
-
 /**
  * ItemType.java
  * 9/27/2018
@@ -16,6 +14,10 @@ package sample;
  * <li>{@link #AUDIOMOBILE}</li>
  * <li>{@link #VISUALMOBILE}</li>
  */
+
+package sample;
+
+
 enum ItemType {
   /**
    * Audio.

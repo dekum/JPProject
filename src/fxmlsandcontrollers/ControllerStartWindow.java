@@ -1,4 +1,3 @@
-package fxmlsandcontrollers;
 /**
  * ControllerStartWindow.java
  * 11/30/2018
@@ -9,6 +8,8 @@ package fxmlsandcontrollers;
  * The tableViewProducts displays the name and type of products created in this program
  *
  */
+
+package fxmlsandcontrollers;
 
 import java.io.IOException;
 import java.net.URL;

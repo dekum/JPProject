@@ -1,7 +1,4 @@
-package sample;
-
-public class MoviePlayer extends  Product implements  MultimediaControl {
-  /**
+/**
  * MoviePlayer.java
  * @author Philemon Petit-Frere
  * 10/10/18
@@ -10,6 +7,9 @@ public class MoviePlayer extends  Product implements  MultimediaControl {
  * and enum MoniterType must be passed to constructor.
  */
 
+package sample;
+
+public class MoviePlayer extends  Product implements  MultimediaControl {
   /**
    * The screen object for this MoviePlayer.
    */

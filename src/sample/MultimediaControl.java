@@ -1,12 +1,14 @@
+/**
+ * MultimediaControl.java
+ * @author Philemon Petit-Frere
+ * 10/10/2018
+ * This is an interface to be implemented by AudioPLayer and MoviePlayer class.
+ */
+
 package sample;
 
 public interface MultimediaControl {
-  /**
-   * MultimediaControl.java
-   * @author Philemon Petit-Frere
-   * 10/10/2018
-   * This is an interface to be implemented by AudioPLayer and MoviePlayer class.
-   */
+
 
   /**
    * Play method for subclasses.

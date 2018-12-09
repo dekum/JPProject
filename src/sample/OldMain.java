@@ -1,7 +1,6 @@
 package sample;
-
 /**
- * Philemon Petit-Frere
+ * @author Philemon Petit-Frere
  * 9/27/2018
  * COP 3003 - OOP
  * Project: JPProject
@@ -12,6 +11,7 @@ package sample;
  * Sources for JavaDoc: https://www.oracle.com/technetwork/java/javase/tech/index-137868.html
  * https://blog.joda.org/2012/11/javadoc-coding-standards.html
  */
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,6 +26,7 @@ public class OldMain {
    *
    * @param  args an array of command-line arguments for the application.
    */
+
   public static void main(String [] args) {
 
     //    Widget w1 = new Widget("Widget 1");//Create Widget called Widget1

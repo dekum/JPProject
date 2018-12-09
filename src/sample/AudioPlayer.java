@@ -1,13 +1,14 @@
+/**
+ * AudioPlayer.java
+ * @author Philemon Petit-Frere
+ * A class extending from Product and
+ * implements the MultimediaControl interface.
+ * Created: 11/10/18
+ */
+
 package sample;
 
 public class AudioPlayer extends  Product implements MultimediaControl {
-  /**
-   * AudioPlayer.java
-   * @author Philemon Petit-Frere
-   * A class extending from Product and
-   * implements the MultimediaControl interface.
-   * Created: 11/10/18
-   */
 
   /**
    * audio Specification of this audioPlayer.

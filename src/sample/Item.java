@@ -1,4 +1,4 @@
-package sample; /**
+/**
  * @author: Philemon Petit-Frere
  * 9/27/2018
  * COP 3003 - OOP
@@ -6,6 +6,8 @@ package sample; /**
  * File: Item.java
  * An interface to be implemented by other classes
  * */
+
+package sample;
 
 import java.util.Date;
 

@@ -1,5 +1,3 @@
-package fxmlsandcontrollers;
-
 /**
  * ControllerStats.java
  * 11/30/2018
@@ -9,6 +7,8 @@ package fxmlsandcontrollers;
  * This class uses the Global.productList that is shared by all controllers
  * so the information is always up to date.
  */
+
+package fxmlsandcontrollers;
 
 import java.io.IOException;
 import java.net.URL;

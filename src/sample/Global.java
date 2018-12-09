@@ -1,10 +1,11 @@
-package sample;
 /**
  * Global.java
  * 11/30/2018
  * @author Philemon Petit-Frere
  * This class stores information to be used by the controllers of FXML
  */
+
+package sample;
 
 import java.util.ArrayList;
 

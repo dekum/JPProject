@@ -1,5 +1,3 @@
-package fxmlsandcontrollers;
-
 /**
  * ControllerAddAudioPlayer.java
  * 11/30/2018
@@ -8,6 +6,8 @@ package fxmlsandcontrollers;
  * A user can create a AudioPlyaer product by entering details in the textfiles
  * By Pressing "Add", the programs checks for valid inputs and then will create the product.
  */
+
+package fxmlsandcontrollers;
 
 import java.io.IOException;
 import java.net.URL;

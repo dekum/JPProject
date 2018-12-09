@@ -1,12 +1,14 @@
+/**
+ * AudioPlayerDriver.java
+ * @author Philemon Petit-Frere
+ * 11/10/2018
+ * This class is used to test objects of AudioPlayer Class
+ */
+
 package sample;
 
 public class AudioPlayerDriver {
-  /**
-   * AudioPlayerDriver.java
-   * @author Philemon Petit-Frere
-   * 11/10/2018
-   * This class is used to test objects of AudioPlayer Class
-   */
+
 
 
   /**

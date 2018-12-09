@@ -1,5 +1,3 @@
-package sample;
-
 /**
  * EmployeeInfo.java
  * 10/26/2018
@@ -10,6 +8,8 @@ package sample;
  * The Employee code is the first letter of Employee firstname plus last name.
  * sources: https://regexr.com/ (For making java patterns)
  */
+
+package sample;
 
 import java.util.Scanner;
 import java.util.regex.Matcher;

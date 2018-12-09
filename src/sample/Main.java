@@ -1,4 +1,3 @@
-package sample;
 /**
  * Main.java
  * 11/30/2018
@@ -6,6 +5,8 @@ package sample;
  * This is the driver class that will run the GUI
  * Also sets up the default products for the product to be used by other controllers.
  */
+
+package sample;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
