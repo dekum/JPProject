@@ -26,7 +26,7 @@ create a production line for multimedia devices which include music and movie pl
 <br>For this particular production facility you will only implement a concrete class for music and movie players.</p>
 
 <h3>OverView</h3>
-This is a Java GUI project, that is designed to allow the user to create Audio Players and Movie Player products of thier choice. They will be able to input their specificaitions of the products, and the products will be displayed on the Home Window in a table View. The user can also see the statitics of the movie Player, such as total number of products, how many are movie players and how many are unique.
+This is a Java GUI project, that is designed to allow the user to create Audio Players and Movie Player products of their choice. They will be able to input their specifications of the products, and the products will be displayed on the Home Window in a table View. The user can also see the statistics of the movie Player, such as the total number of products, how many are movie players and how many are unique.
 
 <h3>Techniques</h3>
  <p>Program demostrates <hr> 
@@ -38,38 +38,40 @@ Any Java object that can pass more than one IS-A test is considered to be polymo
 
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/HomeScreen.png)<br>
 <p>The HomeScreen is the screen the user sees when they open the GUI. On the left is a Table with the list of products. The program starts with its own default example list. The table displays the name of the product and whether it is a Movie player or Audio Player. <br>The table updates as the user adds more products. <br> On the right the user can click 3 buttons to open the other 3 windows listed
- If the User wished to know more information about a certain product they can click the product and press the "More Information" button</p><br>
+If the User wished to know more information about a certain product they can click the product and press the "More Information" button</p><br>
+
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/HomeScreenMoreInfo.png)<br>
- <p> This alert box popups, when a product is clicked on and the "More Info" button is pressed. The alert display the product's toString method which contains it's name, type, date of manufactured serial number, amongst other things.
+ <p> This alert box popups, when a product is clicked on and the "More Info" button is pressed. The alert displays the product's toString method which contains its name, type, manufactured date,  serial number, amongst other things.
   
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddAudioPlayerWindow.png)<br>
-<p> This window is displayed when User wants to add a Audio Player. The textfields have default inputsfor user-easiness. The user enters the name, audio Specification, and how many copies of this product they want. If successfully an alert will signal success. However if there is bad inputs, an error alert will tell the user whats wrong.<br>
+<p> This window is displayed when User wants to add an Audio Player. The textfields have default inputs for user-easiness. The user enters the name, audio Specification, and how many copies of this product they want. If successfully an alert will signal success. However if there are bad inputs, an error alert will tell the user what's wrong.<br>
   
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddAudioPlayerSuccess.png)<br>
-<p> This is the alert that will pop up if the User successfully creates a Audio Player. The number of copies and product name is shown. The Movie Player window has a similiar pop up. </p><br>
+<p> This is the alert that will pop up if the User successfully creates an Audio Player. The number of copies and product name is shown. The Movie Player window has a similar pop-up. </p><br>
 
  ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddMoviePlayerWindowEx.png)<br>
- <p> This window is displayed when user selected "Add Movie Player". Just like the Audio Player window, default data is already filled in textfields. Movie Player has a choice of Monitor Type, which is displayed in a drop down choice box element. The data is this picture has an invalid # of copies to demostrate the error message shown in the next picture
+ <p> This window is displayed when the user selected "Add Movie Player". Just like the Audio Player window, default data is already filled in textfields. Movie Player has a choice of Monitor Type, which is displayed in a drop-down choice box element. The data is this picture has an invalid # of copies to demonstrate the error message shown in the next picture
 </p> <br>
   
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddMoviePlayerError.png)<br>
-<p> This is the popup Alert the user sees if they enter 0 or a negative number in the number of Copies textfield.
+<p> This is the popup Alert the user sees if they enter 0 or a negative number in the number of the Copies text field.
 
 </p> <br>
+
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/StatsWindow.png)<br>
-<p> This window has a table of Stats that shows analysises the product List the user created. The Statistics automatically update as new products are created. <br>The Stats described here:<br>
+<p> This window has a table of Stats that shows analysis the product List the user created. The Statistics automatically update as new products are created. <br>The Stats described here:<br>
  
  | Stat Name | Description |
 | --- | --- |
 | Total Products | The count of audio players and Movie Players |
-| Total Unique | The count of products there are, minus the duplicates,using Sets. |
+| Total Unique | The count of products there are, minus the duplicates. |
 | Total Duplicates | The count of products subtracted by the total unique. |
 | Total Audio Players | The count of Audio Players.  |
 | Total Movie Players | The count of Movie Players.  |
 | Total LCDs | The count of Movie players with LCD Monitor Type.  |
 | Total LEDs| The count of Movie players with LED Monitor Type.  |
  
- Duplicates are calcucated by creating a Set, with the elements of the productList. Set will autmotically remove any duplicates uing's Product class's equals method. If two products have the same class and same name, they are considered to be the same product.
+ Duplicates are calculated by creating a Set, with the elements of the productList. Set will automatically remove any duplicates using's Product class's equals method. If two products have the same class and same name, they are considered to be the same product.
 
 <h3> Bug / Feature Request</h3>
 <p>If you find a bug, please report it by opening an issue.
@@ -88,4 +90,4 @@ This project is supported by:
 
 ## License
 
-JP Project is released under the [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/) lincense.
+JP Project is released under the [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/) license.
