@@ -14,10 +14,10 @@
 - [Goal](#Goal)
 - [Overview](#OverView)
 - [Images](#Images)
-- [UMl-Diagrams)(#uml-diagrams)
+- [UMlDiagrams)(#uml-diagrams)
 - [Demo](#Demo)
 - [Bug/Feature Request](#bugfeature-request)
-- [How-To-Install)(#How-To-Install)
+- [HowToInstall)(#How-To-Install)
 - [Credits](#Credits)
 - [License](#License)
 
