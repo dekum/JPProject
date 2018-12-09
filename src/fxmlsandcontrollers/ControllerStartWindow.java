@@ -184,8 +184,8 @@ public class ControllerStartWindow implements  Initializable {
     ObservableList<Product> observableListProductList =
         FXCollections.observableArrayList(productList);
     //set CellFactory for name column
-    colName.setCellValueFactory(cellData -> cellData.getValue().getNameSSPProperty());
-    colType.setCellValueFactory(cellData -> cellData.getValue().getTypeSPProperty());
+    colName.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
+    colType.setCellValueFactory(cellData -> cellData.getValue().getTypeProperty());
     tableViewProducts.setItems(observableListProductList);
 
     tableViewProducts.setOnMouseClicked(new EventHandler<MouseEvent>() {

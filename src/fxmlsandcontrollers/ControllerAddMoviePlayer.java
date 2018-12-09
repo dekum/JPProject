@@ -197,16 +197,19 @@ public class ControllerAddMoviePlayer implements Initializable {
 
   }
 
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    //this method is called first before window loads
-
+    /**
+     * This method is called first before window loads.
+     * This populates the choiceBox, and set default value
+     */
     //create fields for ChoiceBox
     List<String> monitorTypeNames = new ArrayList<>();
     monitorTypeNames.add("LCD");
     monitorTypeNames.add("LED");
-    ObservableList<String> moniterTypeList = FXCollections.observableArrayList(monitorTypeNames);
+    ObservableList<String> monitorTypeList = FXCollections.observableArrayList(monitorTypeNames);
     choiceBoxMonitorType.setValue("LCD");
-    choiceBoxMonitorType.setItems(moniterTypeList);
+    choiceBoxMonitorType.setItems(monitorTypeList);
   }
 }

@@ -28,7 +28,7 @@ import javafx.stage.Stage;
 import sample.AudioPlayer;
 import sample.Global;
 
-public class ControllerAddAudioPlayer implements Initializable {
+public class ControllerAddAudioPlayer {
   /**
    * Txtfield to set the AudioPlayer Name.
    */
@@ -134,11 +134,6 @@ public class ControllerAddAudioPlayer implements Initializable {
         showAlert(copies + " copies of " + name + " were created.");//Opens alert box
       }
     }
-  }
-
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-
   }
 
 }
