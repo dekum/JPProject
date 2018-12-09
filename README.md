@@ -14,7 +14,6 @@
 ## Table of Contents
 - [Goal](#Goal)
 - [OverView](#OverView)
-- [Techniques](#Techniques)
 - [Images](#Images)
 - [UML Diagram)(#UML Diagram)
 - [Demo](#Demo)
@@ -29,11 +28,6 @@ create a production line for multimedia devices which include music and movie pl
 <h3>OverView</h3>
 This is a Java GUI project, that is designed to allow the user to create Audio Players and Movie Player products of their choice. They will be able to input their specifications of the products, and the products will be displayed on the Home Window in a table View. The user can also see the statistics of the movie Player, such as the total number of products, how many are movie players and how many are unique.
 
-<h3>Techniques</h3>
- <p>Program demostrates <hr> 
- **Polymorphism**: is the ability of an object to take on many forms. The most common use of polymorphism in OOP occurs when a parent class reference is used to refer to a child class object.
-
-Any Java object that can pass more than one IS-A test is considered to be polymorphic. In Java, all Java objects are polymorphic since any object will pass the IS-A test for their own type and for the class Object.
 
 <h3>Images</h3>
 
