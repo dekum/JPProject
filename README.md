@@ -166,7 +166,7 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 </p>
 <br> 
 
-<h4>Credits</h4>
+<h3>Credits</h4>
 <hr>
  JP Project is a scenario created by Oracle Academy for the purpose of teaching Java.
  
@@ -177,6 +177,6 @@ This project is supported by:
     <img src="https://github.com/Hexworks/zircon/blob/master/images/idea_logo.png" width="40" height="40" />
 </a>
 
-<h4>License</h4>
+<h3>License</h4>
 <hr>
 <p>JP Project is released under the  <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU GPLv3</a> license.</p>
