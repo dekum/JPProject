@@ -106,9 +106,10 @@ This is a Java GUI project, that is designed to allow the user to create Audio P
     return Objects.equals(getName(), product.getName());
   }
 ```
-<br>
+
 `fxmlandcontrollers.ControllerStats` initalize method for calcuating duplicates and uniques.
-```/*This checks how many are original or copies by creating a Set of the productList
+```
+/*This checks how many are original or copies by creating a Set of the productList
     Since Set lists cannot contain duplicates, it will count how many are unique
     */
     Set inputSet = new HashSet(productList);
@@ -139,7 +140,7 @@ This gif shows an example of how the GUI works. On the home screen, the user can
 
 <h3>Bug/Feature Request</h3>
 <hr>
-<p>If you find a bug, please report it by opening an issue.
+<p>If you find a bug, please report it by opening an issue [here](https://github.com/dekum/JPProject/issues).
 
 If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/dekum/JPProject/issues).</p>
 
@@ -163,4 +164,4 @@ This project is supported by:
 
 <h4>License</h4>
 <hr>
-JP Project is released under the [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/) license.
+<p>JP Project is released under the  <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GNU GPLv3</a> license.</p>
