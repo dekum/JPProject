@@ -38,25 +38,32 @@ This is a Java GUI project, that is designed to allow the user to create Audio P
  <hr>
  
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/HomeScreen.png)<br>
-<p>The HomeScreen is the screen the user sees when they open the GUI. <br>On the left is a Table with the list of products. The program starts with its own default example list. <br>The table displays the name of the product and whether it is a Movie player or Audio Player. <br>The table updates as the user adds more products. <br> On the right the user can click 3 buttons to open the other 3 windows listed
-<br>If the User wished to know more information about a certain product they can click the product and press the "More Info" button.</p><br>
+* The HomeScreen is the screen the user sees when they open the GUI. 
+* On the left is a Table with the list of products. The program starts with its own default example list. 
+* The table displays the name of the product and whether it is a Movie player or Audio Player. <br>The table updates as the user adds more products. 
+* On the right the user can click 3 buttons to open the other 3 windows listed
+* If the User wished to know more information about a certain product they can click the product and press the "More Info" button.
 
 <h4>Home Window - Information Alert</h4>
 <hr>
 
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/HomeScreenMoreInfo.png)<br>
- <p> This alert box popups, when a product is clicked on and the "More Info" button is pressed. <br>The alert displays the product's toString method which contains its name, type, manufactured date,  serial number, amongst other details.
+ * This alert box popups, when a product is clicked on and the "More Info" button is pressed. *
+ * The alert displays the product's toString method which contains its name, type, manufactured date,  serial number, amongst other details.
 
   <h4>Add AudioPlayer Window</h4>
  <hr> 
  
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddAudioPlayerWindow.png)<br>
-<p> This window is displayed when User wants to add an Audio Player. The textfields have default inputs for user-easiness. <br>The user enters the name, audio Specification, and how many copies of this product they want. If successfully an alert will signal success. <br>However if there are bad inputs, an error alert will tell the user what's wrong.<br>
+* This window is displayed when User wants to add an Audio Player. The textfields have default inputs for user-easiness. 
+* The user enters the name, audio Specification, and how many copies of this product they want. If successfully an alert will signal success. 
+* However if there are bad inputs, an error alert will tell the user what's wrong.<br>
   <hr>
   <h4>Add AudioPlayer Window- Success</h4>
   
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddAudioPlayerSuccess.png)<br>
-<p> This is the alert that will pop up if the User successfully creates an Audio Player. <br>The number of copies and product name is shown. The Movie Player window has a similar pop-up. </p><br>
+* This is the alert that will pop up if the User successfully creates an Audio Player. 
+* The number of copies and product name is shown. The Movie Player window has a similar pop-up. <br>
 
 <h4>Add Movie Player Window</h4>
 <hr>
@@ -69,16 +76,18 @@ This is a Java GUI project, that is designed to allow the user to create Audio P
   <hr>
   
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddMoviePlayerError.png)<br>
-<p> This is the popup Alert the user sees if they enter 0 or a negative number in the number of the Copies text field.<br>
- The error message changes depending on which fields are invalid.
+* This is the popup Alert the user sees if they enter 0 or a negative number in the number of the Copies text field.
+* The error message changes depending on which fields are invalid.
 
-</p> <br>
+ <br>
 
 <h4>Statistic Window</h4>
 <hr>
 
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/StatsWindow.png)<br>
-<p> This window has a table of Stats that shows analysis the product List the user created. The Statistics automatically update as new products are created. <br>The Stats described here:<br>
+* This window has a table of Stats that shows analysis the product List the user created. 
+* The Statistics automatically update as new products are created. 
+* The Stats described here:<br>
  
  | Stat Name | Description |
 | --- | --- |
@@ -90,7 +99,9 @@ This is a Java GUI project, that is designed to allow the user to create Audio P
 | Total LCDs | The count of Movie players with LCD Monitor Type.  |
 | Total LEDs| The count of Movie players with LED Monitor Type.  |
  
-<br>Duplicates are calculated by creating a Set, with the elements of the productList. Set will automatically remove any duplicates using's Product class's equals method and hascode method. If two products have the same class and same name, they are considered to be the same product.
+* Duplicates are calculated by creating a Set, with the elements of the productList. 
+* Set will automatically remove any duplicates using's Product class's equals method and hascode method.
+* If two products have the same class and same name, one is considered unique and the other duplicate.
 
 `sample.Product` equals method
 ``` 
