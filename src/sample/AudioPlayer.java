@@ -91,8 +91,7 @@ public class AudioPlayer extends  Product implements MultimediaControl {
             + "\nAudio Spec : "
             + audioSpecification
             + "\nType : "
-            + mediaType
-        ;
+            + mediaType;
   }
 
   /**

@@ -4,7 +4,8 @@
  * @author Philemon Petit-Frere
  * This class is a controller that is connected to the AddAudioPlayer.fxml
  * A user can create a AudioPlyaer product by entering details in the textfiles
- * By Pressing "Add", the programs checks for valid inputs and then will create the product.
+ * By Pressing "Add", the programs checks for valid inputs
+ * and then will create the product.
  */
 
 package fxmlsandcontrollers;

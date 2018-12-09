@@ -7,7 +7,7 @@
 
 package sample;
 
-public class AudioPlayerDriver {
+class AudioPlayerDriver {
 
 
 
