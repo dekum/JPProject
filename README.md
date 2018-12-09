@@ -39,7 +39,7 @@ Any Java object that can pass more than one IS-A test is considered to be polymo
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/HomeScreen.png)<br>
 <p>The HomeScreen is the screen the user sees when they open the GUI. On the left is a Table with the list of products. The program starts with its own default example list. The table displays the name of the product and whether it is a Movie player or Audio Player. <br>The table updates as the user adds more products. <br> On the right the user can click 3 buttons to open the other 3 windows listed
  If the User wished to know more information about a certain product they can click the product and press the "More Information" button</p><br>
-![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/HomeScreenMoreInfo.png?raw=true)<br>
+![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/HomeScreenMoreInfo.png)<br>
  <p> This alert box popups, when a product is clicked on and the "More Info" button is pressed. The alert display the product's toString method which contains it's name, type, date of manufactured serial number, amongst other things.
   
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddAudioPlayerWindow.png)<br>
@@ -48,15 +48,15 @@ Any Java object that can pass more than one IS-A test is considered to be polymo
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddAudioPlayerSuccess.png)<br>
 <p> This is the alert that will pop up if the User successfully creates a Audio Player. The number of copies and product name is shown. The Movie Player window has a similiar pop up. </p><br>
 
- ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddMoviePlayerWindowEx.png?raw=true)<br>
+ ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddMoviePlayerWindowEx.png)<br>
  <p> This window is displayed when user selected "Add Movie Player". Just like the Audio Player window, default data is already filled in textfields. Movie Player has a choice of Monitor Type, which is displayed in a drop down choice box element. The data is this picture has an invalid # of copies to demostrate the error message shown in the next picture
 </p> <br>
   
-![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddMoviePlayerError.png?raw=trueg)<br>
+![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddMoviePlayerError.png)<br>
 <p> This is the popup Alert the user sees if they enter 0 or a negative number in the number of Copies textfield.
 
 </p> <br>
-![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/StatsWindow.png?raw=true)<br>
+![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/StatsWindow.png)<br>
 <p> This window has a table of Stats that shows analysises the product List the user created. The Statistics automatically update as new products are created. <br>The Stats described here:<br>
  
  | Stat Name | Description |
