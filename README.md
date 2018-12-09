@@ -5,7 +5,7 @@
  * COP 3003 - OOP
  * Project: JPProject
  * Purpose of Project: design a template in Java for creating and recording all futureproduction line items. Also also allow easy modification to handle different products
- *Sources for help: Stackexchange,  Garrett Graber, Nathalie Crespo, github.com, http://tutorials.jenkov.com/java-regex/pattern.html, geeksforgeeks,https://www.tutorialspoint.com/, 
+ * Sources for help: https://stackexchange.com/, https://stackoverflow.com/,  Garrett Graber, Nathalie Crespo, github.com, http://tutorials.jenkov.com/java-regex/pattern.html, https://www.geeksforgeeks.org/ , https://www.tutorialspoint.com/, 
  
  <img src="https://img.shields.io/badge/release-v1.1.0-blue.svg" />
 <img src="https://img.shields.io/badge/package-v2.0.0-orange.svg" />
@@ -14,8 +14,7 @@
 - [Goal](#Goal)
 - [OverView](#OverView)
 - [Images](#Images)
-- [UML Diagram)(#UML_Diagram)
-
+- [UML Diagram)(#UML-Diagram)
 - [Credits](#Credits)
 - [Demo](#Demo)
  
