@@ -137,7 +137,7 @@ public class ControllerStartWindow implements  Initializable {
     Parent p = loader.getRoot();
     stage = new Stage();
 
-    stage.setTitle("Add Audio Player");
+    stage.setTitle("Add Movie Player");
     stage.setScene(new Scene(p));
     stage.show(); //Opens new Window
 
