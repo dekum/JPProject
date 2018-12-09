@@ -10,8 +10,16 @@
  
  <img src="https://img.shields.io/badge/release-v1.1.0-blue.svg" />
 <img src="https://img.shields.io/badge/package-v2.0.0-orange.svg" />
+
+## Table of Contents
+- [Goal](#Goal)
+- [OverView](#OverView)
+- [Techniques](#Techniques)
+- [Images](#Images)
+- [Demo](#Demo)
+- [Credits](#Credits)
  
-<h3Goal:</h4>
+<h3>Goal</h4>
 <p>Create a production plant for any type of product ranging from a simple packaging system to a variety of electronic devices.
 create a production line for multimedia devices which include music and movie players.
 Design a template in Java for creating and recording all future production line items.  
@@ -32,8 +40,8 @@ Any Java object that can pass more than one IS-A test is considered to be polymo
 
 If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/dekum/JPProject/issues).</p>
 
-<h4>
-JP Project is a scenario created by Oracle Academy for the purpose of teaching Java.
+<h4>Creidts</h4>
+ JP Project is a scenario created by Oracle Academy for the purpose of teaching Java.
  
 This program is authored by Philemon Petit-Frere
 
@@ -41,3 +49,7 @@ This project is supported by:
 <a href="https://www.jetbrains.com/idea/">
     <img src="https://github.com/Hexworks/zircon/blob/master/images/idea_logo.png" width="40" height="40" />
 </a>
+
+## License
+
+JP Project is released under the [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/) lincense.
