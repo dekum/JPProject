@@ -25,7 +25,7 @@
 <h3>Goal</h4>
  <hr>
 <p>Create a production plant for any type of product ranging from a simple packaging system to a variety of electronic devices.
-create a production line for multimedia devices which include music and movie players.
+Create a production line for multimedia devices which include music and movie players.
 <br>Design a template in Java for creating and recording all future production line items.  
 
 <h3>OverView</h3>
