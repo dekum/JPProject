@@ -34,7 +34,7 @@ This is a Java GUI project, that is designed to allow the user to create Audio P
 
 Any Java object that can pass more than one IS-A test is considered to be polymorphic. In Java, all Java objects are polymorphic since any object will pass the IS-A test for their own type and for the class Object.
 
-<h3> Images</h3>
+<h3>Images</h3>
 
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/HomeScreen.png)<br>'
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/HomeScreenMoreInfo.png?raw=true)<br>
@@ -48,7 +48,7 @@ Any Java object that can pass more than one IS-A test is considered to be polymo
 
 If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/dekum/JPProject/issues).</p>
 
-<h4>Creidts</h4>
+<h4>Credits</h4>
  JP Project is a scenario created by Oracle Academy for the purpose of teaching Java.
  
 This program is authored by Philemon Petit-Frere
