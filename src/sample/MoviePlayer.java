@@ -4,7 +4,7 @@
  * 10/10/18
  * A class extending from Product and implements the MultimediaControl interface.
  * To create a moviePlayer Object, a new Screen a
- * and enum MoniterType must be passed to constructor.
+ * and enum MonitorType must be passed to constructor.
  */
 
 package sample;

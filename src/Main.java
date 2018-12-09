@@ -6,13 +6,16 @@
  * Also sets up the default products for the product to be used by other controllers.
  */
 
-package sample;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.AudioPlayer;
+import sample.Global;
+import sample.MonitorType;
+import sample.MoviePlayer;
+import sample.Screen;
 
 public class Main extends Application {
 
@@ -22,7 +25,7 @@ public class Main extends Application {
      * Set up a sample productList, with 3 moviePlayers and 2 audioPlayers
      */
     Global.productList.add(new MoviePlayer("DBPOWER MK101",
-        new Screen("720x480",40,22),MonitorType.LCD));
+        new Screen("720x480",40,22), MonitorType.LCD));
 
     AudioPlayer ap = new AudioPlayer("ipod Mini", "MP3");
     Global.productList.add(ap);
@@ -35,8 +38,9 @@ public class Main extends Application {
         new Screen("720x480",40,22),MonitorType.LCD));
 
     //set url of StartWindow
-    Parent root = FXMLLoader.load(getClass().getResource(
-        "../fxmlsandcontrollers/StartWindow.fxml"));
+   // Parent root = FXMLLoader.load(getClass().getClassLoader()
+   //     .getResource("/fxmlsandcontrollers/StartWindow.fxml"));
+    Parent root = FXMLLoader.load(getClass().getResource("fxmlsandcontrollers/StartWindow.fxml"));
     primaryStage.setTitle("Home Window");
     primaryStage.setScene(new Scene(root, 478, 341));
     primaryStage.show(); //open

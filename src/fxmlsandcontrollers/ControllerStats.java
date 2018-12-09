@@ -99,8 +99,8 @@ public class ControllerStats implements Initializable {
 
     int apCounter = 0;//Counts AudioPlayers
     int mpCount = 0;//Counts MoviePlayers
-    int lcdCounter = 0;//Counts MoviePlayer objects with MoniterType LCD
-    int ledCounter = 0;//Counts MoviePlayer objects with MoniterType LCD
+    int lcdCounter = 0;//Counts MoviePlayer objects with MonitorType LCD
+    int ledCounter = 0;//Counts MoviePlayer objects with MonitorType LCD
     int numOfCopies = 0;//Counts number of products with the same Name
     int nubOfOriginal = 0;//Counts number of unique products.
 
@@ -111,7 +111,7 @@ public class ControllerStats implements Initializable {
     nubOfOriginal = inputSet.size();
     if (inputSet.size() < productList.size()) {
       numOfCopies = productList.size() - inputSet.size(); //All - unique
-      nubOfOriginal = inputSet.size(); //numOfOrigoma;
+      nubOfOriginal = inputSet.size(); //numOfOriginal
     }
 
     for (Object o: productList
