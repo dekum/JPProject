@@ -5,8 +5,7 @@
  * COP 3003 - OOP
  * Project: JPProject
  * Purpose of Project: design a template in Java for creating and recording all futureproduction line items. Also also allow easy modification to handle different products
- *Sources for help: Stackexchange, 
- Garrett Graber, Nathalie Crespo, github.com, http://tutorials.jenkov.com/java-regex/pattern.html, geeksforgeeks,https://www.tutorialspoint.com/, 
+ *Sources for help: Stackexchange,  Garrett Graber, Nathalie Crespo, github.com, http://tutorials.jenkov.com/java-regex/pattern.html, geeksforgeeks,https://www.tutorialspoint.com/, 
  
  <img src="https://img.shields.io/badge/release-v1.1.0-blue.svg" />
 <img src="https://img.shields.io/badge/package-v2.0.0-orange.svg" />
@@ -108,7 +107,7 @@ Item is an interface with its own method headers  that is implemented by Product
 <br> Movie Player and AudioPlayer are subclasses of product, and call Product's constructor when objects are made from them. The two classes also implement Multimedia Control interface, and have defined methods that were implemented.
 <br>
  
-<h3> Demo</h3>
+<h3>Demo</h3>
 
 ![Gui Demo]( https://github.com/dekum/JPProject/blob/master/images/Demo.gif)<br>
 This gif shows an example of how the GUI works. On the home screen, the user can select a product and see more information. Next is the AudioPlayer create the screen, where successful inputs are selected. The Movie Player window is shown afterward, and the error message is displayed because of invalid inputs. Lastly, the stat Windows is shown.
