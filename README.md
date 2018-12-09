@@ -103,7 +103,7 @@ This is a Java GUI project, that is designed to allow the user to create Audio P
 * Set will automatically remove any duplicates using's Product class's equals method and hascode method.
 * If two products have the same class and same name, one is considered unique and the other duplicate.
 
-`sample.Product` equals method
+`projectclasses.Product` equals method
 ``` 
 @Override
   public boolean equals(Object o) {

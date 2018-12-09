@@ -29,10 +29,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import sample.Global;
-import sample.MonitorType;
-import sample.MoviePlayer;
-import sample.Screen;
+import projectclasses.Global;
+import projectclasses.MonitorType;
+import projectclasses.MoviePlayer;
+import projectclasses.Screen;
 
 public class ControllerAddMoviePlayer implements Initializable {
 

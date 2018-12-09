@@ -30,12 +30,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import sample.AudioPlayer;
-import sample.Global;
-import sample.MonitorType;
-import sample.MoviePlayer;
-import sample.Product;
-import sample.StatsReport;
+import projectclasses.AudioPlayer;
+import projectclasses.Global;
+import projectclasses.MonitorType;
+import projectclasses.MoviePlayer;
+import projectclasses.Product;
+import projectclasses.StatsReport;
 
 public class ControllerStats implements Initializable {
 

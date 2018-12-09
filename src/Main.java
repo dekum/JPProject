@@ -11,18 +11,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.AudioPlayer;
-import sample.Global;
-import sample.MonitorType;
-import sample.MoviePlayer;
-import sample.Screen;
+import projectclasses.AudioPlayer;
+import projectclasses.Global;
+import projectclasses.MonitorType;
+import projectclasses.MoviePlayer;
+import projectclasses.Screen;
 
 public class Main extends Application {
 
   @Override
   public void start(Stage primaryStage) throws Exception {
     /**
-     * Set up a sample productList, with 3 moviePlayers and 2 audioPlayers
+     * Set up a projectclasses productList, with 3 moviePlayers and 2 audioPlayers
      */
     Global.productList.add(new MoviePlayer("DBPOWER MK101",
         new Screen("720x480",40,22), MonitorType.LCD));

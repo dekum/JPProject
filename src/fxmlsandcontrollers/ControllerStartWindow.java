@@ -32,8 +32,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import sample.Global;
-import sample.Product;
+import projectclasses.Global;
+import projectclasses.Product;
 
 public class ControllerStartWindow implements  Initializable {
   /**
