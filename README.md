@@ -34,9 +34,17 @@ This is a Java GUI project, that is designed to allow the user to create Audio P
 
 Any Java object that can pass more than one IS-A test is considered to be polymorphic. In Java, all Java objects are polymorphic since any object will pass the IS-A test for their own type and for the class Object.
 
+<h3> Images</h3>
+
+![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/HomeScreen.png)<br>'
+![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/HomeScreenMoreInfo.png?raw=true)<br>
+![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddAudioPlayerSuccess.png)<br>
+![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddMoviePlayerError.png?raw=trueg)<br>
+![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddMoviePlayerWindowEx.png?raw=true)<br>
+![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/StatsWindow.png?raw=true)<br>
 
 <h3> Bug / Feature Request</h3>
-<p>If you find a bug, please report it by opening an issue [here](https://github.com/dekum/JPProject/issues/new).
+<p>If you find a bug, please report it by opening an issue.
 
 If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/dekum/JPProject/issues).</p>
 
