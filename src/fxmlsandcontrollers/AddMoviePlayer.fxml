@@ -10,10 +10,10 @@
    <children>
       <Label fx:id="typeLabel" layoutX="27.0" layoutY="29.0" text="MoviePlayer" />
       <Label layoutX="13.0" layoutY="59.0" text="# of Copies:" />
-      <TextField fx:id="txtFieldName" layoutX="135.0" layoutY="95.0" text="DBPOWER MK101" />
       <TextField fx:id="txtFieldCopy" layoutX="135.0" layoutY="55.0" text="1" />
+      <TextField fx:id="txtFieldName" layoutX="135.0" layoutY="95.0" text="DBPOWER MK101" />
       <Label layoutX="14.0" layoutY="99.0" text="Name:" />
-      <Label layoutX="16.0" layoutY="135.0" text="Moniter Type:" />
+      <Label layoutX="16.0" layoutY="135.0" text="Monitor Type:" />
       <ChoiceBox fx:id="choiceBoxMonitorType" layoutX="136.0" layoutY="131.0" prefWidth="150.0" />
       <Label layoutX="16.0" layoutY="173.0" text="Screen Resoultion" />
       <TextField fx:id="textFieldRes" layoutX="135.0" layoutY="169.0" text="720x480" />

@@ -21,7 +21,7 @@
 package sample;
 
 
-enum ItemType {
+public enum ItemType {
   /**
    * Audio.
    */

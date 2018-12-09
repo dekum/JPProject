@@ -9,8 +9,8 @@
    <children>
       <Label fx:id="typeLabel" layoutX="13.0" layoutY="29.0" text="Add AudioPlayer" />
       <Label layoutX="13.0" layoutY="59.0" text="# of Copies:" />
-      <TextField fx:id="txtFieldName" layoutX="135.0" layoutY="103.0" text="ipod Mini" />
       <TextField fx:id="txtFieldCopy" layoutX="135.0" layoutY="55.0" text="1" />
+      <TextField fx:id="txtFieldName" layoutX="135.0" layoutY="103.0" text="ipod Mini" />
       <Label layoutX="14.0" layoutY="107.0" text="Name:" />
       <Label layoutX="14.0" layoutY="147.0" text="Audio Specification" />
       <TextField fx:id="txtFieldAudioSpec" layoutX="135.0" layoutY="143.0" text="MP3" />
