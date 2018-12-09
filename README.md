@@ -15,7 +15,7 @@
 - [Goal](#Goal)
 - [OverView](#OverView)
 - [Images](#Images)
-- [UML Diagram)(#UML Diagram)
+- [UML Diagram)(#UML_Diagram)
 - [Demo](#Demo)
 - [Credits](#Credits)
  
@@ -66,7 +66,34 @@ If the User wished to know more information about a certain product they can cli
 | Total LCDs | The count of Movie players with LCD Monitor Type.  |
 | Total LEDs| The count of Movie players with LED Monitor Type.  |
  
- Duplicates are calculated by creating a Set, with the elements of the productList. Set will automatically remove any duplicates using's Product class's equals method. If two products have the same class and same name, they are considered to be the same product.
+ Duplicates are calculated by creating a Set, with the elements of the productList. Set will automatically remove any duplicates using's Product class's equals method and hascode method. If two products have the same class and same name, they are considered to be the same product.
+
+`sample.Product` equals method
+``` 
+@Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Product)) {
+      return false;
+    }
+    Product product = (Product) o;
+    return Objects.equals(getName(), product.getName());
+  }
+```
+
+`fxmlandcontrollers.ControllerStats` initalize method for calcuating duplicates and uniques.
+```/*This checks how many are original or copies by creating a Set of the productList
+    Since Set lists cannot contain duplicates, it will count how many are unique
+    */
+    Set inputSet = new HashSet(productList);
+    nubOfOriginal = inputSet.size();
+    if (inputSet.size() < productList.size()) {
+      numOfCopies = productList.size() - inputSet.size(); //All - unique
+      nubOfOriginal = inputSet.size(); //numOfOrigoma;
+    }
+ ```
  
  <h3> UMl Diagrams </h3>
  
