@@ -16,6 +16,7 @@
 - [OverView](#OverView)
 - [Techniques](#Techniques)
 - [Images](#Images)
+- [UML Diagram)(#UML Diagram)
 - [Demo](#Demo)
 - [Credits](#Credits)
  
@@ -72,6 +73,22 @@ If the User wished to know more information about a certain product they can cli
 | Total LEDs| The count of Movie players with LED Monitor Type.  |
  
  Duplicates are calculated by creating a Set, with the elements of the productList. Set will automatically remove any duplicates using's Product class's equals method. If two products have the same class and same name, they are considered to be the same product.
+ 
+ <h3> UMl Diagrams </h3>
+ 
+  
+ ![Gui Picture]( https://github.com/dekum/JPProject/blob/master/images/Package%20fxmlsandcontrollers.png)<br>
+UML Diagram for the controllers <br>
+ 
+ ![Gui Picture]( https://github.com/dekum/JPProject/blob/master/images/sample.png)<br>
+ UML Diagram for the classes of this program. Blue Lines show inheritance, and green lines show implementing.<br>
+Item is an interface with its own method headers  that is implemented by Product, thus no objects can be created from it.  Product is an public abstract class that implements, Item class and its methods. Since it's abstract no objects can be created from it.
+So Movie Player and AudioPlayer are subclasses of product, and call Product's constructor when objects are made from them. MoviePlayer and Audio Player classes, also implement Multimedia Control interface, and have defined methods that were implemented.
+ 
+<h3> Demo</h3>
+
+![Gui Demo]( https://github.com/dekum/JPProject/blob/master/images/Demo.gif)<br>
+This gif shows an example of how the GUI works. On the home screen, the user can select a product and see more information. Next is the AudioPlayer create the screen, where successful inputs are selected. The Movie Player window is shown afterward, and the error message is displayed because of invalid inputs. Lastly, the stat Windows is shown.
 
 <h3> Bug / Feature Request</h3>
 <p>If you find a bug, please report it by opening an issue.
