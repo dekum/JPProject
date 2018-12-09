@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>sample</OriginalElement>
+  <nodes>
+    <node x="162.0" y="306.0">sample.ViewFileInfo</node>
+    <node x="156.0" y="380.0">sample.StatsReport</node>
+    <node x="142.5" y="158.0">sample.MoviePlayer</node>
+    <node x="266.0" y="454.0">sample.Main</node>
+    <node x="319.0" y="306.0">sample.ProcessFiles</node>
+    <node x="309.5" y="0.0">sample.ScreenSpec</node>
+    <node x="139.0" y="454.0">sample.Global</node>
+    <node x="0.0" y="232.0">sample.MoviePlayerDriver</node>
+    <node x="14.5" y="0.0">sample.Item</node>
+    <node x="0.0" y="158.0">sample.AudioPlayer</node>
+    <node x="0.0" y="306.0">sample.MonitorType</node>
+    <node x="115.5" y="79.0">sample.MultimediaControl</node>
+    <node x="377.0" y="232.0">sample.EmployeeInfo</node>
+    <node x="309.0" y="380.0">sample.ItemType</node>
+    <node x="0.0" y="380.0">sample.PlayerDriver</node>
+    <node x="189.0" y="232.0">sample.AudioPlayerDriver</node>
+    <node x="0.0" y="454.0">sample.OldMain</node>
+    <node x="5.5" y="79.0">sample.Product</node>
+    <node x="322.0" y="79.0">sample.Screen</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="sample.MoviePlayer" target="sample.Product">
+      <point x="-28.25" y="-14.5" />
+      <point x="170.75" y="128.0" />
+      <point x="73.0" y="128.0" />
+      <point x="22.5" y="14.5" />
+    </edge>
+    <edge source="sample.Screen" target="sample.ScreenSpec">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="sample.MoviePlayer" target="sample.MultimediaControl">
+      <point x="28.25" y="-14.5" />
+      <point x="37.25" y="14.5" />
+    </edge>
+    <edge source="sample.Product" target="sample.Item">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+    <edge source="sample.AudioPlayer" target="sample.Product">
+      <point x="-28.0" y="-14.5" />
+      <point x="-22.5" y="14.5" />
+    </edge>
+    <edge source="sample.AudioPlayer" target="sample.MultimediaControl">
+      <point x="28.0" y="-14.5" />
+      <point x="84.0" y="138.0" />
+      <point x="152.75" y="138.0" />
+      <point x="-37.25" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8807157057654076" x="249.0" y="231.5" />
+  <SelectedNodes>
+    <node>sample.ViewFileInfo</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
