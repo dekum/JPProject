@@ -16,8 +16,9 @@
 - [OverView](#OverView)
 - [Images](#Images)
 - [UML Diagram)(#UML_Diagram)
-- [Demo](#Demo)
+
 - [Credits](#Credits)
+- [Demo](#Demo)
  
 <h3>Goal</h4>
 <p>Create a production plant for any type of product ranging from a simple packaging system to a variety of electronic devices.
