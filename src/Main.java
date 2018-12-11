@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import projectclasses.AudioPlayer;
+import projectclasses.DbUtil;
 import projectclasses.Global;
 import projectclasses.MonitorType;
 import projectclasses.MoviePlayer;
@@ -36,10 +37,8 @@ public class Main extends Application {
     Global.productList.add(ap2);
     Global.productList.add(new MoviePlayer("DBPOWER MK101",
         new Screen("720x480",40,22),MonitorType.LCD));
-
-    //set url of StartWindow
-   // Parent root = FXMLLoader.load(getClass().getClassLoader()
-   //     .getResource("/fxmlsandcontrollers/StartWindow.fxml"));
+    Global.productList.clear();
+    DbUtil.getStarted();
     Parent root = FXMLLoader.load(getClass().getResource("fxmlsandcontrollers/StartWindow.fxml"));
     primaryStage.setTitle("Home Window");
     primaryStage.setScene(new Scene(root, 478, 341));

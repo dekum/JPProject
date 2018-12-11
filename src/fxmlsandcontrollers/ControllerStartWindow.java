@@ -13,6 +13,7 @@ package fxmlsandcontrollers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -32,6 +33,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import projectclasses.DbUtil;
 import projectclasses.Global;
 import projectclasses.Product;
 
@@ -92,6 +94,12 @@ public class ControllerStartWindow implements  Initializable {
 
     //Loads FXML Loader
     FXMLLoader loader = new FXMLLoader();
+
+    try {
+      DbUtil.dbDisconnect();
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
 
     //Load a Url to the next window
     loader.setLocation(getClass().getResource("AddAudioPlayer.fxml"));

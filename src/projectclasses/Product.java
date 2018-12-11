@@ -14,6 +14,7 @@
 
 package projectclasses;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -62,6 +63,18 @@ public abstract class Product implements Item, Comparable {
   SimpleStringProperty typeProperty = new SimpleStringProperty();
 
   /**
+   * Date manufacturedON in a object that be stored into a database.
+   * Use a prepared statement to insert into database.
+   */
+  LocalDate localDateManufactured;
+
+  /**
+   * This product's color, given by colorpicker.
+   * default value is white
+   */
+  String color = "White";
+
+  /**
    * The equals method allows java to check if two objects are the same.
    * In this class, its overridden to check only the name fields.
    * If the name fields are the same, then this program considers
@@ -82,6 +95,8 @@ public abstract class Product implements Item, Comparable {
     return Objects.equals(getName(), product.getName());
   }
 
+
+
   /**
    * If equals is changed, then the hashCode must change as well.
    *
@@ -93,7 +108,25 @@ public abstract class Product implements Item, Comparable {
   }
 
   /**
-   * Get name property, which is displayed in table.
+   * Gets localDateManufactured.
+   *
+   * @return  value of localDateManufactured.
+   */
+  public LocalDate getLocalDateManufactured() {
+    return localDateManufactured;
+  }
+
+  /**
+   * Changes the date manufactured, when loading from database.
+   *
+   * @param  localDateManufactured the stored date in database.
+   */
+  public void setLocalDateManufactured(LocalDate localDateManufactured) {
+    this.localDateManufactured = localDateManufactured;
+  }
+
+  /**
+   * Get name property, which is displayed in the product table.
    *
    * @return  nameProperty field.
    */
@@ -178,6 +211,15 @@ public abstract class Product implements Item, Comparable {
   }
 
   /**
+   * Changes this product's color to parameter.
+   *
+   * @param color the hex code of the color.
+   */
+  public void setColor(String color) {
+    this.color = color;
+  }
+
+  /**
    * Gets serialNumber of this product.
    *
    * @return value of serialNumber.
@@ -226,7 +268,10 @@ public abstract class Product implements Item, Comparable {
     serialNumber = currentProductionNumber++;//SeriesNumber received productionNumber
     // and productNumber will increment by one
     manufacturedOn = new Date();
-    //manafacturedOn will receive new Date, set to current time the program runs
+    //manufacturedOn will receive new Date, set to current time the program runs
+
+    localDateManufactured = LocalDate.now();
+    System.out.println(localDateManufactured + "\n" + manufacturedOn);
     setNameProperty(name);
     setTypeProperty(this.getClass().getSimpleName());
 
@@ -253,10 +298,7 @@ public abstract class Product implements Item, Comparable {
         //Class Matches
         System.out.println(o.toString());
       }
-
-
     }
-
   }
 
   /**
@@ -273,7 +315,8 @@ public abstract class Product implements Item, Comparable {
             + manufacturer + "\n"
             + "Serial Number : "
             + serialNumber + "\n"
-            + "Date          : " + getManufactureDate() + "\n"
+            + "Date          : " + getLocalDateManufactured() + "\n"
+            + "Color         : " + color + "\n"
             + "Name          : " + name;
     //I use line because I felt it was easier to code with
     return line;

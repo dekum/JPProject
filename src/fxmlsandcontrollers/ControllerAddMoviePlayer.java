@@ -11,6 +11,9 @@ package fxmlsandcontrollers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -27,8 +30,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import projectclasses.DbUtil;
 import projectclasses.Global;
 import projectclasses.MonitorType;
 import projectclasses.MoviePlayer;
@@ -61,6 +68,24 @@ public class ControllerAddMoviePlayer implements Initializable {
    */
   @FXML private ChoiceBox<String> choiceBoxMonitorType;
 
+  @FXML
+  private TextField txtFieldAudioSpec;
+
+  /**
+   * This method displays a popup with the Message passed in the parameter.
+   * @param message is a String passed by other method to be displayed to the user
+   */
+
+  /**
+   * A datepicker to set the date this product was manufactured .
+   * Default is today's date.
+   */
+  @FXML private DatePicker datePickerManufactured;
+  /**
+   * Javafx Colorpicker to set the color.
+   */
+  @FXML private ColorPicker colorPicker;
+
   /**
    * This method displays a popup with the Message passed in the parameter.
    * 
@@ -76,17 +101,127 @@ public class ControllerAddMoviePlayer implements Initializable {
   }
 
   /**
+   * A method to get the highest serial number in the database.
+   * Used to make sure the serial number, isn't replicated when inserting a new product
+   * This method searches the database for a querry that looks for the data
+   * with the highest serial number, and returns that index
+   * Then addToDb adds to index by 1 when inserting a new product.
+   *
+   * @return  maxSerialNumber an int with the highest number in the db.
+   * @throws  ClassNotFoundException Requested classes are not found in classpath.
+   * @throws SQLException An exception that provides information on a
+   *                        database access error or other errors.
+   */
+  public  int getMaxSerialNumber() throws ClassNotFoundException, SQLException {
+
+    String selectStmt = "SELECT * FROM NEW_SCHEMA.PRODUCT WHERE  "
+        + "NEW_SCHEMA.PRODUCT.SERIALNUMBER=(SELECT max(NEW_SCHEMA.PRODUCT.SERIALNUMBER)"
+        + " FROM NEW_SCHEMA.PRODUCT) ";
+    int maxSerialNumber = 0;
+
+
+    try {
+      //Get ResultSet from dbExecuteQuery method
+      ResultSet rsAuth = DbUtil.dbExecuteQuery(selectStmt);
+      if (rsAuth.next()) {
+        System.out.println(rsAuth.getInt("SERIALNUMBER") + " " + rsAuth.getString("NAME"));
+        maxSerialNumber = rsAuth.getInt("SERIALNUMBER");
+      }
+
+
+    } catch (SQLException e) {
+      System.out
+          .println("While searching an product with  id, an error occurred: " + e);
+      //Return exception
+      throw e;
+    }
+    return maxSerialNumber;
+  }
+
+  /**
+   * A method to add a product to MoviePlayer and Product tables.
+   * IMPORTANT: Use single quotes for update querty, double quotes will only cause errrors.
+   * The method is called after the HandleAdd verifies to see if inputs are valid.
+   * This method the dbExecuteUpdate of the DbUtil class.
+   * First this method calls getMaxSerialNumber to get the highest serial number
+   * and then increments by one.
+   * First it inserts a new row of data into the Product table.
+   * Then it inserts a new row of data into the MoviePlayer table.
+   * Product table has col called which lets the program know to join with which table.
+   *
+   * @param  name name of the product inputted by user.
+   * @param screen the screen of the movieplayer containing 3 fields used in this method.
+   * @param monitorType the MonitorType enum for the created movieplayer.
+   *
+   * @throws SQLException An exception that provides information on a
+   *                        database access error or other errors.
+   * @throws ClassNotFoundException Requested classes are not found in classpath.
+   */
+
+  public void addToDb(String name, Screen screen, MonitorType monitorType)
+      throws SQLException, ClassNotFoundException {
+    int currentSerialNumber = 1;
+    currentSerialNumber = getMaxSerialNumber() + 1;
+    LocalDate dateFromDatePicker =  datePickerManufactured.getValue();
+    Color color1 = colorPicker.getValue();
+    String colorPicked = color1.toString();
+
+    String screenRes = screen.getResolution();
+    int refreshRate = screen.getRefreshRate();
+    int responseTime = screen.getResponseTime();
+
+    String updateStmt =
+        "INSERT INTO NEW_SCHEMA.PRODUCT "
+            + "(NEW_SCHEMA.PRODUCT.NAME, NEW_SCHEMA.PRODUCT.SERIALNUMBER,TYPE,"
+            + " NEW_SCHEMA.PRODUCT.MANUFACTUREDON, NEW_SCHEMA.PRODUCT.COLOR) "
+            + "VALUES ('" + name + "',"  + currentSerialNumber + ",\'MP\', '"
+            + dateFromDatePicker + "','" + colorPicked +  "')";
+    System.out.println(updateStmt);
+
+    //Execute DELETE operation
+    try {
+      DbUtil.dbExecuteUpdate(updateStmt);
+    } catch (SQLException e) {
+      System.out.print("Error occurred while UPDATE Operation: " + e);
+      throw e;
+    }
+
+    String updateStmt2 =
+        "INSERT INTO NEW_SCHEMA.MOVIEPLAYER "
+            + "(NEW_SCHEMA.MOVIEPLAYER.NAME, NEW_SCHEMA.MOVIEPLAYER.SERIALNUMBERMP,"
+            + "NEW_SCHEMA.MOVIEPLAYER.SCREENRESOLUTION, NEW_SCHEMA.MOVIEPLAYER.RESPONSETIME,"
+            + "NEW_SCHEMA.MOVIEPLAYER.REFRESHRATE, NEW_SCHEMA.MOVIEPLAYER.MONITORTYPE ) "
+            + "VALUES ('" + name + "',"  + currentSerialNumber + ",'" +  screenRes
+            + "'," + responseTime + "," + refreshRate + ", '" + monitorType + " ')";
+    System.out.println(updateStmt2);
+
+    //Execute DELETE operation
+    try {
+      DbUtil.dbExecuteUpdate(updateStmt2);
+    } catch (SQLException e) {
+      System.out.print("Error occurred while UPDATE Operation: " + e);
+      throw e;
+    }
+
+
+  }
+
+
+  /**
    * This method will check the textFields for right inputs then will create a moviePlayer.
    * name and screemRes textfields must not be empty to be valid.
    * copies,refreshRate textfield textFields must be a non-negative int,
    * or the program will display an error.
    * If an invalid input is made, then it will be added to an alert message.
    * The alert message is a combination of errors message and will be displays as a popup.
-   * 
+   *
    * @param  event is an MouseClick event
+   * @throws  SQLException An exception that provides information on a
+   *                        database access error or other errors.
+   * @throws  ClassNotFoundException Requested classes are not found in classpath.
    */
   @FXML
-  void handleAdd(ActionEvent event) {
+  void handleAdd(ActionEvent event) throws SQLException, ClassNotFoundException {
     String name = txtFieldName.getText();
     //monitorTypeString to be converted to MonitorType enum
     String monitorTypeString = choiceBoxMonitorType.getValue();
@@ -106,11 +241,13 @@ public class ControllerAddMoviePlayer implements Initializable {
 
     if (txtFieldName.getText().equals("")) {
       alertMessage += "Name input is invalid\n";
-
+    } else {
+      name = txtFieldName.getText();
     }
     if (textFieldRes.getText().equals("")) {
       alertMessage += "Screen resolution input is invalid \n";
-
+    } else {
+      screenRes = textFieldRes.getText();
     }
     int copies = 1;
     try {
@@ -136,7 +273,7 @@ public class ControllerAddMoviePlayer implements Initializable {
     }
 
 
-
+    //is alert message is empty, that means all inputs are valid.
     if (alertMessage.equals("")) {
       if (copies > 1) {
         for (int i = 0; i < copies; i++) {
@@ -144,11 +281,13 @@ public class ControllerAddMoviePlayer implements Initializable {
           MoviePlayer mp =
               new MoviePlayer(name,new Screen(screenRes,refreshRate,responseTime),monitorType);
           Global.productList.add(mp);
+          addToDb(name,new Screen(screenRes,refreshRate,responseTime),monitorType);
         }
       } else if (copies == 1) {
         MoviePlayer mp =
             new MoviePlayer(name,new Screen(screenRes,refreshRate,responseTime),monitorType);
         Global.productList.add(mp);
+        addToDb(name,new Screen(screenRes,refreshRate,responseTime),monitorType);
         showAlert(name + " was successfully created.");//Opens alert box
 
       }

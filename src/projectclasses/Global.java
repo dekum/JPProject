@@ -2,11 +2,16 @@
  * Global.java
  * 11/30/2018
  * @author Philemon Petit-Frere
- * This class stores information to be used by the controllers of FXML
+ * This class stores information to be used by the controllers of FXMLs.
  */
 
 package projectclasses;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 public class Global {
