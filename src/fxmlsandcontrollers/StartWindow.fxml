@@ -20,7 +20,8 @@
         </columns>
       </TableView>
       <Label layoutX="14.0" layoutY="61.0" text="Product List:" />
-      <Button layoutX="21.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleMoreInfo" text="More Info" />
+      <Button layoutX="16.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleMoreInfo" text="More Info" />
       <Button layoutX="399.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleQuit" text="Quit" />
+      <Button layoutX="119.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleDelete" text="Delete Product" />
    </children>
 </AnchorPane>

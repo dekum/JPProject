@@ -88,18 +88,19 @@ public class ControllerAddAudioPlayer {
    */
   public  int getMaxSerialNumber() throws ClassNotFoundException, SQLException {
 
-    String selectStmt = "SELECT * FROM NEW_SCHEMA.PRODUCT WHERE  "
-        + "NEW_SCHEMA.PRODUCT.SERIALNUMBER=(SELECT max(NEW_SCHEMA.PRODUCT.SERIALNUMBER)"
-        + " FROM NEW_SCHEMA.PRODUCT) ";
+   // String selectStmt = "SELECT * FROM NEW_SCHEMA.PRODUCT WHERE  "
+   //     + "NEW_SCHEMA.PRODUCT.SERIALNUMBER=(SELECT max(NEW_SCHEMA.PRODUCT.SERIALNUMBER)"
+   //     + " FROM NEW_SCHEMA.PRODUCT) ";
     int maxSerialNumber = 0;
-
-
+    String selectStmt = "SELECT * FROM NEW_SCHEMA.PRODUCT "
+        + "ORDER BY SERIALNUMBER desc";
     try {
       //Get ResultSet from dbExecuteQuery method
       ResultSet rsAuth = DbUtil.dbExecuteQuery(selectStmt);
       if (rsAuth.next()) {
         System.out.println(rsAuth.getInt("SERIALNUMBER") + " " + rsAuth.getString("NAME"));
         maxSerialNumber = rsAuth.getInt("SERIALNUMBER");
+        rsAuth.close();
       }
 
 
@@ -167,8 +168,6 @@ public class ControllerAddAudioPlayer {
       System.out.print("Error occurred while UPDATE Operation: " + e);
       throw e;
     }
-
-
   }
 
   /**

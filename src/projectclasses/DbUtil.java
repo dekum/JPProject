@@ -187,7 +187,7 @@ public class DbUtil {
            java.sql.Date sqlDate = resultSet.getDate("MANUFACTUREDON");
             mp1.setLocalDateManufactured(sqlDate.toLocalDate());
 
-
+            mp1.setProductionNumber(resultSet.getInt("SERIALNUMBER"));
             String color = resultSet.getString("COLOR");
             mp1.setColor(color);
             Global.productList.add(mp1);

@@ -71,16 +71,60 @@ public class ControllerStartWindow implements  Initializable {
       alert.setTitle("Information Dialog");
       alert.setHeaderText(null);
       alert.setContentText(productClickedOn.toString()); //print product toSTring
-
       alert.showAndWait();
     } else {
       Alert alert = new Alert(AlertType.ERROR);
       alert.setTitle("Information Dialog");
       alert.setHeaderText(null);
       alert.setContentText("Please click on a product."); //error message
-
       alert.showAndWait();
     }
+  }
+
+  public  void deleteFromDataBase()
+      throws SQLException, ClassNotFoundException {
+    int serialNumberDelete =productClickedOn.getSerialNumber();
+
+    String updateStmt=
+        "DELETE FROM NEW_SCHEMA.PRODUCT WHERE "
+            + "NEW_SCHEMA.PRODUCT.SERIALNUMBER="+serialNumberDelete;
+    System.out.println(updateStmt);
+
+    //Execute DELETE operation
+    try {
+      DbUtil.dbExecuteUpdate(updateStmt);
+    } catch (SQLException e) {
+      System.out.print("Error occurred while UPDATE Operation: " + e);
+      throw e;
+    }
+    Alert alert = new Alert(AlertType.INFORMATION);
+    alert.setTitle("Information Dialog");
+    alert.setHeaderText(null);
+    alert.setContentText(productClickedOn.getName()+"deleted from records."); //print product toSTring
+    alert.showAndWait();
+    Global.productList.remove(productClickedOn);
+
+
+  }
+
+  @FXML
+  void handleDelete(ActionEvent event) {
+    if (productClickedOn != null) {
+      try {
+        deleteFromDataBase();
+      } catch (SQLException e) {
+        e.printStackTrace();
+      } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+      }
+    } else {
+      Alert alert = new Alert(AlertType.ERROR);
+      alert.setTitle("Information Dialog");
+      alert.setHeaderText(null);
+      alert.setContentText("Please click on a product."); //error message
+      alert.showAndWait();
+    }
+
   }
 
   /**
