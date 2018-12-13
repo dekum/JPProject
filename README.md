@@ -25,6 +25,7 @@
 
 <h3>Goal</h4>
  <hr>
+ 
  * Create a production plant for any type of product ranging from a simple packaging system to a variety of electronic devices.
  
 * Create a production line for multimedia devices which include music and movie players.
@@ -60,7 +61,7 @@ This project now implements a database. Using [Derby](https://db.apache.org/derb
 <hr>
 
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/HomeScreenMoreInfo.png)<br>
- * This alert box popups, when a product is clicked on and the "More Info" button is pressed. *
+ * This alert box popups, when a product is clicked on and the "More Info" button is pressed.
  * The alert displays the product's toString method which contains its name, type, manufactured date,  serial number, amongst other details.
 
   <h4>Add AudioPlayer Window</h4>
@@ -189,10 +190,13 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 <hr>
 
 * Needed: Windows Vista or higher. Java 1.8 or higher.
-* [Derby](https://db.apache.org/derby/) is needed to be installed to use database. Can be installed [here] (https://db.apache.org/derby/papers/DerbyTut/install_software.html)
+
+* [Derby](https://db.apache.org/derby/) is needed to be installed to use database. Can be installed [here](https://db.apache.org/derby/papers/DerbyTut/install_software.html)
+
 * A java IDE is needed if you going to import from github.
- <br>
+
 * For those without IDE, a jar file is provided, and works without the use of one.
+
 * The Jar file is located in deliverables>artifacts>JPProject.jar
 
 * This program was tested with Window 10, 64-Bit with JDK8 using InteliJ IDEA 12/13/2018
