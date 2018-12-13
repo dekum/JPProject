@@ -64,6 +64,19 @@
  * This alert box popups, when a product is clicked on and the "More Info" button is pressed.
  * The alert displays the product's toString method which contains its name, type, manufactured date,  serial number, amongst other details.
 
+<h4> Home Window - Delete</h4>
+<hr>
+
+![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/StartWindowDelete.png)<br>
+* By pressing the "delete?" checkbox, the "Delete Prouct" button is noe clickably by the User.
+* The user then selects "Delete Product" button to delete a product from the database.
+* Once the product is deleted it cannot be undone.
+* An error message appears if user didn't click anything in the table.
+</p>
+
+<br>
+
+
   <h4>Add AudioPlayer Window</h4>
  <hr> 
  
@@ -75,10 +88,19 @@
   <hr>
   <h4>Add AudioPlayer Window- Success</h4>
   
-![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddAudioPlayerSuccess.png)<br>
+
 * This is the alert that will pop up if the User successfully creates an Audio Player.
 * The number of copies and product name is shown. The Movie Player window has a similar pop-up.
 * The new audioplayer is added to the database and can be seen on the Start Window table.
+
+<h4>Update Audio Player</h4>
+ <hr>
+ 
+ ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddAudioPlayerUpdate.png)<br>
+ *This window displays when "Update Product" is selected, and it is a audioplayer object.
+ *The user changes the fields they choose, and press "Update" and the database is updated with new data.
+ 
+ <br>
 
 <h4>Add Movie Player Window</h4>
 <hr>
@@ -221,6 +243,8 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 This program is authored by Philemon Petit-Frere
 
 Approx. 3300 lines of java code are written in this program according to https://line-count.herokuapp.com/dekum/JPProject
+
+Music obtained from https://www.bensound.com/royalty-free-music/track/the-elevator-bossa-nova
 
 This project is supported by:
 <a href="https://www.jetbrains.com/idea/">
