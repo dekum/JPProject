@@ -7,17 +7,18 @@
  * Purpose of Project: design a template in Java for creating and recording all futureproduction line items. Also also allow easy modification to handle different products
  * Sources for help: https://stackexchange.com/, https://stackoverflow.com/,  Garrett Graber, Nathalie Crespo, github.com, http://tutorials.jenkov.com/java-regex/pattern.html, https://www.geeksforgeeks.org/ , https://www.tutorialspoint.com/, 
  
- <img src="https://img.shields.io/badge/release-v1.1.0-blue.svg" />
-<img src="https://img.shields.io/badge/package-v2.0.0-orange.svg" />
+ <img src="https://img.shields.io/badge/release-v2.0.2-blue.svg" />
+<img src="https://img.shields.io/badge/package-v2.2.0-orange.svg" />
 
 ## Table of Contents
 - [Goal](#Goal)
 - [Overview](#OverView)
 - [Images](#Images)
-- [UML Diagrams](#uml-diagrams)
+- [Diagrams](#Diagrams)
 - [Demo](#Demo)
 - [Bug/Feature Request](#bugfeature-request)
 - [HowToInstall](#How-To-Install)
+- [Updates](#Updates)
 - [Credits](#Credits)
 - [License](#License)
 
@@ -31,6 +32,8 @@ Create a production line for multimedia devices which include music and movie pl
 <h3>OverView</h3>
 <hr>
 This is a Java GUI project, that is designed to allow the user to create Audio Players and Movie Player products of their choice. They will be able to input their specifications of the products, and the products will be displayed on the Home Window in a table View. The user can also see the statistics of the movie Player, such as the total number of products, how many are movie players and how many are unique.
+
+This 
 
 
 <h3>Images</h3>
@@ -131,7 +134,7 @@ This is a Java GUI project, that is designed to allow the user to create Audio P
     }
  ```
 
- <h3>UMl Diagrams</h3>
+ <h3>Diagrams</h3>
   <hr>
   
  ![Gui Picture]( https://github.com/dekum/JPProject/blob/master/images/Package%20fxmlsandcontrollers.png)<br>
@@ -144,6 +147,8 @@ Item is an interface with its own method headers  that is implemented by Product
 
 [JavaDoc](https://dekum.github.io/JPProject/docs/index.html) Javadocs can be seen here.
 
+![DataBaseDiagram](https://github.com/dekum/JPProject/blob/master/images/DataBaseDiagram.png)
+<p> The database diagram. The AudioPlayer and MoviePlayer tables are joined to the Product Table where the serial numbers match.
 <br>
  
 <h3>Demo</h3>
@@ -169,6 +174,17 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 </p>
 <br> 
 
+<h3>Updates</h3>
+<hr>
+<p>
+*  2.0.0: Added database functionality. Using Derby this project is now connected to a database. The user can now add, remove and update products in the database. Now the information is stored so when the user closes the program, their changes are still there.
+ 
+ * 1.4.0: Added CSS to make the project look more presentable. A slider was added to add MoviePlayer, to allow better options for resolution.
+ 
+ * 1.2.0: Added function to play music, via a "Play and pause" button. This required the use of mediaView and MediaPlayer classes.
+ 
+ </p>
+<br>
 <h3>Credits</h4>
 <hr>
  JP Project is a scenario created by Oracle Academy for the purpose of teaching Java.
