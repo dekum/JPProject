@@ -187,8 +187,9 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 
 <h4>How To Install</h4>
 <hr>
+
 * Needed: Windows Vista or higher. Java 1.8 or higher.
-* [Apache Derby](https://db.apache.org/derby/) is needed to be installed to use database. Can be installed [here](https://db.apache.org/derby/papers/DerbyTut/install_software.html)
+* [Derby](https://db.apache.org/derby/) is needed to be installed to use database. Can be installed [here] (https://db.apache.org/derby/papers/DerbyTut/install_software.html)
 * A java IDE is needed if you going to import from github.
  <br>
 * For those without IDE, a jar file is provided, and works without the use of one.
