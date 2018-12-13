@@ -19,8 +19,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,7 +32,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
@@ -48,10 +45,6 @@ import projectclasses.Screen;
 
 public class ControllerAddMoviePlayer implements Initializable {
 
-  /**
-   * TextField to set the Screen Resolution.
-   */
-  @FXML private TextField textFieldRes;
   /**
    * TextField to set the refresh rate.
    */
@@ -90,8 +83,10 @@ public class ControllerAddMoviePlayer implements Initializable {
   @FXML private ColorPicker colorPicker;
   /**
    * Slider that sets this screen resolution.
+   * The slider is formatted, so it snaps to ticks.
+   * The ticks are also changed to show resolution such as "1900x1080p"
    */
-  @FXML private Slider slider;
+  @FXML private Slider sliderResolution;
 
   /**
    * This method displays a popup with the Message passed in the parameter.
@@ -165,20 +160,47 @@ public class ControllerAddMoviePlayer implements Initializable {
    * @throws ClassNotFoundException Requested classes are not found in classpath.
    */
   /**
-   * A method that takes the value of the slider and converts it to the string.
+   * A method that takes the value of the sliderResolution and converts it to the string.
    *
-   * @return the screen resolution, based on the slider value.
+   * @return the screen resolution, based on the sliderResolution value.
    */
-  public String getResoultion(){
-    double n= slider.getValue();
-    if (n == 360) return "480x360p";
-    if (n == 540) return "960x540p";
-    if (n == 720) return "1280x720p";
-    if (n == 900) return "1600x900p";
-    if (n == 1080) return "1920x1080p";
-    return "1920x1080p";
+  public String getResoultion() {
+    double n = sliderResolution.getValue();
+    if (n == 360) {
+      return "480x360p";
+    }
+    if (n == 540) {
+      return "960x540p";
+    }
+    if (n == 720) {
+      return "1280x720p";
+    }
+    if (n == 900) {
+      return "1600x900p";
+    }
+    if (n == 1080) {
+      return "1920x1080p";
+    }
+    return "1920x1080p";//default value which shouldn't ever happen.
   }
 
+  /**
+   * A method to add a product to MoviePlayer and Product tables.
+   * IMPORTANT: Use single quotes for update querty, double quotes will only cause errrors.
+   * The method is called after the HandleAdd verifies to see if inputs are valid.
+   * This method the dbExecuteUpdate of the DbUtil class.
+   * First this method calls getMaxSerialNumber to get the highest serial number
+   * and then increments by one.
+   * First it inserts a new row of data into the Product table.
+   * Then it inserts a new row of data into the MoviePlayer table.
+   *
+   * @param  name name of the product inputted by user.
+     @param screen a screen object with valid inputs by user
+   * @param monitorType MonitorType enum that is passed.
+   * @throws SQLException An exception that provides information on a
+   *                        database access error or other errors.
+   * @throws ClassNotFoundException Requested classes are not found in classpath.
+   */
   public void addToDb(String name, Screen screen, MonitorType monitorType)
       throws SQLException, ClassNotFoundException {
     int currentSerialNumber = 1;
@@ -252,7 +274,7 @@ public class ControllerAddMoviePlayer implements Initializable {
     int responseTime = -1;
 
     String alertMessage = "";
-    Boolean successCopies = true;
+
 
     if (monitorTypeString.equals("LCD")) {
       monitorType = MonitorType.LCD;
@@ -265,18 +287,13 @@ public class ControllerAddMoviePlayer implements Initializable {
     } else {
       name = txtFieldName.getText();
     }
-    if (textFieldRes.getText().equals("")) {
-      alertMessage += "Screen resolution input is invalid \n";
-    } else {
-      screenRes = textFieldRes.getText();
-    }
     int copies = 1;
     try {
       copies = Integer.parseInt(txtFieldCopy.getText());
     } catch (NumberFormatException exception) {
       //showAlert("Copies input is invalid");//Opens alert box
       alertMessage += "Copies input is invalid\n";
-      // successCopies= false;
+
     }
     try {
       refreshRate = Integer.parseInt(textFieldRefresh.getText());
@@ -348,10 +365,9 @@ public class ControllerAddMoviePlayer implements Initializable {
       Logger.getLogger(ControllerStartWindow.class.getName()).log(Level.SEVERE, null, ex);
 
     }
-
+    Global.isUpdating = false;
     Parent p = loader.getRoot();
     stage = new Stage();
-    Global.isUpdating=false;
 
     stage.setTitle("Home Screen");
     stage.setScene(new Scene(p));
@@ -365,7 +381,8 @@ public class ControllerAddMoviePlayer implements Initializable {
     /**
      * This method is called first before window loads.
      * This populates the choiceBox, and set default value
-     * Aksi sets the datepciker to today's date
+     * Akso sets the datepciker to today's date
+     * The sliderResolution is also set
      */
     //create fields for ChoiceBox
     List<String> monitorTypeNames = new ArrayList<>();
@@ -378,14 +395,24 @@ public class ControllerAddMoviePlayer implements Initializable {
 
 
 
-    slider.setLabelFormatter(new StringConverter<Double>() {
+    sliderResolution.setLabelFormatter(new StringConverter<Double>() {
       @Override
       public String toString(Double n) {
-        if (n == 360) return "480x360";
-        if (n == 540) return "960x540";
-        if (n == 720) return "1280x720";
-        if (n == 900) return "1600x900";
-        if (n == 1080) return "1920x1080";
+        if (n == 360) {
+          return "480x360p";
+        }
+        if (n == 540) {
+          return "960x540p";
+        }
+        if (n == 720) {
+          return "1280x720p";
+        }
+        if (n == 900) {
+          return "1600x900p";
+        }
+        if (n == 1080) {
+          return "1920x1080p";
+        }
         return "";
       }
 

@@ -43,6 +43,8 @@ public class ProcessFiles {
     path = Paths.get("C:\\LineTest"); //file path
     path2 = Paths.get("TestResults.txt"); //name of text file
     path3 = path.resolve(path2); //combined to one text file
+    //Check styles give dodgy code error
+    //It says this shouldnt' be a absoloute path
 
     System.out.println(path3);
     createDirectory();

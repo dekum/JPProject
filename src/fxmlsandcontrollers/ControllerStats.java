@@ -6,6 +6,7 @@
  * This class will display the statitics of the program in a Table
  * This class uses the Global.productList that is shared by all controllers
  * so the information is always up to date.
+ * This classs als contains a barchart that will display the data.
  */
 
 package fxmlsandcontrollers;
@@ -56,8 +57,11 @@ public class ControllerStats implements Initializable {
    * This displays the Stat name.
    */
   @FXML private TableColumn<StatsReport,String> colStatName;
-
+  /**
+   * A barchart which display the total products, movieplayers and audioplayers in a bar graph.
+   */
   @FXML private BarChart barChart;
+
   /**
    * This method will open the StartWidow.fxml window, also also closes current window.
    * 
@@ -158,11 +162,8 @@ public class ControllerStats implements Initializable {
     XYChart.Series dataSeries1 = new XYChart.Series();
     dataSeries1.setName("Totals");
     dataSeries1.getData().add(new XYChart.Data("Products",productList.size()));
-    dataSeries1.getData().add(new XYChart.Data("AudioPlayers"  , apCounter));
-    dataSeries1.getData().add(new XYChart.Data("MoviePLayers"  ,mpCount));
-
-
-    barChart.getData().add(dataSeries1);
-
+    dataSeries1.getData().add(new XYChart.Data("AudioPlayers", apCounter));
+    dataSeries1.getData().add(new XYChart.Data("MoviePLayers",mpCount));
+    barChart.getData().add(dataSeries1);//sets bar data
   }
 }

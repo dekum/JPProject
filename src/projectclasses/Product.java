@@ -43,7 +43,8 @@ public abstract class Product implements Item, Comparable {
   /**
    * The name of the manufacturer, will always be "OracleProduction".
    */
-  final String manufacturer = Item.MANUFACTURER; //name of manufacturer
+  static final String manufacturer = Item.MANUFACTURER; //name of manufacturer
+  //findbugs suggested to make this a static field to increase performance.
 
   /**
    * The production number, used to set serial number.
@@ -152,7 +153,12 @@ public abstract class Product implements Item, Comparable {
     return typeProperty;
   }
 
-  public String getType(){
+  /**
+   * Gets the class name.
+   *
+   * @return String result of the Type, which is the class type.
+   */
+  public String getType() {
     return  typeProperty.get();
   }
 

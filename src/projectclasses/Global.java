@@ -32,7 +32,7 @@ public class Global {
    */
   public static Boolean isUpdating = false;
   /**
-   * Product to be updates
+   * Product to be updated, selected by the user in the Start Window.
    */
   public static Product  productSelected;
 }

@@ -72,9 +72,19 @@ public class ControllerAddAudioPlayer implements Initializable {
    */
   @FXML private CheckBox checkBox;
 
+  /**
+   * Label to show user if they are addoing or updating a audioplayer.
+   */
   @FXML Label typeLabel;
+  /**
+   * A button that is hidden, but it performs the update function when visible.
+   * When user clicks update product, the update button is visible.
+   */
   @FXML Button buttonUpdate;
 
+  /**
+   * The button that has a click event that creates a audioPlayer object.
+   */
   @FXML private Button buttonAdd = new Button();
 
   /**
@@ -105,9 +115,9 @@ public class ControllerAddAudioPlayer implements Initializable {
    */
   public  int getMaxSerialNumber() throws ClassNotFoundException, SQLException {
 
-   // String selectStmt = "SELECT * FROM NEW_SCHEMA.PRODUCT WHERE  "
-   //     + "NEW_SCHEMA.PRODUCT.SERIALNUMBER=(SELECT max(NEW_SCHEMA.PRODUCT.SERIALNUMBER)"
-   //     + " FROM NEW_SCHEMA.PRODUCT) ";
+    // String selectStmt = "SELECT * FROM NEW_SCHEMA.PRODUCT WHERE  "
+    //     + "NEW_SCHEMA.PRODUCT.SERIALNUMBER=(SELECT max(NEW_SCHEMA.PRODUCT.SERIALNUMBER)"
+    //     + " FROM NEW_SCHEMA.PRODUCT) ";
     int maxSerialNumber = 0;
     String selectStmt = "SELECT * FROM NEW_SCHEMA.PRODUCT "
         + "ORDER BY SERIALNUMBER desc";
@@ -160,12 +170,13 @@ public class ControllerAddAudioPlayer implements Initializable {
             + "(NEW_SCHEMA.PRODUCT.NAME, NEW_SCHEMA.PRODUCT.SERIALNUMBER,TYPE,"
             + " NEW_SCHEMA.PRODUCT.MANUFACTUREDON, NEW_SCHEMA.PRODUCT.COLOR) "
             + "VALUES ('" + name + "',"  + currentSerialNumber + ",\'AP\', '"
-             + dateFromDatePicker + "','" + colorPicked +  "')";
+            + dateFromDatePicker + "','" + colorPicked +  "')";
     System.out.println(updateStmt);
 
     //Execute DELETE operation
     try {
       DbUtil.dbExecuteUpdate(updateStmt);
+      //checkBugs suggests using a peepared statement for effcientcy
     } catch (SQLException e) {
       System.out.print("Error occurred while UPDATE Operation: " + e);
       throw e;
@@ -187,6 +198,18 @@ public class ControllerAddAudioPlayer implements Initializable {
     }
   }
 
+  /**
+   *This method updates a audioplyer objec in the productlist.
+   *This method is called after the inputs are validated from the user.
+   * This method takes those inputs and changes the database data to match it.
+   * Using a Update quuery and the dbUtil Class the database is updated with the changes.
+   *
+   * @param  name name of the product inputted by user.
+   * @param  audiSpec audio Specification inputted by user.
+   * @throws SQLException An exception that provides information on a
+   *                        database access error or other errors.
+   * @throws ClassNotFoundException Requested classes are not found in classpath.
+   */
   public  void updateToDb(String name, String audiSpec)
       throws SQLException, ClassNotFoundException {
     //int currentSerialNumber = 1;
@@ -200,8 +223,8 @@ public class ControllerAddAudioPlayer implements Initializable {
     String updateStmt =
         "UPDATE NEW_SCHEMA.PRODUCT "
             + "SET  NAME='" + name + "',  TYPE = 'AP',"
-            + "  MANUFACTUREDON = '"+dateFromDatePicker +"', COLOR='"
-            +colorPicked+"' WHERE  SERIALNUMBER="+ serialNumber;
+            + "  MANUFACTUREDON = '" + dateFromDatePicker + "', COLOR='"
+            + colorPicked + "' WHERE  SERIALNUMBER=" + serialNumber;
 
     System.out.println(updateStmt);
 
@@ -214,20 +237,6 @@ public class ControllerAddAudioPlayer implements Initializable {
       throw e;
     }
 
-//    String updateStmt2 =
-//        "INSERT INTO NEW_SCHEMA.AUDIOPLAYER "
-//            + "(NEW_SCHEMA.AUDIOPLAYER.NAME, NEW_SCHEMA.AUDIOPLAYER.SERIALNUMBERAP,"
-//            + "NEW_SCHEMA.AUDIOPLAYER.AUDIOSPECIFICATION) "
-//            + "VALUES ('" + name + "',"  + currentSerialNumber + ",'" +  audiSpec + "')";
-//    System.out.println(updateStmt2);
-//
-//    //Execute DELETE operation
-//    try {
-//      DbUtil.dbExecuteUpdate(updateStmt2);
-//    } catch (SQLException e) {
-//      System.out.print("Error occurred while UPDATE Operation: " + e);
-//      throw e;
-//    }
   }
 
   /**
@@ -251,10 +260,9 @@ public class ControllerAddAudioPlayer implements Initializable {
       Logger.getLogger(ControllerStartWindow.class.getName()).log(Level.SEVERE, null, ex);
 
     }
-
+    Global.isUpdating = false; //Not updating anymore
     Parent p = loader.getRoot();
     stage = new Stage();
-    Global.isUpdating = false; //Not updating anymore
     stage.setTitle("Home Screen");
     stage.setScene(new Scene(p));
     stage.show(); //Opens new Window
@@ -290,7 +298,7 @@ public class ControllerAddAudioPlayer implements Initializable {
     }
     //If successful then create new audioPlayer
     if (success1) {
-      if (Global.isUpdating){
+      if (Global.isUpdating) {
         updateToDb(name,audioSpec);
         showAlert("Product successfully updated.");
       } else {
@@ -322,7 +330,7 @@ public class ControllerAddAudioPlayer implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    if (Global.isUpdating){
+    if (Global.isUpdating) {
       txtFieldCopy.setDisable(true);
       typeLabel.setText("Update AudiPlayer");
       buttonAdd.setVisible(false);

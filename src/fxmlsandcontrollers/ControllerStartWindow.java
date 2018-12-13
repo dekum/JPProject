@@ -11,11 +11,9 @@
 
 package fxmlsandcontrollers;
 
-import java.awt.Checkbox;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -68,7 +66,7 @@ public class ControllerStartWindow implements  Initializable {
   @FXML
   TableColumn<Product,String> colType; //Displays either AudioPlyaer or MoviePlayer
   /**
-   * Root or background of this fxml
+   * Root or background of the fxml.
    */
   @FXML AnchorPane anchorPane;
 
@@ -82,8 +80,17 @@ public class ControllerStartWindow implements  Initializable {
    */
   @FXML Button buttonDelete;
 
+  /**
+   * A mediaview that is used to store the mediaPlayer object.
+   * This javafx element is called to access the mediaPlayer
+   */
   @FXML MediaView mediaView;
 
+  /**
+   * This mediaPlayer is tied to a mediaView. It allows
+   * the program to play "backgroundmsuic.mpe"
+   * It contains a play() and pause() methods usesd in this program.
+   */
   MediaPlayer mediaPlayer;
 
 
@@ -110,13 +117,26 @@ public class ControllerStartWindow implements  Initializable {
     }
   }
 
+  /**
+   * This method removes a selected Product from the database.
+   * THis method is call after an event is clicked on, the checkbox is clicked
+   * and the "delete product" button is clickeed.
+   * THis generates a sql statement that will delete the product from
+   * both the product list and  the class type table the product was.
+   * After it is executed, the table is unfocused, and the table is updated.
+   * Deleted products are permanently gone.
+   *
+   * @throws  ClassNotFoundException Requested classes are not found in classpath.
+   * @throws SQLException An exception that provides information on a
+   *                        database access error or other errors.
+   */
   public  void deleteFromDataBase()
       throws SQLException, ClassNotFoundException {
-    int serialNumberDelete =productClickedOn.getSerialNumber();
+    int serialNumberDelete = productClickedOn.getSerialNumber();
 
-    String updateStmt=
+    String updateStmt =
         "DELETE FROM NEW_SCHEMA.PRODUCT WHERE "
-            + "NEW_SCHEMA.PRODUCT.SERIALNUMBER="+serialNumberDelete;
+            + "NEW_SCHEMA.PRODUCT.SERIALNUMBER=" + serialNumberDelete;
     System.out.println(updateStmt);
 
     //Execute DELETE operation
@@ -129,18 +149,25 @@ public class ControllerStartWindow implements  Initializable {
     Alert alert = new Alert(AlertType.INFORMATION);
     alert.setTitle("Information Dialog");
     alert.setHeaderText(null);
-    alert.setContentText(productClickedOn.getName()+" deleted from records."); //print product toSTring
+    alert.setContentText(productClickedOn.getName() + " deleted from records.");
     alert.showAndWait();
     Global.productList.remove(productClickedOn);
     ArrayList<Product> productList = Global.productList;
     ObservableList<Product> observableListProductList =
         FXCollections.observableArrayList(productList);
     tableViewProducts.setItems(observableListProductList);
-    anchorPane.requestFocus();
+    anchorPane.requestFocus();//unfocus the tableview
 
 
   }
 
+  /**
+   * This method is called when "Delete product" is clicked.
+   * It will call the function that creates a sql query to deleted selected product.
+   * To prevent accidental deletes, a checkbox will disable or enable delete button.
+   * 
+   * @param  event a moouseclick event.
+   */
   @FXML
   void handleDelete(ActionEvent event) {
     if (productClickedOn != null) {
@@ -187,15 +214,13 @@ public class ControllerStartWindow implements  Initializable {
       Logger.getLogger(ControllerAddAudioPlayer.class.getName()).log(Level.SEVERE, null, ex);
 
     }
-
-    Parent p = loader.getRoot();
+    
     stage = new Stage();
-
     stage.setTitle("Add Audio Player");
-    if (Global.isUpdating){
+    if (Global.isUpdating) {
       stage.setTitle("Updating Audio PLayer");
     }
-
+    Parent p = loader.getRoot();
     stage.setScene(new Scene(p));
     stage.show(); //Opens new Window
   }
@@ -224,13 +249,13 @@ public class ControllerStartWindow implements  Initializable {
 
     }
 
-    Parent p = loader.getRoot();
+
     stage = new Stage();
     stage.setTitle("Add Movie Player");
-    if (Global.isUpdating){
+    if (Global.isUpdating) {
       stage.setTitle("Updating Movie Player");
     }
-
+    Parent p = loader.getRoot();
     stage.setScene(new Scene(p));
     stage.show(); //Opens new Window
 
@@ -273,7 +298,7 @@ public class ControllerStartWindow implements  Initializable {
      * This method runs first, it populates the Product table, default vales in Main.java
      * The columns receive the data from the productList of Global Class
      */
-    DbUtil.getStarted();
+    DbUtil.populateProductList();
     ArrayList<Product> productList = Global.productList;
     ObservableList<Product> observableListProductList =
         FXCollections.observableArrayList(productList);
@@ -291,14 +316,7 @@ public class ControllerStartWindow implements  Initializable {
 
       }
     });
-
     buttonDelete.disableProperty().bind(checkBox.selectedProperty().not());
-
-
-    //Path path = "resources/backgroundmusic.mp3";
-
-
-
   }
 
   /**
@@ -312,27 +330,50 @@ public class ControllerStartWindow implements  Initializable {
     stageExit.close();
   }
 
-  @FXML public void handleUpdate(){
-    if (productClickedOn !=null){
-      if (productClickedOn.getType().equals("AudioPlayer")){
-        Global.isUpdating=true;
+  /**
+   * This method is called after "Update Product" button is clicked.
+   * It will set a boolean "isUpdating" to be true which will change
+   * borh AddAudioPlayer and addMoviePlayer controllers and fxml's
+   * to update the product selected.
+   * To prevent errors,
+   * first the method checks if a product was selected.
+   *
+   */
+  @FXML public void handleUpdate() {
+    if (productClickedOn != null) {
+      if (productClickedOn.getType().equals("AudioPlayer")) {
+        Global.isUpdating = true;
         Global.productSelected = productClickedOn;
+        //checkBugs give error this is an improper use, or bad practice
+        // of a static field
         handleAudio(new ActionEvent());
       } else {
-        Global.isUpdating=true;
+        Global.isUpdating = true;
         handleMovie(new ActionEvent());
       }
     }
   }
 
+  /**
+   * This method is when "Play/Puase Music" is clicked
+   * This method will allow a embedded song to be played.
+   * THis method uses a MediaPlayer and mediaView to play a mp3
+   * to the fxml.
+   * The Song will [play if the user moves between window to window.
+   * The music is off on default, and the user can click the button again
+   * to turm off the music if they desire.
+   * Global is given the isPLaying boolean because it can store the toggle
+   * variable even if windows change.
+   * @param event a mouseclick Event.
+   */
   @FXML public void playOrPauseMusic(ActionEvent event) {
-    if (Global.isPlaying){
+    if (Global.isPlaying) {
       mediaView.getMediaPlayer().pause();
       Global.isPlaying = false;
     } else {
       Media media = new Media(new File("resources/backgroundmusic.mp3").toURI().toString());
       MediaPlayer mediaPlayer = new MediaPlayer(media);
-     // mediaPlayer.setAutoPlay(true);
+      // mediaPlayer.setAutoPlay(true);
       mediaPlayer.play();
       mediaView.setMediaPlayer(mediaPlayer);
       Global.isPlaying = true;

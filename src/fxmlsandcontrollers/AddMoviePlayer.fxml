@@ -24,6 +24,7 @@
       <Label layoutX="24.0" layoutY="157.0" text="Screen Resoultion" />
       <Label layoutX="24.0" layoutY="201.0" text="Refresh Rate" />
       <Label fx:id="Response" layoutX="22.0" layoutY="235.0" text="Response Time" />
+      <Slider fx:id="sliderResolution" blockIncrement="180.0" layoutX="147.0" layoutY="159.0" majorTickUnit="180.0" max="1080.0" min="360.0" minorTickCount="0" prefWidth="250.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="360.0" />
       <TextField fx:id="textFieldRefresh" layoutX="143.0" layoutY="197.0" text="22" />
       <TextField fx:id="textFieldResponse" layoutX="145.0" layoutY="231.0" text="18" />
       <Button fx:id="buttonAdd" layoutX="292.0" layoutY="351.0" mnemonicParsing="false" onAction="#handleAdd" text="Add" />
@@ -37,7 +38,6 @@
             <Image url="@../../images/moviePlayer.jpg" />
          </image>
       </ImageView>
-      <Slider fx:id="slider" blockIncrement="180.0" layoutX="147.0" layoutY="159.0" majorTickUnit="180.0" max="1080.0" min="360.0" minorTickCount="0" prefWidth="250.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="360.0" />
    </children>
    <stylesheets>
 

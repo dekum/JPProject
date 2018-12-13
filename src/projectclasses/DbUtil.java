@@ -1,3 +1,14 @@
+/**
+ * DBUtil.java
+ * 12/10/18
+ * @author Philemon Petit-Frere
+ * This class is a utility class that accesses the database and creates resultSets.
+ * To use this method, create a query and pass it to one of the methods
+ * This class has methods to Connect and Deconnect from database,
+ * and also to initialize the product list used the program.
+ * Use this class if you going to access the database.
+ */
+
 package projectclasses;
 
 import com.sun.rowset.CachedRowSetImpl;
@@ -12,18 +23,32 @@ import javafx.fxml.FXML;
 
 public class DbUtil {
 
-  //Connection
+  /**
+   * Connection object used to connect to database.
+   */
   private static Connection connection = null;
 
+  /**
+   * Relative URL to the database. Derby is used in this program.
+   * This url allows it to be used on other devices that have derby installed.
+   */
   static final String DATABASE_URL = "jdbc:derby:lib\\productdb";
 
-
+  /**
+   * This method makes a connection to the database.
+   * Prints an error statement if an error occurs.
+   *
+   * @throws  ClassNotFoundException Requested classes are not found in classpath.
+   * @throws  SQLException An exception that provides information on a
+   *                        database access error or other errors.
+   */
   public static void dbConnect() throws SQLException, ClassNotFoundException {
 
     //Establish the Oracle Connection using Connection String
     try {
       connection = DriverManager.getConnection(
           DATABASE_URL, "", "");
+      //findBugs suggests making this database password protected.
     } catch (SQLException e) {
       System.out.println("Connection Failed! Check output console" + e);
       e.printStackTrace();
@@ -31,6 +56,12 @@ public class DbUtil {
     }
   }
 
+  /**
+   * This method disconnects program from database.
+   *
+   * @throws  SQLException An exception that provides information on a
+   *                        database access error or other errors.
+   */
   public static void dbDisconnect() throws SQLException {
     try {
       if (connection != null && !connection.isClosed()) {
@@ -41,7 +72,15 @@ public class DbUtil {
     }
   }
 
-  //DB Execute Query Operation
+  /**
+   * This method execute a query operation, given a query Statement in parameter.
+   *
+   * @param  queryStmt A query to be executed and turned into a result set
+   * @return crs a resultset of the query statement passed.
+   * @throws  ClassNotFoundException Requested classes are not found in classpath.
+   * @throws  SQLException An exception that provides information on a
+   *                        database access error or other errors.
+   */
   public static ResultSet dbExecuteQuery(String queryStmt)
       throws SQLException, ClassNotFoundException {
     //Declare statement, resultSet and CachedResultSet as null
@@ -83,81 +122,57 @@ public class DbUtil {
     return crs;
   }
 
-//  //Delete an author with a given Id from DB
-//  @FXML
-//  private void deleteAuthor(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-//    try {
-//      AuthorDAO.deleteAuthWithId(authIdText.getText());
-//      resultArea.setText("Author deleted! Author id: " + authIdText.getText() + "\n");
-//      searchAuthors(new ActionEvent());
-//    } catch (SQLException e) {
-//      resultArea.setText(
-//          "Enter the id of the author to delete. \nProblem occurred while deleting author " + e);
-//      throw e;
-//    }
-//  }
+  /**
+   * Method used to initalize the productlist used in the program.
+   * This excutes a querty to join 3 tables, product audioplayer and movieplayer together,
+   * where the serial number match.
+   * Then a resultset is generated, which is used line by line to create new objects
+   * of AudioPlayers and MoviePlayers.
+   * The program knows if a product is a AudioPlayer or Movieplayer because of Product
+   * table's Type column, AP is audioplayer and MP is moviePlayer
+   * These objects are then added to Global's static productList, an arraylist of products.
+   * Serial number is important and must be unique so program knows which tables to join at what
+   * time.
+   */
+  public static void populateProductList() {
 
-
-  public static void getStarted2(){
-    try {
-      dbConnect();
-      final String SELECT_QUERY =
-          //"SELECT authorID, firstName, lastName FROM authors";
-          "Select * "
-              + "from NEW_SCHEMA.PRODUCT \n"
-              + "LEFT JOin NEW_SCHEMA.MOVIEPLAYER on NEW_SCHEMA.PRODUCT.SERIALNUMBER = NEW_SCHEMA.MOVIEPLAYER.SERIALNUMBERMP \n"
-              + "LEFT Join NEW_SCHEMA.AUDIOPLAYER on  NEW_SCHEMA.PRODUCT.SERIALNUMBER= NEW_SCHEMA.AUDIOPLAYER.SERIALNUMBERAP";
-      // use try-with-resources to connect to and query the database
-    } catch (SQLException e) {
-      e.printStackTrace();
-    } catch (ClassNotFoundException e) {
-      e.printStackTrace();
-    }
-  }
-
-  public static void getStarted(){
-
-    final String DATABASE_URL = "jdbc:derby:lib\\productdb";
+    final String databaseUrl = "jdbc:derby:lib\\productdb";
     //Use the sql Query "Select" To get data from the "authorID", "firstName" and "lastName"
     //from the table named author.
-    final String SELECT_QUERY =
+    final String selectQuery =
         //"SELECT authorID, firstName, lastName FROM authors";
         "Select * "
             + "from NEW_SCHEMA.PRODUCT \n"
-            + "LEFT JOin NEW_SCHEMA.MOVIEPLAYER on NEW_SCHEMA.PRODUCT.SERIALNUMBER = NEW_SCHEMA.MOVIEPLAYER.SERIALNUMBERMP \n"
-            + "LEFT Join NEW_SCHEMA.AUDIOPLAYER on  NEW_SCHEMA.PRODUCT.SERIALNUMBER= NEW_SCHEMA.AUDIOPLAYER.SERIALNUMBERAP";
+            + "LEFT JOin NEW_SCHEMA.MOVIEPLAYER "
+            + "on NEW_SCHEMA.PRODUCT.SERIALNUMBER = NEW_SCHEMA.MOVIEPLAYER.SERIALNUMBERMP \n"
+            + "LEFT Join NEW_SCHEMA.AUDIOPLAYER "
+            + "on  NEW_SCHEMA.PRODUCT.SERIALNUMBER = NEW_SCHEMA.AUDIOPLAYER.SERIALNUMBERAP";
     // use try-with-resources to connect to and query the database
     try (
         //Make a new connection with the database
         Connection connection = DriverManager.getConnection(
-            DATABASE_URL,
+            databaseUrl,
             "", "");
         Statement statement = connection.createStatement();
-        ResultSet resultSet = statement.executeQuery(SELECT_QUERY)) {
+        ResultSet resultSet = statement.executeQuery(selectQuery)) {
       // get ResultSet's meta data
       {
-        //    resultSet.next(); // This line is important, it set results to first row instead of an error.
-        // lblFirst.setText(resultSet.getString(2)); //firstName label gets FirstName column Result
-        // lblLast.setText(resultSet.getString(3));//lastName label gets LastName column Result
-        //lblID.setText(resultSet.getString(1));//authorID label gets authorID column Result
-        // lblFirst.setText(resultSet.getString("NAME"));
-        //lblLast.setText(String.valueOf(resultSet.getInt("serialNumber")) );
+        //resultSet.next();
+        // This line is important, it set results to first row instead of an error.
         Global.productList.clear();
-        String name="";
-        String screenRes="";
-        int responseTime=1;
-        int refreshRate=1;
-        int serialNum=1;
-        String monitorType="";
+        String name = "";
+        String screenRes = "";
+        int responseTime = 1;
+        int refreshRate = 1;
+        int serialNum = 1;
+        String monitorType = "";
 
-        String audioSpec="";
-
-
+        String audioSpec = "";
 
         //populate product arraylist
-        while (resultSet.next()){
+        while (resultSet.next()) {
           System.out.println("ROW NEXT");
-          if (resultSet.getString("TYPE").equalsIgnoreCase("AP")){
+          if (resultSet.getString("TYPE").equalsIgnoreCase("AP")) {
             //AudioPlyer detected
             name = resultSet.getString("NAME");
             audioSpec = resultSet.getString("AUDIOSPECIFICATION");
@@ -177,14 +192,14 @@ public class DbUtil {
             responseTime = resultSet.getInt("RESPONSETIME");
             refreshRate = resultSet.getInt("REFRESHRATE");
             serialNum = resultSet.getInt("SERIALNUMBER");
-            monitorType=resultSet.getString("MONITORTYPE");
-            MonitorType monitorTypeEnum= MonitorType.LED;
-            if (monitorType.equalsIgnoreCase("LCD")){
-              monitorTypeEnum= MonitorType.LCD;
+            monitorType = resultSet.getString("MONITORTYPE");
+            MonitorType monitorTypeEnum = MonitorType.LED;
+            if (monitorType.equalsIgnoreCase("LCD")) {
+              monitorTypeEnum = MonitorType.LCD;
             }
             MoviePlayer mp1 = new MoviePlayer(name,
                 new Screen(screenRes,refreshRate,responseTime),monitorTypeEnum);
-           java.sql.Date sqlDate = resultSet.getDate("MANUFACTUREDON");
+            java.sql.Date sqlDate = resultSet.getDate("MANUFACTUREDON");
             mp1.setLocalDateManufactured(sqlDate.toLocalDate());
 
             mp1.setProductionNumber(resultSet.getInt("SERIALNUMBER"));
@@ -192,13 +207,13 @@ public class DbUtil {
             mp1.setColor(color);
             Global.productList.add(mp1);
           }
-
         }
-
       }
-    } // AutoCloseable objects' close methods are called now
-    catch (SQLException sqlException) {
+      // AutoCloseable objects' close methods are called now
+    } catch (SQLException sqlException) {
       sqlException.printStackTrace();
+    } catch (RuntimeException e) {
+      System.out.println("Error " + e);
     } catch (Exception ex) {
       //Database was unable to connect
       System.out.println("Error");
@@ -207,14 +222,24 @@ public class DbUtil {
   }
 
   //DB Execute Update (For Update/Insert/Delete) Operation
-  public static void dbExecuteUpdate(String sqlStmt) throws SQLException, ClassNotFoundException {
+
+  /**
+   * A method used to excute an update on the database.
+   * Such as a Update, Insert or Delete operation.
+   *
+   * @param sqlStmt sql statement to be performed by this method.
+   * @throws  ClassNotFoundException Requested classes are not found in classpath.
+   * @throws  SQLException An exception that provides information on a
+   *                        database access error or other errors.
+   */
+  public static void dbExecuteUpdate(String sqlStmt) throws ClassNotFoundException, SQLException {
     //Declare statement as null
     Statement stmt = null;
     try {
       //Connect to DB (Establish Oracle Connection)
       dbConnect();
       //Create Statement
-      stmt = connection.createStatement();
+      stmt  =  connection.createStatement();
       //Run executeUpdate operation with given sql statement
       stmt.executeUpdate(sqlStmt);
     } catch (SQLException e) {
