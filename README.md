@@ -202,7 +202,7 @@ In 2.0.0 the DbUtil class was created to handle database functions.
 <h3>Demo</h3>
 <hr>
 
-![Gui Demo]( https://github.com/dekum/JPProject/blob/master/images/Demo.gif)<br>
+![Gui Demo]( https://github.com/dekum/JPProject/blob/master/images/DemoDB.gif)<br>
 This gif shows an example of how the GUI works. On the home screen, the user can select a product and see more information. Next is the AudioPlayer create the screen, where successful inputs are selected. The Movie Player window is shown afterward, and the error message is displayed because of invalid inputs. Lastly, the stat Windows is shown.
 
 <h3>Bug/Feature Request</h3>
