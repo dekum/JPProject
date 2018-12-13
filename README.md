@@ -32,9 +32,15 @@
 
 <h3>OverView</h3>
 <hr>
-This is a Java GUI project, that is designed to allow the user to create Audio Players and Movie Player products of their choice. They will be able to input their specifications of the products, and the products will be displayed on the Home Window in a table View. The user can also see the statistics of the movie Player, such as the total number of products, how many are movie players and how many are unique.
+<p> This is a Java GUI project, that is designed to allow the user to create Audio Players and Movie Player products of their choice. They will be able to input their specifications of the products, and the products will be displayed on the Home Window in a table View. The user can also see the statistics of the movie Player, such as the total number of products, how many are movie players and how many are unique.</p>
 
+<p> This project now implements a database. Using [Derby](https://db.apache.org/derby/) and sql statements, the program now interacts with a database which stores the Audio Players, Products and MoivePlayer objects created by the user. The user can also add, delete, or update products in the database.
+ </p>
+ 
+ <p> This project followed [GUI Design Principles](https://en.wikibooks.org/wiki/GUI_Design_Principles) 
+ by first making the project aesthetically pleasing and easy to look at. The Stats window shows a graph to easily see data, and the contrast between colors is clear. Clarity is emphasized, by color and text, buttons are clearly defined and don't offer any surprises to the user. Each window is consistent, and the buttons perform the action as stated. The program was extensively tested so runtime errors s should infrequent if any. The control is given to the user to perform the tasks they want. Textfiles offer a "CTRL-Z" function to undo mistakes. The user's work isn't lost when they enter bad inputs, errors clearly display what the user did wrong.
 
+</p>
 <h3>Images</h3>
 <h4>Home Window </h4>
  <hr>
