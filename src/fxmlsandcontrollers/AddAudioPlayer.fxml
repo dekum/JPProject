@@ -6,7 +6,6 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -27,10 +26,7 @@
       <Label layoutX="12.0" layoutY="210.0" text="Color:" />
       <DatePicker fx:id="datePickerManufactured" layoutX="134.0" layoutY="256.0" prefHeight="25.0" prefWidth="149.0" />
       <Label layoutX="14.0" layoutY="260.0" text="Date Manufactured" />
-      <ImageView fx:id="imageView" fitHeight="78.0" fitWidth="103.0" layoutX="333.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../images/audioPlayer.jpg" />
-         </image></ImageView>
+      <ImageView fx:id="imageView" fitHeight="112.0" fitWidth="103.0" layoutX="308.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
    </children>
    <stylesheets>
 

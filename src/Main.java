@@ -20,28 +20,21 @@ import projectclasses.Screen;
 
 public class Main extends Application {
 
+  /**
+   * This method starts the GUI.
+   *
+   * @param primaryStage the firsts stage.
+   * @throws Exception a general exception.
+   */
   @Override
   public void start(Stage primaryStage) throws Exception {
-    /**
-     * Set up a projectclasses productList, with 3 moviePlayers and 2 audioPlayers
-     */
-    Global.productList.add(new MoviePlayer("DBPOWER MK101",
-        new Screen("720x480",40,22), MonitorType.LCD));
 
-    AudioPlayer ap = new AudioPlayer("ipod Mini", "MP3");
-    Global.productList.add(ap);
-    Global.productList.add(new MoviePlayer("Pyle PDV156BK",
-        new Screen("1366x768",40,22),MonitorType.LED));
-
-    AudioPlayer ap2 = new AudioPlayer("Walkman", "WAV");
-    Global.productList.add(ap2);
-    Global.productList.add(new MoviePlayer("DBPOWER MK101",
-        new Screen("720x480",40,22),MonitorType.LCD));
+    // clear productlist since it will be read from the database.
     Global.productList.clear();
     //DbUtil.populateProductList();
     Parent root = FXMLLoader.load(getClass().getResource("fxmlsandcontrollers/StartWindow.fxml"));
     primaryStage.setTitle("Home Window");
-    primaryStage.setScene(new Scene(root, 478, 341));
+    primaryStage.setScene(new Scene(root, 476, 401));
     primaryStage.show(); //open
 
   }

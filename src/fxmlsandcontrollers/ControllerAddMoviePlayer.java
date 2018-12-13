@@ -34,6 +34,8 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
@@ -44,6 +46,12 @@ import projectclasses.MoviePlayer;
 import projectclasses.Screen;
 
 public class ControllerAddMoviePlayer implements Initializable {
+
+
+  /**
+   * Image displayed in the top right.
+   */
+  @FXML  private ImageView imageView;
 
   /**
    * TextField to set the refresh rate.
@@ -393,6 +401,8 @@ public class ControllerAddMoviePlayer implements Initializable {
     choiceBoxMonitorType.setItems(monitorTypeList);
     datePickerManufactured.setValue(LocalDate.now());
 
+    Image image = new Image("fxmlsandcontrollers/moviePlayer.jpg");
+    imageView.setImage(image);
 
 
     sliderResolution.setLabelFormatter(new StringConverter<Double>() {

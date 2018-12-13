@@ -21,7 +21,7 @@
     <node x="219.75" y="190.0">projectclasses.Product</node>
     <node x="0.0" y="1259.0">projectclasses.MonitorType</node>
     <node x="289.25" y="0.0">projectclasses.Item</node>
-    <node x="1158.75" y="0.0">projectclasses.ProcessFiles</node>
+    <node x="620.6883378016087" y="384.3297587131367">projectclasses.ProcessFiles</node>
   </nodes>
   <notes />
   <edges>
@@ -54,9 +54,9 @@
       <point x="-37.25" y="58.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.7415506958250497" x="249.0" y="231.5" />
+  <settings layout="Hierarchic Group" zoom="0.7415506958250497" x="888.7587131367292" y="361.5" />
   <SelectedNodes>
-    <node>projectclasses.Screen</node>
+    <node>projectclasses.ProcessFiles</node>
   </SelectedNodes>
   <Categories>
     <Category>Fields</Category>

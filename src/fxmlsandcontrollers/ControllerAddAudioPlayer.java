@@ -13,6 +13,8 @@ package fxmlsandcontrollers;
 import java.awt.Checkbox;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -33,6 +35,8 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import projectclasses.AudioPlayer;
@@ -40,6 +44,12 @@ import projectclasses.DbUtil;
 import projectclasses.Global;
 
 public class ControllerAddAudioPlayer implements Initializable {
+
+  /**
+   * Image displayed in the top right.
+   */
+  @FXML
+  private ImageView imageView;
   /**
    * Txtfield to set the AudioPlayer Name.
    */
@@ -337,8 +347,11 @@ public class ControllerAddAudioPlayer implements Initializable {
       buttonUpdate.setVisible(true);
 
     }
+    //Image image = new Image("..\\..\\images\\audioPlayer.jpg");
 
 
+    Image image = new Image("fxmlsandcontrollers/audioPlayer.jpg");
+    imageView.setImage(image);
     datePickerManufactured.setValue(LocalDate.now());
   }
 }
