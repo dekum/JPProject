@@ -25,15 +25,14 @@
 
 <h3>Goal</h4>
  <hr>
-<p>Create a production plant for any type of product ranging from a simple packaging system to a variety of electronic devices.
-Create a production line for multimedia devices which include music and movie players.
-<br>Design a template in Java for creating and recording all future production line items.  
+<p>
+ * Create a production plant for any type of product ranging from a simple packaging system to a variety of electronic devices.
+* Create a production line for multimedia devices which include music and movie players.
+* Design a template in Java for creating and recording all future production line items.  
 
 <h3>OverView</h3>
 <hr>
 This is a Java GUI project, that is designed to allow the user to create Audio Players and Movie Player products of their choice. They will be able to input their specifications of the products, and the products will be displayed on the Home Window in a table View. The user can also see the statistics of the movie Player, such as the total number of products, how many are movie players and how many are unique.
-
-This 
 
 
 <h3>Images</h3>
@@ -177,6 +176,7 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 <h3>Updates</h3>
 <hr>
 <p>
+ 
 *  2.0.0: Added database functionality. Using Derby this project is now connected to a database. The user can now add, remove and update products in the database. Now the information is stored so when the user closes the program, their changes are still there.
  
  * 1.4.0: Added CSS to make the project look more presentable. A slider was added to add MoviePlayer, to allow better options for resolution.
