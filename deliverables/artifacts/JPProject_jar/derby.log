@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Thu Dec 13 10:46:58 EST 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0167-a83f-e139-00000744f150 
+on database directory C:\Users\Big Green\IdeaProjects\JPProject\deliverables\artifacts\JPProjectDB_jar\lib\productdb with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@5f3e5f20 
+Loaded from file:/C:/Users/Big%20Green/IdeaProjects/JPProject/deliverables/artifacts/JPProjectDB_jar/JPProject.jar
+java.vendor=Oracle Corporation
+java.runtime.version=10.0.2+13
+user.dir=C:\Users\Big Green\IdeaProjects\JPProject\deliverables\artifacts\JPProjectDB_jar
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
