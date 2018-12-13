@@ -202,7 +202,7 @@ In 2.0.0 the DbUtil class was created to handle database functions.
 <h3>Demo</h3>
 <hr>
 
-![Gui Demo]( https://github.com/dekum/JPProject/blob/master/images/Demo.gif)<br>
+![Gui Demo]( https://github.com/dekum/JPProject/blob/master/images/DemoDB.gif)<br>
 This gif shows an example of how the GUI works. On the home screen, the user can select a product and see more information. Next is the AudioPlayer create the screen, where successful inputs are selected. The Movie Player window is shown afterward, and the error message is displayed because of invalid inputs. Lastly, the stat Windows is shown.
 
 <h3>Bug/Feature Request</h3>
@@ -221,8 +221,10 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 * A java IDE is needed if you going to import from github.
 
 * For those without IDE, a jar file is provided, and works without the use of one.
+* Important: When running the jar, make sure the lib folder is in the same folder as the jar, or the database wont run.
+* A zipfile of the jar and lib folder, is available to be unzip if you need to retart.
 
-* The Jar file is located in deliverables>artifacts>JPProject.jar
+* The Jar file is located in deliverables>artifacts>JPProject_jar>JPProject.jar
 
 * This program was tested with Window 10, 64-Bit with JDK8 using InteliJ IDEA 12/13/2018
 <br> 
@@ -243,7 +245,9 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 <hr>
  JP Project is a scenario created by Oracle Academy for the purpose of teaching Java.
  
-This program is authored by Philemon Petit-Frere
+This program is authored by Philemon Petit-Frere.
+
+Database functions and utility class was provided by [Professor Vanselow](https://github.com/profvanselow).
 
 Approx. 3300 lines of java code are written in this program according to https://line-count.herokuapp.com/dekum/JPProject
 
