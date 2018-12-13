@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>projectclasses</OriginalElement>
+  <nodes>
+    <node x="948.75" y="0.0">projectclasses.ScreenSpec</node>
+    <node x="599.75" y="0.0">projectclasses.EmployeeInfo</node>
+    <node x="847.0" y="1030.0">projectclasses.Global</node>
+    <node x="394.0" y="1259.0">projectclasses.AudioPlayerDriver</node>
+    <node x="641.0" y="1030.0">projectclasses.ItemType</node>
+    <node x="35.75" y="367.5">projectclasses.MultimediaControl</node>
+    <node x="0.0" y="722.5">projectclasses.MoviePlayer</node>
+    <node x="927.75" y="145.0">projectclasses.Screen</node>
+    <node x="290.0" y="1030.0">projectclasses.StatsReport</node>
+    <node x="1128.0" y="1030.0">projectclasses.OldMain</node>
+    <node x="162.0" y="1259.0">projectclasses.MoviePlayerDriver</node>
+    <node x="839.0" y="1259.0">projectclasses.PlayerDriver</node>
+    <node x="625.0" y="1259.0">projectclasses.ViewFileInfo</node>
+    <node x="0.0" y="1030.0">projectclasses.DbUtil</node>
+    <node x="312.0" y="712.0">projectclasses.AudioPlayer</node>
+    <node x="219.75" y="190.0">projectclasses.Product</node>
+    <node x="0.0" y="1259.0">projectclasses.MonitorType</node>
+    <node x="289.25" y="0.0">projectclasses.Item</node>
+    <node x="1158.75" y="0.0">projectclasses.ProcessFiles</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="projectclasses.AudioPlayer" target="projectclasses.MultimediaControl">
+      <point x="-53.0" y="-136.5" />
+      <point x="365.0" y="682.0" />
+      <point x="147.5" y="682.0" />
+      <point x="37.25" y="58.5" />
+    </edge>
+    <edge source="projectclasses.AudioPlayer" target="projectclasses.Product">
+      <point x="53.0" y="-136.5" />
+      <point x="83.75" y="236.0" />
+    </edge>
+    <edge source="projectclasses.Product" target="projectclasses.Item">
+      <point x="0.0" y="-236.0" />
+      <point x="0.0" y="70.0" />
+    </edge>
+    <edge source="projectclasses.Screen" target="projectclasses.ScreenSpec">
+      <point x="0.0" y="-70.5" />
+      <point x="0.0" y="47.5" />
+    </edge>
+    <edge source="projectclasses.MoviePlayer" target="projectclasses.Product">
+      <point x="73.0" y="-126.0" />
+      <point x="219.0" y="692.0" />
+      <point x="303.5" y="692.0" />
+      <point x="-83.75" y="236.0" />
+    </edge>
+    <edge source="projectclasses.MoviePlayer" target="projectclasses.MultimediaControl">
+      <point x="-73.0" y="-126.0" />
+      <point x="-37.25" y="58.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7415506958250497" x="249.0" y="231.5" />
+  <SelectedNodes>
+    <node>projectclasses.Screen</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

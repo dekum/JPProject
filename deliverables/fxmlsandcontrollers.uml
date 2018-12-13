@@ -3,10 +3,10 @@
   <ID>JAVA</ID>
   <OriginalElement>fxmlsandcontrollers</OriginalElement>
   <nodes>
-    <node x="0.0" y="74.0">fxmlsandcontrollers.ControllerAddAudioPlayer</node>
-    <node x="0.0" y="222.0">fxmlsandcontrollers.ControllerStats</node>
-    <node x="0.0" y="148.0">fxmlsandcontrollers.ControllerStartWindow</node>
-    <node x="0.0" y="0.0">fxmlsandcontrollers.ControllerAddMoviePlayer</node>
+    <node x="0.0" y="493.0">fxmlsandcontrollers.ControllerAddAudioPlayer</node>
+    <node x="303.0" y="493.0">fxmlsandcontrollers.ControllerStats</node>
+    <node x="0.0" y="0.0">fxmlsandcontrollers.ControllerStartWindow</node>
+    <node x="332.0" y="0.0">fxmlsandcontrollers.ControllerAddMoviePlayer</node>
   </nodes>
   <notes />
   <edges />
@@ -14,7 +14,13 @@
   <SelectedNodes>
     <node>fxmlsandcontrollers.ControllerAddAudioPlayer</node>
   </SelectedNodes>
-  <Categories />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
 </Diagram>
