@@ -150,7 +150,6 @@ public class ControllerStats implements Initializable {
     statsList.add(new StatsReport("Total LCDs",lcdCounter));
     statsList.add(new StatsReport("Total LEDs",ledCounter));
 
-
     ObservableList<StatsReport> observableStatsList = FXCollections.observableArrayList(statsList);
     //set Cellfactory for name column
     colStatName.setCellValueFactory(cellData -> cellData.getValue().getStatNameProperty());

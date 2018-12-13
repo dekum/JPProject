@@ -281,7 +281,7 @@ public abstract class Product implements Item, Comparable {
     //manufacturedOn will receive new Date, set to current time the program runs
 
     localDateManufactured = LocalDate.now();
-    System.out.println(localDateManufactured + "\n" + manufacturedOn);
+    //System.out.println(localDateManufactured + "\n" + manufacturedOn);
     setNameProperty(name);
     setTypeProperty(this.getClass().getSimpleName());
 

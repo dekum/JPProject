@@ -171,7 +171,7 @@ public class DbUtil {
 
         //populate product arraylist
         while (resultSet.next()) {
-          System.out.println("ROW NEXT");
+          //System.out.println("ROW NEXT");
           if (resultSet.getString("TYPE").equalsIgnoreCase("AP")) {
             //AudioPlyer detected
             name = resultSet.getString("NAME");

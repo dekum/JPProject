@@ -12,7 +12,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="424.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxmlsandcontrollers.ControllerAddMoviePlayer">
+<AnchorPane prefHeight="400.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxmlsandcontrollers.ControllerAddMoviePlayer">
    <children>
       <Label fx:id="typeLabel" layoutX="21.0" layoutY="14.0" text="MoviePlayer" />
       <Label layoutX="21.0" layoutY="43.0" text="# of Copies:" />

@@ -351,6 +351,12 @@ public class ControllerStartWindow implements  Initializable {
         Global.isUpdating = true;
         handleMovie(new ActionEvent());
       }
+    } else {
+      Alert alert = new Alert(AlertType.ERROR);
+      alert.setTitle("Information Dialog");
+      alert.setHeaderText(null);
+      alert.setContentText("Please click on a product."); //error message
+      alert.showAndWait();
     }
   }
 
