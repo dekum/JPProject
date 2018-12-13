@@ -96,7 +96,7 @@
 <h4>Update Audio Player</h4>
  <hr>
  
- ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddAudioPlayerUpdate.png)<br>
+ ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddAudioPlayerUpdate.png)
  *This window displays when "Update Product" is selected, and it is a audioplayer object.
  *The user changes the fields they choose, and press "Update" and the database is updated with new data.
  
