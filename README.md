@@ -141,13 +141,11 @@ UML Diagram for the controllers <br>
  UML Diagram for the classes of this program. Blue Lines show inheritance, and green lines show implementing.<br>
 Item is an interface with its own method headers  that is implemented by Product, thus no objects can be created from it. <br> Product is an public abstract class that implements, Item class and its methods. Since it's abstract no objects can be created from it.
 <br> Movie Player and AudioPlayer are subclasses of product, and call Product's constructor when objects are made from them. The two classes also implement Multimedia Control interface, and have defined methods that were implemented.
+
+[JavaDoc](https://dekum.github.io/JPProject/docs/index.html) Javadocs can be seen here.
+
 <br>
  
- <h3>Javadocs</h3>
- [JavaDoc](dekum.github.io/JPProject/docs/JavaDoc/index.html)
- 
-YourGitHubUserName.github.io/YourRepositoryName/foldername/filename
-
 <h3>Demo</h3>
 <hr>
 
