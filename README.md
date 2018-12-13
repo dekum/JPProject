@@ -136,7 +136,7 @@ This is a Java GUI project, that is designed to allow the user to create Audio P
  <h3>Diagrams</h3>
   <hr>
   
- ![Gui Picture]( https://github.com/dekum/JPProject/blob/master/images/fxmlsandcontrollersUML.pngg)<br>
+ ![Gui Picture]( https://github.com/dekum/JPProject/blob/master/images/fxmlsandcontrollersUML.png)<br>
 UML Diagram for the controllers <br>
  
  ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/projectclassesUML.png)<br>
