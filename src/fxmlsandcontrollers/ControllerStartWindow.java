@@ -12,8 +12,10 @@
 package fxmlsandcontrollers;
 
 import java.awt.Checkbox;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -36,6 +38,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import projectclasses.DbUtil;
 import projectclasses.Global;
@@ -76,6 +81,12 @@ public class ControllerStartWindow implements  Initializable {
    * Button to delete a product from database.
    */
   @FXML Button buttonDelete;
+
+  @FXML MediaView mediaView;
+
+  MediaPlayer mediaPlayer;
+
+
 
   /**
    * This method displays a popup with window with the toString of the product user clicks.
@@ -181,6 +192,10 @@ public class ControllerStartWindow implements  Initializable {
     stage = new Stage();
 
     stage.setTitle("Add Audio Player");
+    if (Global.isUpdating){
+      stage.setTitle("Updating Audio PLayer");
+    }
+
     stage.setScene(new Scene(p));
     stage.show(); //Opens new Window
   }
@@ -211,8 +226,11 @@ public class ControllerStartWindow implements  Initializable {
 
     Parent p = loader.getRoot();
     stage = new Stage();
-
     stage.setTitle("Add Movie Player");
+    if (Global.isUpdating){
+      stage.setTitle("Updating Movie Player");
+    }
+
     stage.setScene(new Scene(p));
     stage.show(); //Opens new Window
 
@@ -255,6 +273,7 @@ public class ControllerStartWindow implements  Initializable {
      * This method runs first, it populates the Product table, default vales in Main.java
      * The columns receive the data from the productList of Global Class
      */
+    DbUtil.getStarted();
     ArrayList<Product> productList = Global.productList;
     ObservableList<Product> observableListProductList =
         FXCollections.observableArrayList(productList);
@@ -275,6 +294,11 @@ public class ControllerStartWindow implements  Initializable {
 
     buttonDelete.disableProperty().bind(checkBox.selectedProperty().not());
 
+
+    //Path path = "resources/backgroundmusic.mp3";
+
+
+
   }
 
   /**
@@ -286,5 +310,32 @@ public class ControllerStartWindow implements  Initializable {
     System.out.println("Goodbye");
     Stage stageExit = (Stage) tableViewProducts.getScene().getWindow();
     stageExit.close();
+  }
+
+  @FXML public void handleUpdate(){
+    if (productClickedOn !=null){
+      if (productClickedOn.getType().equals("AudioPlayer")){
+        Global.isUpdating=true;
+        Global.productSelected = productClickedOn;
+        handleAudio(new ActionEvent());
+      } else {
+        Global.isUpdating=true;
+        handleMovie(new ActionEvent());
+      }
+    }
+  }
+
+  @FXML public void playOrPauseMusic(ActionEvent event) {
+    if (Global.isPlaying){
+      mediaView.getMediaPlayer().pause();
+      Global.isPlaying = false;
+    } else {
+      Media media = new Media(new File("resources/backgroundmusic.mp3").toURI().toString());
+      MediaPlayer mediaPlayer = new MediaPlayer(media);
+     // mediaPlayer.setAutoPlay(true);
+      mediaPlayer.play();
+      mediaView.setMediaPlayer(mediaPlayer);
+      Global.isPlaying = true;
+    }
   }
 }

@@ -31,6 +31,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -55,10 +56,6 @@ public class ControllerAddAudioPlayer implements Initializable {
   @FXML
   private TextField txtFieldAudioSpec;
 
-  /**
-   * This method displays a popup with the Message passed in the parameter.
-   * @param message is a String passed by other method to be displayed to the user
-   */
 
   /**
    * A datepicker to set the date this product was manufactured .
@@ -75,6 +72,16 @@ public class ControllerAddAudioPlayer implements Initializable {
    */
   @FXML private CheckBox checkBox;
 
+  @FXML Label typeLabel;
+  @FXML Button buttonUpdate;
+
+  @FXML private Button buttonAdd = new Button();
+
+  /**
+   * This method displays a popup with the Message passed in the parameter.
+   *
+   * @param  message is a String passed by other method to be displayed to the user
+   */
   void showAlert(String message) {
     Alert alert = new Alert(AlertType.INFORMATION);
     alert.setTitle("Information Dialog.");
@@ -180,6 +187,49 @@ public class ControllerAddAudioPlayer implements Initializable {
     }
   }
 
+  public  void updateToDb(String name, String audiSpec)
+      throws SQLException, ClassNotFoundException {
+    //int currentSerialNumber = 1;
+    //currentSerialNumber = getMaxSerialNumber() + 1;
+    LocalDate dateFromDatePicker =  datePickerManufactured.getValue();
+    Color color1 = colorPicker.getValue();
+    String colorPicked = color1.toString();
+    int serialNumber = Global.productSelected.getSerialNumber();
+
+
+    String updateStmt =
+        "UPDATE NEW_SCHEMA.PRODUCT "
+            + "SET  NAME='" + name + "',  TYPE = 'AP',"
+            + "  MANUFACTUREDON = '"+dateFromDatePicker +"', COLOR='"
+            +colorPicked+"' WHERE  SERIALNUMBER="+ serialNumber;
+
+    System.out.println(updateStmt);
+
+
+    //Execute DELETE operation
+    try {
+      DbUtil.dbExecuteUpdate(updateStmt);
+    } catch (SQLException e) {
+      System.out.print("Error occurred while UPDATE Operation: " + e);
+      throw e;
+    }
+
+//    String updateStmt2 =
+//        "INSERT INTO NEW_SCHEMA.AUDIOPLAYER "
+//            + "(NEW_SCHEMA.AUDIOPLAYER.NAME, NEW_SCHEMA.AUDIOPLAYER.SERIALNUMBERAP,"
+//            + "NEW_SCHEMA.AUDIOPLAYER.AUDIOSPECIFICATION) "
+//            + "VALUES ('" + name + "',"  + currentSerialNumber + ",'" +  audiSpec + "')";
+//    System.out.println(updateStmt2);
+//
+//    //Execute DELETE operation
+//    try {
+//      DbUtil.dbExecuteUpdate(updateStmt2);
+//    } catch (SQLException e) {
+//      System.out.print("Error occurred while UPDATE Operation: " + e);
+//      throw e;
+//    }
+  }
+
   /**
    * This method will open the StartWidow.fxml window, also also closes current window.
    * @param event is a mouseClick event.
@@ -204,7 +254,7 @@ public class ControllerAddAudioPlayer implements Initializable {
 
     Parent p = loader.getRoot();
     stage = new Stage();
-
+    Global.isUpdating = false; //Not updating anymore
     stage.setTitle("Home Screen");
     stage.setScene(new Scene(p));
     stage.show(); //Opens new Window
@@ -223,6 +273,7 @@ public class ControllerAddAudioPlayer implements Initializable {
    */
   @FXML
   void handleAdd(ActionEvent event) throws SQLException, ClassNotFoundException {
+
     String name = txtFieldName.getText();
     String audioSpec = txtFieldAudioSpec.getText();
     Boolean success1 = true; //Boolean for if copies input is an int
@@ -239,31 +290,45 @@ public class ControllerAddAudioPlayer implements Initializable {
     }
     //If successful then create new audioPlayer
     if (success1) {
-      if (copies > 1) {
-        for (int i = 0; i < copies; i++) {
-          //Loop to create copies
+      if (Global.isUpdating){
+        updateToDb(name,audioSpec);
+        showAlert("Product successfully updated.");
+      } else {
+        if (copies > 1) {
+          for (int i = 0; i < copies; i++) {
+            //Loop to create copies
+            AudioPlayer ap1 = new AudioPlayer(name,audioSpec);
+            Global.productList.add(ap1);
+            addToDb(name, audioSpec);
+          }
+        } else if (copies == 1) {
           AudioPlayer ap1 = new AudioPlayer(name,audioSpec);
           Global.productList.add(ap1);
           addToDb(name, audioSpec);
-        }
-      } else if (copies == 1) {
-        AudioPlayer ap1 = new AudioPlayer(name,audioSpec);
-        Global.productList.add(ap1);
-        addToDb(name, audioSpec);
-        //alert = new Alert(AlertType.INFORMATION);
-        showAlert(name + " was successfully created.");//Opens alert box
+          //alert = new Alert(AlertType.INFORMATION);
+          showAlert(name + " was successfully created.");//Opens alert box
 
-      }
-      if (copies == 0 || copies < 0) {
-        showAlert("No Audio Player was created, please enter number of copies.");//Opens alert box
-      } else if (copies > 1) {
-        showAlert(copies + " copies of " + name + " were created.");//Opens alert box
+        }
+        if (copies == 0 || copies < 0) {
+          showAlert("No Audio Player was created, please enter number of copies.");//Opens alert box
+        } else if (copies > 1) {
+          showAlert(copies + " copies of " + name + " were created.");//Opens alert box
+        }
       }
     }
+
   }
+
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    if (Global.isUpdating){
+      txtFieldCopy.setDisable(true);
+      typeLabel.setText("Update AudiPlayer");
+      buttonAdd.setVisible(false);
+      buttonUpdate.setVisible(true);
+
+    }
 
 
     datePickerManufactured.setValue(LocalDate.now());

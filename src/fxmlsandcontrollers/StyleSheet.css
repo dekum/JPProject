@@ -82,4 +82,7 @@
 -fx-background-color: darkslateblue;
   -fx-text-fill: white;
 }
+.button:hover{
 
+  -fx-background-color: #4a48a8;
+}

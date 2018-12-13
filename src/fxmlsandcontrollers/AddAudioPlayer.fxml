@@ -21,6 +21,7 @@
       <TextField fx:id="txtFieldAudioSpec" layoutX="135.0" layoutY="143.0" text="MP3" />
 
       <Button layoutX="270.0" layoutY="289.0" mnemonicParsing="false" onAction="#handleAdd" text="Add" />
+      <Button fx:id="buttonUpdate" layoutX="260.0" layoutY="289.0" mnemonicParsing="false" onAction="#handleAdd" text="Update" visible="false" />
       <Button layoutX="333.0" layoutY="289.0" mnemonicParsing="false" onAction="#handleExit" text="Exit" />
       <ColorPicker fx:id="colorPicker" layoutX="135.0" layoutY="187.0" />
       <Label layoutX="13.0" layoutY="191.0" text="Color:" />

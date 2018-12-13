@@ -7,6 +7,7 @@
 
 package projectclasses;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -21,4 +22,17 @@ public class Global {
    */
   public static final  ArrayList<Product> productList = new ArrayList<>();
   //FindBugs suggested to make productList a final.
+
+  /**
+   * Boolean to store if music is playing or not. Only used in ControllerStartWindow.
+   */
+  public static Boolean isPlaying = false;
+  /**
+   * If updating method this is true.
+   */
+  public static Boolean isUpdating = false;
+  /**
+   * Product to be updates
+   */
+  public static Product  productSelected;
 }

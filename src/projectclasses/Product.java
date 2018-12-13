@@ -152,6 +152,10 @@ public abstract class Product implements Item, Comparable {
     return typeProperty;
   }
 
+  public String getType(){
+    return  typeProperty.get();
+  }
+
   /**
    * Changes this typeProperty to parameter.
    *

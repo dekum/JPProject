@@ -79,8 +79,6 @@ public class ControllerAddMoviePlayer implements Initializable {
   @FXML
   private TextField txtFieldAudioSpec;
 
-
-
   /**
    * A datepicker to set the date this product was manufactured .
    * Default is today's date.
@@ -353,6 +351,7 @@ public class ControllerAddMoviePlayer implements Initializable {
 
     Parent p = loader.getRoot();
     stage = new Stage();
+    Global.isUpdating=false;
 
     stage.setTitle("Home Screen");
     stage.setScene(new Scene(p));

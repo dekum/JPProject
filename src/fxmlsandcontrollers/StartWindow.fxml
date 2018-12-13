@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.media.MediaView?>
 
 <AnchorPane fx:id="anchorPane" prefHeight="341.0" prefWidth="478.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxmlsandcontrollers.ControllerStartWindow">
    <children>
@@ -14,7 +15,7 @@
       <Label layoutX="302.0" layoutY="45.0" text="Pick an Option:" />
       <Button layoutX="302.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleAudio" text="Add Audio Player" />
       <Button layoutX="301.0" layoutY="139.0" mnemonicParsing="false" onAction="#handleMovie" text="Add Movie Player" />
-      <Button layoutX="307.0" layoutY="226.0" mnemonicParsing="false" onAction="#handleStats" text="View Stats" />
+      <Button layoutX="307.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleStats" text="View Stats" />
       <TableView fx:id="tableViewProducts" layoutX="19.0" layoutY="51.0" prefHeight="200.0" prefWidth="221.0">
         <columns>
           <TableColumn fx:id="colName" prefWidth="100.00000762939453" text="Name" />
@@ -25,8 +26,10 @@
       <Button layoutX="19.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleMoreInfo" text="More Info" />
       <Button layoutX="399.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleQuit" text="Quit" />
       <Button fx:id="buttonDelete" disable="true" layoutX="142.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleDelete" text="Delete Product" />
-      <Button layoutX="139.0" layoutY="261.0" mnemonicParsing="false" text="Update Product" />
+      <Button layoutX="139.0" layoutY="261.0" mnemonicParsing="false" onAction="#handleUpdate" text="Update Product" />
       <CheckBox fx:id="checkBox" layoutX="19.0" layoutY="306.0" mnemonicParsing="false" text="Delete?" />
+      <MediaView fx:id="mediaView" fitHeight="50.0" fitWidth="100.0" layoutX="251.0" layoutY="277.0" />
+      <Button layoutX="300.0" layoutY="250.0" mnemonicParsing="false" onAction="#playOrPauseMusic" text="♬ Play/Pause Music ♬" />
 
    </children>
   <stylesheets>
