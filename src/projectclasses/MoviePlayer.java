@@ -51,6 +51,15 @@ public class MoviePlayer extends  Product implements  MultimediaControl {
   }
 
   /**
+   * Gets screen.
+   *
+   * @return value of screen.
+   */
+  public Screen getScreen() {
+    return screen;
+  }
+
+  /**
    * Prints Playing movie to console.
    */
   @Override

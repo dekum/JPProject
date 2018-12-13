@@ -349,6 +349,7 @@ public class ControllerStartWindow implements  Initializable {
         handleAudio(new ActionEvent());
       } else {
         Global.isUpdating = true;
+        Global.productSelected = productClickedOn;
         handleMovie(new ActionEvent());
       }
     } else {

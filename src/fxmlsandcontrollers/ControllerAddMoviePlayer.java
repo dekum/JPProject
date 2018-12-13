@@ -29,9 +29,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -47,7 +49,18 @@ import projectclasses.Screen;
 
 public class ControllerAddMoviePlayer implements Initializable {
 
-
+  /**
+   * Button activates update function.
+   */
+  public Button buttonUpdate;
+  /**
+   * Label to shoe user if they are adding or updating.
+   */
+  @FXML private Label typeLabel;
+  /**
+   * Button that activates adding a movie player.
+   */
+  @FXML private Button buttonAdd;
   /**
    * Image displayed in the top right.
    */
@@ -203,8 +216,8 @@ public class ControllerAddMoviePlayer implements Initializable {
    * Then it inserts a new row of data into the MoviePlayer table.
    *
    * @param  name name of the product inputted by user.
-     @param screen a screen object with valid inputs by user
-   * @param monitorType MonitorType enum that is passed.
+   * @param  screen a screen object with valid inputs by user
+   * @param  monitorType MonitorType enum that is passed.
    * @throws SQLException An exception that provides information on a
    *                        database access error or other errors.
    * @throws ClassNotFoundException Requested classes are not found in classpath.
@@ -245,6 +258,70 @@ public class ControllerAddMoviePlayer implements Initializable {
             + "VALUES ('" + name + "',"  + currentSerialNumber + ",'" +  screenRes
             + "'," + responseTime + "," + refreshRate + ", '" + monitorType + " ')";
     System.out.println(updateStmt2);
+
+    //Execute DELETE operation
+    try {
+      DbUtil.dbExecuteUpdate(updateStmt2);
+    } catch (SQLException e) {
+      System.out.print("Error occurred while UPDATE Operation: " + e);
+      throw e;
+    }
+  }
+
+  /**
+   *This method updates a movieplayer object in the productlist.
+   *This method is called after the inputs are validated from the user.
+   * This method takes those inputs and changes the database data to match it.
+   * Using a Update query and the dbUtil Class the database is updated with the changes.
+   *
+   * @param  name name of the product inputted by user.
+   * @param  screen a screen object with valid inputs by user
+   * @param  monitorType MonitorType enum that is passed.
+   * @throws SQLException An exception that provides information on a
+   *                        database access error or other errors.
+   * @throws ClassNotFoundException Requested classes are not found in classpath.
+   */
+  public  void updateToDb(String name, Screen screen, MonitorType monitorType)
+      throws SQLException, ClassNotFoundException {
+    //int currentSerialNumber = 1;
+    //currentSerialNumber = getMaxSerialNumber() + 1;
+    LocalDate dateFromDatePicker =  datePickerManufactured.getValue();
+    Color color1 = colorPicker.getValue();
+    String colorPicked = color1.toString();
+    int serialNumber = Global.productSelected.getSerialNumber();
+
+    String screenRes = screen.getResolution();
+    int refreshRate = screen.getRefreshRate();
+    int responseTime = screen.getResponseTime();
+
+    String updateStmt =
+        "UPDATE NEW_SCHEMA.PRODUCT "
+            + "SET  NAME='" + name + "',  TYPE = 'MP',"
+            + "  MANUFACTUREDON = '" + dateFromDatePicker + "', COLOR='"
+            + colorPicked + "' WHERE  SERIALNUMBER=" + serialNumber;
+
+    System.out.println(updateStmt);
+
+
+    //Execute DELETE operation
+    try {
+      DbUtil.dbExecuteUpdate(updateStmt);
+    } catch (SQLException e) {
+      System.out.print("Error occurred while UPDATE Operation: " + e);
+      throw e;
+    }
+
+    String updateStmt2 =
+        "UPDATE NEW_SCHEMA.MOVIEPLAYER "
+            + "SET  NAME='" + name
+            + "',  MONITORTYPE  = '" + monitorType
+            + "', SCREENRESOLUTION = '" + screenRes
+            + "', RESPONSETIME = " + responseTime
+            + ", REFRESHRATE = " + refreshRate
+            + "WHERE  SERIALNUMBERMP=" + serialNumber;
+
+    System.out.println(updateStmt2);
+
 
     //Execute DELETE operation
     try {
@@ -321,28 +398,33 @@ public class ControllerAddMoviePlayer implements Initializable {
 
     //is alert message is empty, that means all inputs are valid.
     if (alertMessage.equals("")) {
-      if (copies > 1) {
-        for (int i = 0; i < copies; i++) {
-          //Loop to create copies
+      if (Global.isUpdating) {
+        updateToDb(name, new Screen(screenRes, refreshRate, responseTime), monitorType);
+        showAlert("Product successfully updated.");
+      } else {
+        if (copies > 1) {
+          for (int i = 0; i < copies; i++) {
+            //Loop to create copies
+            MoviePlayer mp =
+                new MoviePlayer(name, new Screen(screenRes, refreshRate, responseTime),
+                    monitorType);
+            Global.productList.add(mp);
+            addToDb(name, new Screen(screenRes, refreshRate, responseTime), monitorType);
+          }
+        } else if (copies == 1) {
           MoviePlayer mp =
-              new MoviePlayer(name,new Screen(screenRes,refreshRate,responseTime),monitorType);
+              new MoviePlayer(name, new Screen(screenRes, refreshRate, responseTime), monitorType);
           Global.productList.add(mp);
-          addToDb(name,new Screen(screenRes,refreshRate,responseTime),monitorType);
+          addToDb(name, new Screen(screenRes, refreshRate, responseTime), monitorType);
+          showAlert(name + " was successfully created.");//Opens alert box
+
         }
-      } else if (copies == 1) {
-        MoviePlayer mp =
-            new MoviePlayer(name,new Screen(screenRes,refreshRate,responseTime),monitorType);
-        Global.productList.add(mp);
-        addToDb(name,new Screen(screenRes,refreshRate,responseTime),monitorType);
-        showAlert(name + " was successfully created.");//Opens alert box
-
+        if (copies <= 0) {
+          showAlert("No Movie Player was created, please enter number of copies.");//Opens alert box
+        } else if (copies > 1) {
+          showAlert(copies + " copies of " + name + " were created.");//Opens alert box
+        }
       }
-      if (copies <= 0) {
-        showAlert("No Movie Player was created, please enter number of copies.");//Opens alert box
-      } else if (copies > 1) {
-        showAlert(copies + " copies of " + name + " were created.");//Opens alert box
-      }
-
     } else {
       showAlert(alertMessage);
     }
@@ -392,6 +474,25 @@ public class ControllerAddMoviePlayer implements Initializable {
      * Akso sets the datepciker to today's date
      * The sliderResolution is also set
      */
+    if (Global.isUpdating) {
+      txtFieldCopy.setDisable(true);
+      typeLabel.setText("Update AudiPlayer");
+      buttonAdd.setVisible(false);
+      buttonUpdate.setVisible(true);
+      MoviePlayer currentMoviePlayer = (MoviePlayer) Global.productSelected;
+
+      txtFieldName.setText(currentMoviePlayer.getName());
+      datePickerManufactured.setValue(currentMoviePlayer.getLocalDateManufactured());
+      colorPicker.setValue(Color.valueOf(currentMoviePlayer.getColor()));
+      Screen currentScreen = currentMoviePlayer.getScreen();
+      textFieldRefresh.setText(String.valueOf(currentScreen.getRefreshRate()));
+      textFieldResponse.setText(String.valueOf(currentScreen.getResponseTime()));
+
+
+
+    }
+
+
     //create fields for ChoiceBox
     List<String> monitorTypeNames = new ArrayList<>();
     monitorTypeNames.add("LCD");

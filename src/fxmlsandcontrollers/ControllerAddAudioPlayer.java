@@ -209,10 +209,10 @@ public class ControllerAddAudioPlayer implements Initializable {
   }
 
   /**
-   *This method updates a audioplyer objec in the productlist.
+   *This method updates a audioplayer objec in the productlist.
    *This method is called after the inputs are validated from the user.
    * This method takes those inputs and changes the database data to match it.
-   * Using a Update quuery and the dbUtil Class the database is updated with the changes.
+   * Using a Update query and the dbUtil Class the database is updated with the changes.
    *
    * @param  name name of the product inputted by user.
    * @param  audiSpec audio Specification inputted by user.
@@ -364,7 +364,7 @@ public class ControllerAddAudioPlayer implements Initializable {
      */
     if (Global.isUpdating) {
       txtFieldCopy.setDisable(true);
-      typeLabel.setText("Update AudiPlayer");
+      typeLabel.setText("Update AudioPlayer");
       buttonAdd.setVisible(false);
       buttonUpdate.setVisible(true);
       AudioPlayer currentAudioPlayer = (AudioPlayer) Global.productSelected;
@@ -372,7 +372,7 @@ public class ControllerAddAudioPlayer implements Initializable {
       txtFieldName.setText(currentAudioPlayer.getName());
       datePickerManufactured.setValue(currentAudioPlayer.getLocalDateManufactured());
       colorPicker.setValue(Color.valueOf(currentAudioPlayer.getColor()));
-      
+
 
     }
     //Image image = new Image("..\\..\\images\\audioPlayer.jpg");
