@@ -136,10 +136,10 @@ This is a Java GUI project, that is designed to allow the user to create Audio P
  <h3>Diagrams</h3>
   <hr>
   
- ![Gui Picture]( https://github.com/dekum/JPProject/blob/master/images/Package%20fxmlsandcontrollers.png)<br>
+ ![Gui Picture]( https://github.com/dekum/JPProject/blob/master/images/fxmlsandcontrollersUML.pngg)<br>
 UML Diagram for the controllers <br>
  
- ![Gui Picture]( https://github.com/dekum/JPProject/blob/master/images/sample.png)<br>
+ ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/projectclassesUML.png)<br>
  UML Diagram for the classes of this program. Blue Lines show inheritance, and green lines show implementing.<br>
 Item is an interface with its own method headers  that is implemented by Product, thus no objects can be created from it. <br> Product is an public abstract class that implements, Item class and its methods. Since it's abstract no objects can be created from it.
 <br> Movie Player and AudioPlayer are subclasses of product, and call Product's constructor when objects are made from them. The two classes also implement Multimedia Control interface, and have defined methods that were implemented.
