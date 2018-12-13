@@ -30,6 +30,15 @@ public class AudioPlayer extends  Product implements MultimediaControl {
   }
 
   /**
+   * Gets audioSpecification.
+   *
+   * @return  value of audioSpecification.
+   */
+  public String getAudioSpecification() {
+    return audioSpecification;
+  }
+
+  /**
    * Normal constructor used.
    *
    * @param  name the name of the AudioPlayer to be set by Product's constructor

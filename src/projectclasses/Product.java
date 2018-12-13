@@ -154,10 +154,21 @@ public abstract class Product implements Item, Comparable {
   }
 
   /**
+   * Gets color.
+   *
+   * @return value of color.
+   */
+  public String getColor() {
+    return color;
+  }
+
+  /**
    * Gets the class name.
    *
    * @return String result of the Type, which is the class type.
    */
+
+
   public String getType() {
     return  typeProperty.get();
   }

@@ -247,6 +247,24 @@ public class ControllerAddAudioPlayer implements Initializable {
       throw e;
     }
 
+    String updateStmt2 =
+        "UPDATE NEW_SCHEMA.AUDIOPLAYER "
+            + "SET  NAME='" + name
+            + "',  AUDIOSPECIFICATION  = '" + audiSpec
+            + "' WHERE  SERIALNUMBERAP=" + serialNumber;
+
+    System.out.println(updateStmt2);
+
+
+    //Execute DELETE operation
+    try {
+      DbUtil.dbExecuteUpdate(updateStmt2);
+    } catch (SQLException e) {
+      System.out.print("Error occurred while UPDATE Operation: " + e);
+      throw e;
+    }
+
+
   }
 
   /**
@@ -340,11 +358,21 @@ public class ControllerAddAudioPlayer implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
+    /**
+     * This method runs first.
+     * This makes sure update button isn't visibke.
+     */
     if (Global.isUpdating) {
       txtFieldCopy.setDisable(true);
       typeLabel.setText("Update AudiPlayer");
       buttonAdd.setVisible(false);
       buttonUpdate.setVisible(true);
+      AudioPlayer currentAudioPlayer = (AudioPlayer) Global.productSelected;
+      txtFieldAudioSpec.setText(currentAudioPlayer.getAudioSpecification());
+      txtFieldName.setText(currentAudioPlayer.getName());
+      datePickerManufactured.setValue(currentAudioPlayer.getLocalDateManufactured());
+      colorPicker.setValue(Color.valueOf(currentAudioPlayer.getColor()));
+      
 
     }
     //Image image = new Image("..\\..\\images\\audioPlayer.jpg");
