@@ -60,7 +60,8 @@
 <h4>Home Window - Information Alert</h4>
 <hr>
 
-![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/HomeScreenMoreInfo.png)<br>
+![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/HomeScreenMoreInfo.png)
+
  * This alert box popups, when a product is clicked on and the "More Info" button is pressed.
  * The alert displays the product's toString method which contains its name, type, manufactured date,  serial number, amongst other details.
 
@@ -86,6 +87,7 @@
 * The user can also choose the color of the product, and the date Manufactured, which is set to today's date by default.
 * However if there are bad inputs, an error alert will tell the user what's wrong.<br>
   <hr>
+  
   <h4>Add AudioPlayer Window- Success</h4>
   
 
@@ -97,6 +99,7 @@
  <hr>
  
  ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddAudioPlayerUpdate.png)
+ 
  *This window displays when "Update Product" is selected, and it is a audioplayer object.
  *The user changes the fields they choose, and press "Update" and the database is updated with new data.
  
