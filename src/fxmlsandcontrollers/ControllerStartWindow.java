@@ -37,6 +37,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
+import javafx.scene.media.MediaException;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
@@ -165,7 +166,7 @@ public class ControllerStartWindow implements  Initializable {
    * This method is called when "Delete product" is clicked.
    * It will call the function that creates a sql query to deleted selected product.
    * To prevent accidental deletes, a checkbox will disable or enable delete button.
-   * 
+   *
    * @param  event a moouseclick event.
    */
   @FXML
@@ -214,7 +215,7 @@ public class ControllerStartWindow implements  Initializable {
       Logger.getLogger(ControllerAddAudioPlayer.class.getName()).log(Level.SEVERE, null, ex);
 
     }
-    
+
     stage = new Stage();
     stage.setTitle("Add Audio Player");
     if (Global.isUpdating) {
@@ -373,17 +374,47 @@ public class ControllerStartWindow implements  Initializable {
    * variable even if windows change.
    * @param event a mouseclick Event.
    */
-  @FXML public void playOrPauseMusic(ActionEvent event) {
+  @FXML public void playOrPauseMusic(ActionEvent event) throws MediaException {
     if (Global.isPlaying) {
       mediaView.getMediaPlayer().pause();
       Global.isPlaying = false;
     } else {
-      Media media = new Media(new File("resources/backgroundmusic.mp3").toURI().toString());
-      MediaPlayer mediaPlayer = new MediaPlayer(media);
-      // mediaPlayer.setAutoPlay(true);
-      mediaPlayer.play();
-      mediaView.setMediaPlayer(mediaPlayer);
-      Global.isPlaying = true;
+      Boolean success = false;
+      try {
+
+        Media media = new Media(
+            new File("resources/backgroundmusic.mp3").toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        // mediaPlayer.setAutoPlay(true);
+        mediaPlayer.play();
+        mediaView.setMediaPlayer(mediaPlayer);
+        Global.isPlaying = true;
+        success = true;
+      } catch (MediaException e) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Information Dialog.");
+        alert.setHeaderText(null);
+        alert.setContentText("Media file cannot be found.");
+        alert.showAndWait();
+      }
+
+      //try a second path
+      if (success== false){
+        try {
+          Media media = new Media(
+              new File("fxmlsandcontrollers/backgroundmusic.mp3").toURI().toString());
+          MediaPlayer mediaPlayer = new MediaPlayer(media);
+          // mediaPlayer.setAutoPlay(true);
+          mediaPlayer.play();
+          mediaView.setMediaPlayer(mediaPlayer);
+          success= true;
+          Global.isPlaying = true;
+
+        } catch (MediaException e) {
+        }
+
+      }
+
     }
   }
 }
