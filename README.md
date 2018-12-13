@@ -25,16 +25,17 @@
 
 <h3>Goal</h4>
  <hr>
-<p>
  * Create a production plant for any type of product ranging from a simple packaging system to a variety of electronic devices.
+ 
 * Create a production line for multimedia devices which include music and movie players.
+
 * Design a template in Java for creating and recording all future production line items.  
 
 <h3>OverView</h3>
 <hr>
 <p> This is a Java GUI project, that is designed to allow the user to create Audio Players and Movie Player products of their choice. They will be able to input their specifications of the products, and the products will be displayed on the Home Window in a table View. The user can also see the statistics of the movie Player, such as the total number of products, how many are movie players and how many are unique.</p>
 
-This project now implements a database. Using [Derby](https://db.apache.org/derby/) and sql statements, the program now interacts with a database which stores the Audio Players, Products and MoivePlayer objects created by the user. The user can also add, delete, or update products in the database.
+This project now implements a database. Using [Derby](https://db.apache.org/derby/) and sql statements, the program now interacts with a database which stores the Audio Players, Products and MoivePlayer objects created by the user. The user can also add, delete, or update products in the database. A dbUtil Class was created to access the database and create resultsets via sql squeries.
  
  
  This project followed [GUI Design Principles](https://en.wikibooks.org/wiki/GUI_Design_Principles) by first making the project aesthetically pleasing and easy to look at. The Stats window shows a graph to easily see data, and the contrast between colors is clear. Clarity is emphasized, by color and text, buttons are clearly defined and don't offer any surprises to the user. When tableView rows are clicked, the color changes to show the change the same as buttons. Each window is consistent, and the buttons perform the action as stated. The program was extensively tested so runtime errors s should infrequent if any. The control is given to the user to perform the tasks they want. Textboxes offer a "CTRL-Z" function to undo mistakes. The user's work isn't lost when they enter bad inputs, errors clearly display what the user did wrong.
@@ -46,10 +47,14 @@ This project now implements a database. Using [Derby](https://db.apache.org/derb
  
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/HomeScreen.png)<br>
 * The HomeScreen is the screen the user sees when they open the GUI. 
-* On the left is a Table with the list of products. The program starts with its own default example list. 
+* On the left is a Table with the list of products. The program reads from the database and populates the cells with the data.
 * The table displays the name of the product and whether it is a Movie player or Audio Player. <br>The table updates as the user adds more products. 
 * On the right the user can click 3 buttons to open the other 3 windows listed
 * If the User wished to know more information about a certain product they can click the product and press the "More Info" button.
+* If the User wants to update a product, they can click the product from the table, and press Update Prduct to finish the task
+* If the User wants to delete a product, they press the "delete?" checkbox which enables the "Delete Product" button.
+* The program is embedded with a short song, the "Play/Pause Music" will toggle between playing the music and pausing it.
+* The music will play even if new windows are opened, and will stop if the program is closed or the button is pressed agin.
 
 <h4>Home Window - Information Alert</h4>
 <hr>
@@ -64,20 +69,29 @@ This project now implements a database. Using [Derby](https://db.apache.org/derb
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddAudioPlayerWindow.png)<br>
 * This window is displayed when User wants to add an Audio Player. The textfields have default inputs for user-easiness. 
 * The user enters the name, audio Specification, and how many copies of this product they want. If successfully an alert will signal success. 
+* The user can also choose the color of the product, and the date Manufactured, which is set to today's date by default.
 * However if there are bad inputs, an error alert will tell the user what's wrong.<br>
   <hr>
   <h4>Add AudioPlayer Window- Success</h4>
   
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddAudioPlayerSuccess.png)<br>
-* This is the alert that will pop up if the User successfully creates an Audio Player. 
-* The number of copies and product name is shown. The Movie Player window has a similar pop-up. <br>
+* This is the alert that will pop up if the User successfully creates an Audio Player.
+* The number of copies and product name is shown. The Movie Player window has a similar pop-up.
+* The new audioplayer is added to the database and can be seen on the Start Window table.
 
 <h4>Add Movie Player Window</h4>
 <hr>
 
  ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/AddMoviePlayerWindowEx.png)<br>
- <p> This window is displayed when the user selected "Add Movie Player". Just like the Audio Player window, default data is already filled in textfields. <br>Movie Player window has a choice of Monitor Type, which is displayed in a drop-down choice box element. <br>The data is this picture has an invalid # of copies to demonstrate the error message shown in the next picture.
-</p> <br>
+ * This window is displayed when the user selected "Add Movie Player". 
+ * Just like the Audio Player window, default data is already filled in textfields. *
+ Movie Player window has a choice of Monitor Type, which is displayed in a drop-down choice box element. 
+ * A horizontal slider is used to set Screen Resoultion.
+ * The Slider has been formatted to snap to the ticks, and the tick have been changed to display the commmon spec.
+ * Just like audioPlayer, date manufactured and color can be chosen as well.
+ * When add is successful, the data is then added to the database, can be seen on Start Window.
+ * The data is this picture has an invalid # of copies to demonstrate the error message shown in the next picture.
+ <br>
 
   <h4>Add Movie Player Window- Error Alert</h4>
   <hr>
@@ -92,7 +106,7 @@ This project now implements a database. Using [Derby](https://db.apache.org/derb
 <hr>
 
 ![Gui Picture](https://github.com/dekum/JPProject/blob/master/images/StatsWindow.png)<br>
-* This window has a table of Stats that shows analysis the product List the user created. 
+* This window has a table of Stats that shows analysis of the database the user editted. 
 * The Statistics automatically update as new products are created. 
 * The Stats described here:<br>
  
@@ -149,10 +163,14 @@ UML Diagram for the controllers <br>
 Item is an interface with its own method headers  that is implemented by Product, thus no objects can be created from it. <br> Product is an public abstract class that implements, Item class and its methods. Since it's abstract no objects can be created from it.
 <br> Movie Player and AudioPlayer are subclasses of product, and call Product's constructor when objects are made from them. The two classes also implement Multimedia Control interface, and have defined methods that were implemented.
 
-[JavaDoc](https://dekum.github.io/JPProject/docs/index.html) Javadocs can be seen here.
+In 2.0.0 the DbUtil class was created to handle database functions.
+
+[JavaDoc](https://dekum.github.io/JPProject/docs/index.html) be seen by pressing "JavaDoc".
 
 ![DataBaseDiagram](https://github.com/dekum/JPProject/blob/master/images/DataBaseDiagram.png)
-<p> The database diagram. The AudioPlayer and MoviePlayer tables are joined to the Product Table where the serial numbers match.
+* The database diagram. 
+* The AudioPlayer and MoviePlayer tables are joined to the Product Table where the serial numbers match.
+* The serialnumber column for product audioplayer and MoviePlayer are named different to prevent errors.
 <br>
  
 <h3>Demo</h3>
@@ -169,13 +187,14 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 
 <h4>How To Install</h4>
 <hr>
-<p>
 * Needed: Windows Vista or higher. Java 1.8 or higher.
+* [Apache Derby](https://db.apache.org/derby/) is needed to be installed to use database. Can be installed [here](https://db.apache.org/derby/papers/DerbyTut/install_software.html)
 * A java IDE is needed if you going to import from github.
  <br>
-* For those without IDE, a jar file is provided, and works withoout the use of one.
- * The Jar file is located in deliverables>artifacts>JPProject.jar
-</p>
+* For those without IDE, a jar file is provided, and works without the use of one.
+* The Jar file is located in deliverables>artifacts>JPProject.jar
+
+* This program was tested with Window 10, 64-Bit with JDK8 using InteliJ IDEA 12/13/2018
 <br> 
 
 <h3>Updates</h3>
