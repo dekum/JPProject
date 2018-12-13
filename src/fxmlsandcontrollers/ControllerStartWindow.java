@@ -11,6 +11,7 @@
 
 package fxmlsandcontrollers;
 
+import java.awt.Checkbox;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -29,9 +30,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import projectclasses.DbUtil;
 import projectclasses.Global;
@@ -58,6 +62,20 @@ public class ControllerStartWindow implements  Initializable {
    */
   @FXML
   TableColumn<Product,String> colType; //Displays either AudioPlyaer or MoviePlayer
+  /**
+   * Root or background of this fxml
+   */
+  @FXML AnchorPane anchorPane;
+
+  /**
+   * Checkbox to control if delete button is disabled or enabled.
+   */
+  @FXML CheckBox checkBox;
+
+  /**
+   * Button to delete a product from database.
+   */
+  @FXML Button buttonDelete;
 
   /**
    * This method displays a popup with window with the toString of the product user clicks.
@@ -100,9 +118,14 @@ public class ControllerStartWindow implements  Initializable {
     Alert alert = new Alert(AlertType.INFORMATION);
     alert.setTitle("Information Dialog");
     alert.setHeaderText(null);
-    alert.setContentText(productClickedOn.getName()+"deleted from records."); //print product toSTring
+    alert.setContentText(productClickedOn.getName()+" deleted from records."); //print product toSTring
     alert.showAndWait();
     Global.productList.remove(productClickedOn);
+    ArrayList<Product> productList = Global.productList;
+    ObservableList<Product> observableListProductList =
+        FXCollections.observableArrayList(productList);
+    tableViewProducts.setItems(observableListProductList);
+    anchorPane.requestFocus();
 
 
   }
@@ -235,6 +258,7 @@ public class ControllerStartWindow implements  Initializable {
     ArrayList<Product> productList = Global.productList;
     ObservableList<Product> observableListProductList =
         FXCollections.observableArrayList(productList);
+
     //set CellFactory for name column
     colName.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
     colType.setCellValueFactory(cellData -> cellData.getValue().getTypeProperty());
@@ -248,6 +272,8 @@ public class ControllerStartWindow implements  Initializable {
 
       }
     });
+
+    buttonDelete.disableProperty().bind(checkBox.selectedProperty().not());
 
   }
 

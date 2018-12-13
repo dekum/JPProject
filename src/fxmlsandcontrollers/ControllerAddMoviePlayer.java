@@ -19,6 +19,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -32,9 +34,12 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 import projectclasses.DbUtil;
 import projectclasses.Global;
 import projectclasses.MonitorType;
@@ -68,13 +73,13 @@ public class ControllerAddMoviePlayer implements Initializable {
    */
   @FXML private ChoiceBox<String> choiceBoxMonitorType;
 
+  /**
+   * Textfield to set audio specification.
+   */
   @FXML
   private TextField txtFieldAudioSpec;
 
-  /**
-   * This method displays a popup with the Message passed in the parameter.
-   * @param message is a String passed by other method to be displayed to the user
-   */
+
 
   /**
    * A datepicker to set the date this product was manufactured .
@@ -85,6 +90,10 @@ public class ControllerAddMoviePlayer implements Initializable {
    * Javafx Colorpicker to set the color.
    */
   @FXML private ColorPicker colorPicker;
+  /**
+   * Slider that sets this screen resolution.
+   */
+  @FXML private Slider slider;
 
   /**
    * This method displays a popup with the Message passed in the parameter.
@@ -157,6 +166,20 @@ public class ControllerAddMoviePlayer implements Initializable {
    *                        database access error or other errors.
    * @throws ClassNotFoundException Requested classes are not found in classpath.
    */
+  /**
+   * A method that takes the value of the slider and converts it to the string.
+   *
+   * @return the screen resolution, based on the slider value.
+   */
+  public String getResoultion(){
+    double n= slider.getValue();
+    if (n == 360) return "480x360p";
+    if (n == 540) return "960x540p";
+    if (n == 720) return "1280x720p";
+    if (n == 900) return "1600x900p";
+    if (n == 1080) return "1920x1080p";
+    return "1920x1080p";
+  }
 
   public void addToDb(String name, Screen screen, MonitorType monitorType)
       throws SQLException, ClassNotFoundException {
@@ -226,7 +249,7 @@ public class ControllerAddMoviePlayer implements Initializable {
     //monitorTypeString to be converted to MonitorType enum
     String monitorTypeString = choiceBoxMonitorType.getValue();
     MonitorType monitorType;
-    String screenRes = "";
+    String screenRes = getResoultion();
     int refreshRate = -1;
     int responseTime = -1;
 
@@ -311,6 +334,7 @@ public class ControllerAddMoviePlayer implements Initializable {
    */
   @FXML void handleExit(ActionEvent event) {
 
+
     Stage stage = (Stage) txtFieldCopy.getScene().getWindow(); //Ask currentScene what window it is.
     stage.close(); //Close current Window
 
@@ -342,6 +366,7 @@ public class ControllerAddMoviePlayer implements Initializable {
     /**
      * This method is called first before window loads.
      * This populates the choiceBox, and set default value
+     * Aksi sets the datepciker to today's date
      */
     //create fields for ChoiceBox
     List<String> monitorTypeNames = new ArrayList<>();
@@ -350,5 +375,40 @@ public class ControllerAddMoviePlayer implements Initializable {
     ObservableList<String> monitorTypeList = FXCollections.observableArrayList(monitorTypeNames);
     choiceBoxMonitorType.setValue("LCD");
     choiceBoxMonitorType.setItems(monitorTypeList);
+    datePickerManufactured.setValue(LocalDate.now());
+
+
+
+    slider.setLabelFormatter(new StringConverter<Double>() {
+      @Override
+      public String toString(Double n) {
+        if (n == 360) return "480x360";
+        if (n == 540) return "960x540";
+        if (n == 720) return "1280x720";
+        if (n == 900) return "1600x900";
+        if (n == 1080) return "1920x1080";
+        return "";
+      }
+
+      @Override
+      public Double fromString(String s) {
+        switch (s) {
+          case "480x360":
+            return 0d;
+          case "960x540":
+            return 1d;
+          case "1280x720":
+            return 2d;
+          case "1600x900":
+            return 4d;
+          case "1920x1080":
+            return 5d;
+
+          default:
+            return 5d;
+        }
+      }
+    });
+
   }
 }

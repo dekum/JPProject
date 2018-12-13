@@ -26,6 +26,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -55,6 +57,7 @@ public class ControllerStats implements Initializable {
    */
   @FXML private TableColumn<StatsReport,String> colStatName;
 
+  @FXML private BarChart barChart;
   /**
    * This method will open the StartWidow.fxml window, also also closes current window.
    * 
@@ -151,5 +154,15 @@ public class ControllerStats implements Initializable {
         new PropertyValueFactory<StatsReport, Integer>("statNumber"));
     //colStatNumber.setCellValueFactory(cellData -> cellData.getValue().getStatNumberProperty());
     tableViewStats.setItems(observableStatsList);
+
+    XYChart.Series dataSeries1 = new XYChart.Series();
+    dataSeries1.setName("Totals");
+    dataSeries1.getData().add(new XYChart.Data("Products",productList.size()));
+    dataSeries1.getData().add(new XYChart.Data("AudioPlayers"  , apCounter));
+    dataSeries1.getData().add(new XYChart.Data("MoviePLayers"  ,mpCount));
+
+
+    barChart.getData().add(dataSeries1);
+
   }
 }

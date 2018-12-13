@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -25,7 +26,14 @@
       <Label layoutX="13.0" layoutY="191.0" text="Color:" />
       <DatePicker fx:id="datePickerManufactured" layoutX="135.0" layoutY="231.0" prefHeight="25.0" prefWidth="149.0" />
       <Label layoutX="15.0" layoutY="235.0" text="Date Manufactured" />
-      <CheckBox layoutX="297.0" layoutY="235.0" mnemonicParsing="false" text="Use Current Date" />
-      <ImageView fitHeight="78.0" fitWidth="103.0" layoutX="333.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView" fitHeight="78.0" fitWidth="103.0" layoutX="333.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/audioPlayer.jpg" />
+         </image></ImageView>
    </children>
+   <stylesheets>
+
+      <URL value="@StyleSheet.css" />
+
+   </stylesheets>
 </AnchorPane>
