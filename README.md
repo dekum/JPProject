@@ -3,7 +3,7 @@
  * Philemon Petit-Frere
  * 12/5/2018
  * COP 3003 - Object Oriented Programming
- * Project: JPProject
+ * Project: JP Project
  * Purpose of Project: design a template in Java for creating and recording all futureproduction line items. Also also allow easy modification to handle different products
  * Sources for help: https://stackexchange.com/, https://stackoverflow.com/,  Garrett Graber, Nathalie Crespo, github.com, http://tutorials.jenkov.com/java-regex/pattern.html, https://www.geeksforgeeks.org/ , https://www.tutorialspoint.com/, 
  
@@ -219,6 +219,8 @@ If you'd like to request a new function, feel free to do so by opening an issue 
  JP Project is a scenario created by Oracle Academy for the purpose of teaching Java.
  
 This program is authored by Philemon Petit-Frere
+
+Approx. 3300 lines of java code are written in this program according to https://line-count.herokuapp.com/dekum/JPProject
 
 This project is supported by:
 <a href="https://www.jetbrains.com/idea/">
