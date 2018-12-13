@@ -34,7 +34,7 @@ public class Main extends Application {
     //DbUtil.populateProductList();
     Parent root = FXMLLoader.load(getClass().getResource("fxmlsandcontrollers/StartWindow.fxml"));
     primaryStage.setTitle("Home Window");
-    primaryStage.setScene(new Scene(root, 476, 401));
+    primaryStage.setScene(new Scene(root, 476, 407));
     primaryStage.show(); //open
 
   }

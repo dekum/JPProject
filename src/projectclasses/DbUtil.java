@@ -146,7 +146,8 @@ public class DbUtil {
             + "LEFT JOin NEW_SCHEMA.MOVIEPLAYER "
             + "on NEW_SCHEMA.PRODUCT.SERIALNUMBER = NEW_SCHEMA.MOVIEPLAYER.SERIALNUMBERMP \n"
             + "LEFT Join NEW_SCHEMA.AUDIOPLAYER "
-            + "on  NEW_SCHEMA.PRODUCT.SERIALNUMBER = NEW_SCHEMA.AUDIOPLAYER.SERIALNUMBERAP";
+            + "on  NEW_SCHEMA.PRODUCT.SERIALNUMBER = NEW_SCHEMA.AUDIOPLAYER.SERIALNUMBERAP \n"
+            + "ORDER BY NEW_SCHEMA.PRODUCT.SERIALNUMBER asc ";
     // use try-with-resources to connect to and query the database
     try (
         //Make a new connection with the database
